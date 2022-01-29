@@ -3,6 +3,7 @@ import {MainContext} from '../../contexts/MainContext.js'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./Login.css";
 
 
@@ -14,7 +15,7 @@ export const Login = () => {
   const [loginStatus, setLoginStatus] = useState(false);
 
   function validateForm() {
-    return username.length > 2 && password.length > 2;
+    return username.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
@@ -28,7 +29,11 @@ export const Login = () => {
     axios
       .post('/usersLogin', payload)
       .then((data) => {
-        console.log(data.data);
+        if (data.data) {
+          successfulLogin();
+        } else {
+          alert('Invalid login attempt!')
+        }
       })
   }
 
@@ -59,9 +64,14 @@ export const Login = () => {
               required={true}
             />
           </Form.Group>
-          <Button block size="lg" type="submit" disabled={!validateForm()}>
+          <>
+          <Button variant="primary" type="submit" disabled={!validateForm()}>
             Login
-          </Button>
+          </Button>{' '}
+          <Button variant="secondary" type="button" onClick={() => { setCurrentPage('newUser') }} >
+            Create Account
+          </Button>{' '}
+          </>
         </Form>
       </div>
     );
@@ -70,7 +80,7 @@ export const Login = () => {
   return (
     <div className="LoginAndSelection">
       <h1>Thumbs Up</h1>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
+      <div className='backToMainNav' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       {loginForm()}
     </div>
   );

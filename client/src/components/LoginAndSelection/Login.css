@@ -9,6 +9,21 @@
   }
 }
 
+.LoginAndSelection {
+  width: 100%;
+}
+
+.backToMainNav {
+  position: absolute;
+  top: 0%;
+  cursor: pointer;
+  justify-self: center;
+  margin-left: 5px;
+  min-height: 21px;
+  width: auto;
+  border: 1px solid black;
+}
+
 .LoginAndSelection h1 {
   text-align: center;
 }
