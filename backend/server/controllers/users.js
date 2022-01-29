@@ -17,7 +17,6 @@ module.exports = {
       }
       result.rows[0].row = result.rows[0].row.replace(/[{()}]/g, '');
       result.rows[0].row = result.rows[0].row.split(',')
-      console.log(result.rows[0].row)
       if (username !== result.rows[0].row[1] || password !== result.rows[0].row[2]) {
         console.log('Invalid Login');
         res.send(false);
@@ -25,7 +24,8 @@ module.exports = {
         console.log('Valid Login');
         const payload = {
           userId: result.rows[0].row[0],
-          username: result.rows[0].row[1]
+          username: result.rows[0].row[1],
+          profile_picture: result.rows[0].row[3]
         }
         res.send(payload);
       }

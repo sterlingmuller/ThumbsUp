@@ -28,8 +28,12 @@ export const NewUser = () => {
     axios
       .post('/usersCreate', payload)
       .then((data) => {
-        alert(data.data);
-        setCurrentPage('login');
+        if (data.data === 'Created Account') {
+          alert(data.data);
+          setCurrentPage('login');
+        } else {
+          alert(data.data);
+        }
       })
   }
 
@@ -72,6 +76,7 @@ export const NewUser = () => {
 
   return (
     <div className="newUser">
+      <h1>Thumbs Up</h1>
       <div className='backToMainNav' style={{cursor: 'pointer'}}onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       {createUser()}
     </div>
