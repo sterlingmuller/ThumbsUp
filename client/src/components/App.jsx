@@ -15,7 +15,7 @@ import { RiderTripDetails } from './RiderSelection/RiderHamburgerModal/MenuOptio
 import { RiderTripHistory } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderTripHistory.jsx';
 import { RiderUpcomingTrips } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './RiderSelection/RiderHamburgerModal/riderMenu.jsx';
-import { RiderPortal } from './RiderSelection/RiderPortal.jsx';
+import { RiderPortal } from './RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHistory.jsx';
 
 const App = () => {

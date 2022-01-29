@@ -55,9 +55,9 @@ CREATE TABLE messages (
 
 
 INSERT INTO users( username,password)
-VALUES ('MrFripple', 123);
+VALUES ('MrFripple', '123');
 INSERT INTO users(username,password)
-VALUES ('person', 123);
+VALUES ('person', '123');
 INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
 VALUES (1,'Las Vegas', 'Denver', '2017-03-31 09:30:20-07');
 INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
