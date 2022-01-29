@@ -8,7 +8,8 @@ router.get('/messages', messages.get);
 router.post('/messages', messages.post);
 
 // Prith
-
+const users = require('./controllers/users.js');
+router.post('/usersLogin', users.checkLogin);
 // Neil
 
 // Sterling

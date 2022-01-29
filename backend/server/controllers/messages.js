@@ -9,7 +9,7 @@ module.exports = {
         console.log('there is an error', err);
       } else {
         res.send(result.rows);
-        console.log('result:', result);
+        // console.log('result:', result);
       }
     };
     messages.getMessages(callback,req.body);
