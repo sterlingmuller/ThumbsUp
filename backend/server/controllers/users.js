@@ -10,9 +10,14 @@ module.exports = {
         console.log(err);
         res.send(err);
       }
+      if (!result.rows.length) {
+        console.log('Invalid Login');
+        res.send(false);
+        return;
+      }
       result.rows[0].row = result.rows[0].row.replace(/[{()}]/g, '');
       result.rows[0].row = result.rows[0].row.split(',')
-      if (username !== result.rows[0].row[0] && password !== result.rows[0].row[1]) {
+      if (username !== result.rows[0].row[0] || password !== result.rows[0].row[1]) {
         console.log('Invalid Login');
         res.send(false);
       } else {

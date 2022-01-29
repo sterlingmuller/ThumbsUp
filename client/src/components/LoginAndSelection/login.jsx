@@ -21,6 +21,15 @@ export const Login = () => {
     event.preventDefault();
     console.log(username)
     console.log(password)
+    const payload = {
+      "username": username,
+      "password": password
+    }
+    axios
+      .post('/usersLogin', payload)
+      .then((data) => {
+        console.log(data.data);
+      })
   }
 
   function successfulLogin() {
