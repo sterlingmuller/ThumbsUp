@@ -21,6 +21,16 @@ export const NewUser = () => {
     event.preventDefault();
     console.log(username)
     console.log(password)
+    const payload = {
+      'username': username,
+      'password': password
+    }
+    axios
+      .post('/usersCreate', payload)
+      .then((data) => {
+        alert(data.data);
+        setCurrentPage('login');
+      })
   }
 
   function createUser() {

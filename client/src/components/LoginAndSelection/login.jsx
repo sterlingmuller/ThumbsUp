@@ -20,8 +20,6 @@ export const Login = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(username)
-    console.log(password)
     const payload = {
       "username": username,
       "password": password
@@ -31,6 +29,7 @@ export const Login = () => {
       .then((data) => {
         if (data.data) {
           successfulLogin();
+          setUserId(data.data.userId);
         } else {
           alert('Invalid login attempt!')
         }

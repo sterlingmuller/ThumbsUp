@@ -10,6 +10,7 @@ router.post('/messages', messages.post);
 // Prith
 const users = require('./controllers/users.js');
 router.post('/usersLogin', users.checkLogin);
+router.post('/usersCreate', users.createUser)
 // Neil
 
 // Sterling
