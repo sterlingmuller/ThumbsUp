@@ -27,7 +27,7 @@ const App = () => {
         'newUser'       : <NewUser />,
         'driverAddTrip' : <DriverAddTrip />,
         'driverTripHistory' : <DriverTripHistory />,
-        'driverTripSelection' : <DriverTripSelection/>,
+        'this is a new name' : <DriverTripSelection/>,
         'driverPortal'    : <DriverPortal />,
         'riderSearch'     : <RiderSearch />,
         'saveMeASeat'     : <SaveMeASeat />,
