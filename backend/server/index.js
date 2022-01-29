@@ -1,7 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-const PORT = 3000;
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 
 // Router
 var router = require('./routes.js');
@@ -14,6 +15,6 @@ app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 
 
 // Set up message route
-app.get('/messages', router);
+app.use(router);
 
 app.listen(PORT, () => {console.log(`I'm listening on PORT: ${PORT}`)});

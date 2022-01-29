@@ -1,16 +1,16 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 
-const client = new Pool ({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'blueocean',
-  password: 'password',
-  port: 5432,
+const pool = new Pool ({
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD
 });
 
 
-client.connect(err => {
+pool.connect(err => {
   if (err) {
     console.error('connection error', err.stack)
   } else {
@@ -18,4 +18,4 @@ client.connect(err => {
   }
 });
 
-module.exports = {client};
+module.exports = {pool};
