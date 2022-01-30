@@ -9,7 +9,7 @@ import "./Login.css";
 
 
 export const Login = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const { currentPage, setCurrentPage, setUserId, setCurrentUser } = useContext(MainContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
@@ -28,16 +28,14 @@ export const Login = () => {
       .post('/usersLogin', payload)
       .then((data) => {
         if (data.data) {
-          successfulLogin();
-          setUserId(data.data.userId);
+          console.log(data.data)
+          setCurrentUser(data.data);
+          alert('Successfully Logged In');
+          setCurrentPage('riderOrDriver');
         } else {
           alert('Invalid login attempt!')
         }
       })
-  }
-
-  function successfulLogin() {
-    setLoginStatus(true);
   }
 
   function loginForm() {
