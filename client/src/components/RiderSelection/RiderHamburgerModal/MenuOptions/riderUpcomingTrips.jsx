@@ -5,25 +5,26 @@ import { RiderTripDetails } from './riderTripDetails.jsx';
 
 
 export const RiderUpcomingTrips = () => {
-  const { setCurrentPage } = useContext(MainContext);
-  const[upcommingTrips, setUpcommingTrips] = useState([]);
+  const { setCurrentPage, currentUser } = useContext(MainContext);
+  const[upcommingTrips, setUpcomingTrips] = useState([]);
+  const { userId } = currentUser
 
-  const getUpcommingTrips = () => {
-    axios.get('/trips/rider/upcomming')
-      .then(({ data }) => setUpcommingTrips(data));
+  const getUpcomingTrips = () => {
+    axios.get(`/trips/upcoming?user_id=${userId}`)
+      .then(({ data }) => setUpcomingTrips(data));
   }
 
   useEffect(() => {
-    getUpcommingTrips()
+    getUpcomingTrips()
   }, [])
 
   return (
     <div>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
-        Upcomming Trips
+        Upcoming Trips
         <ul>
-          {upcommingTrips.map(trip => {return <RiderTripDetails trip={trip}/>})}
+          {upcommingTrips.map(trip => {return <RiderTripDetails key={trip.id} trip={trip}/>})}
         </ul>
       </div>
     </div>

@@ -1,0 +1,34 @@
+const trips = require('../../database/models/trips.js');
+
+module.exports = {
+  getUpcoming: function (req, res) {
+    const { user_id } = req.query;
+
+    trips.getUpcomingTrips(user_id, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result.rows)
+      }
+    });
+  },
+
+  getPrevious: function(req, res) {
+    const { user_id, user_type } = req.query;
+
+    var callback = (err, result) => {
+      if (err) {
+        res.status(400).send(err)
+      } else {
+        res.status(200).send(result.rows)
+      }
+    }
+
+    if (user_type === 'rider') {
+      trips.getRiderPrevious(user_id, callback)
+    } else {
+      trips.getDriverPrevious(user_id, callback)
+    }
+  }
+
+}
