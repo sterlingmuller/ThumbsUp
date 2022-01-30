@@ -1,16 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../../../contexts/MainContext.js'
+import React, { useContext } from 'react';
+import { MainContext } from '../../../../contexts/MainContext.js'
 
 
 
-export const RiderTripDetails = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+export const RiderTripDetails = ({ trip }) => {
+  const { setCurrentPage } = useContext(MainContext);
+  const { start_address, end_address, start_time } = trip;
 
   return (
     <div>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
-        This is {currentPage} make it more awesomer!!!
+        <li onClick={() => setCurrentPage('driverTripSelection')}>
+          <span>{start_address} -</span>
+          <span> {end_address}</span>
+          <span>{start_time}</span>
+        </li>
       </div>
     </div>
   );
