@@ -25,7 +25,8 @@ module.exports = {
         const payload = {
           userId: result.rows[0].row[0],
           username: result.rows[0].row[1],
-          profile_picture: result.rows[0].row[3]
+          profile_picture: result.rows[0].row[3],
+          usertype: ''
         }
         res.send(payload);
       }
