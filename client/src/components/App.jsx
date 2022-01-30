@@ -47,21 +47,24 @@ const App = () => {
 
 
      return(
-   <MainContext.Provider value={{
-         userId, setUserId,
-         currentPage, setCurrentPage,
-         siteMap, setSiteMap,
-         currentUser, setCurrentUser,
-       }}>
-         {
-         siteMap[currentPage]}
+       <div className="mainContainer">
+          <MainContext.Provider value={{
+                userId, setUserId,
+                currentPage, setCurrentPage,
+                siteMap, setSiteMap,
+                currentUser, setCurrentUser,
+              }}>
+                {
+                siteMap[currentPage]}
 
 
 
 
 
-       </MainContext.Provider>
+          </MainContext.Provider>
+       </div>
      );
+
 
 }
 

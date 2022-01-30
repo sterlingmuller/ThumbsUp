@@ -8,17 +8,32 @@ import "./Login.css";
 
 
 export const RiderOrDriverSelection = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const { currentPage, setCurrentPage, setUserId, currentUser, setCurrentUser } = useContext(MainContext);
+
+
+  const becomeRider = (e) => {
+    let stateCopy = currentUser
+    stateCopy["usertype"] = e.target.name
+    setCurrentUser(stateCopy);
+    setCurrentPage('riderPortal');
+  }
+
+  const becomeDriver = (e) => {
+    let stateCopy = currentUser
+    stateCopy["usertype"] = e.target.name
+    setCurrentUser(stateCopy);
+    setCurrentPage('driverPortal')
+  }
 
   return (
     <div className="riderOrDriver">
       <div className='backToMainNav' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <h1>Today I'd like to</h1>
       <div className="d-grid gap-2">
-        <Button variant="primary" size="lg" onClick={() => setCurrentPage('riderPortal')}>
+        <Button variant="primary" size="lg" name="rider" onClick={becomeRider}>
           Rider
         </Button>
-        <Button variant="secondary" size="lg" onClick={() => setCurrentPage('driverPortal')}>
+        <Button variant="secondary" size="lg" name="driver" onClick={becomeDriver}>
           Driver
         </Button>
       </div>
