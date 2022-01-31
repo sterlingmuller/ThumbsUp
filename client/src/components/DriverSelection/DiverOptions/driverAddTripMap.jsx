@@ -12,7 +12,7 @@ const center = {
 };
 
 const directionsRequest = {
-  origin: 'Chicago, IL',
+  origin: '233 S Wacker Dr, Chicago, IL 60606',
   destination: 'Los Angeles, CA',
   travelMode: 'DRIVING',
   drivingOptions: {
@@ -21,7 +21,7 @@ const directionsRequest = {
   }
 };
 
-function DriverTripMap() {
+function DriverTripMap(props) {
   let [DirectionsResult, setDirections] = useState(undefined);
 
   const directionsCallback = (result, status) => {
@@ -34,6 +34,7 @@ function DriverTripMap() {
   return (
     <LoadScript
       googleMapsApiKey=''
+
     >
       <GoogleMap
         id='map'
