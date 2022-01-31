@@ -27,16 +27,31 @@ module.exports = {
    * @param {*} res 
    */
   getUser: function (req, res) {
-    console.log('getting to getti user nameadfsdfsdfsd!')
     var callback = (err, result) => {
       if (err) {
         console.log('there is an error', err);
       } else {
         res.send(result.rows);
-        //console.log('result:', result);
       }
     };
     messages.getUser(callback,req.query);
+  }, 
+
+  /**
+   * this function gets all chatrooms that driver is a part of 
+   * @param {*} req 
+   * @param {*} res 
+   */
+  getRooms: function (req, res) {
+    console.log('here at roomsxvasdvsdgsdfgsdfgsdfgsdfgsdfgsfgsdfgsdgsdfgsd');
+    var callback = (err, result) => {
+      if (err) {
+        console.log('there is an error', err);
+      } else {
+        res.send(result.rows);
+      }
+    };
+    messages.getRooms(callback,req.query);
   }, 
 
 
