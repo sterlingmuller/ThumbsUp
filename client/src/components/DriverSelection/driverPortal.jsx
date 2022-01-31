@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js';
 import {DriverContext} from '../../contexts/DriverContext.js';
 import axios from 'axios';
-import { upcomingTrip } from './upcomingTrip.jsx';
 
 
 
