@@ -23,6 +23,7 @@ const App = () => {
     const [userId, setUserId] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [currentPage, setCurrentPage] = useState('siteNavigator');
+    const [selectedTripD, setSelectedTripD] = useState(null);
     const [siteMap, setSiteMap] = useState(
       { 'siteNavigator' : <SiteNavigator />,
         'login'         : <Login />,
@@ -53,6 +54,7 @@ const App = () => {
                 currentPage, setCurrentPage,
                 siteMap, setSiteMap,
                 currentUser, setCurrentUser,
+                selectedTripD, setSelectedTripD
               }}>
                 {
                 siteMap[currentPage]}
