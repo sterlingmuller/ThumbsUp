@@ -36,7 +36,7 @@ module.exports = {
             console.log(err);
             res.send(err);
           }
-          payload["rating"] = data.rows[0].avg.substring(0, 3);
+          data.rows[0].avg ? payload["rating"] = data.rows[0].avg.substring(0, 3) : payload["rating"] = 'User has not been rated';
           res.send(payload);
         });
       }
