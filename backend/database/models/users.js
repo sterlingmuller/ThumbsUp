@@ -7,6 +7,11 @@ module.exports = {
     pool.query(query, [username], callback);
   },
 
+  getRatings: function(userId, callback) {
+    const query = `SELECT AVG(rating) from completed_trips where user_id = ($1);`;
+    pool.query(query, [userId], callback);
+  },
+
   newUserCreation: function(callback, username, password, profile_picture) {
     // const userExist = `SELECT (username) FROM users where username = ($1)`
     const addUser = `INSERT INTO users (username, password, profile_picture) VALUES ($1, $2, $3)`
