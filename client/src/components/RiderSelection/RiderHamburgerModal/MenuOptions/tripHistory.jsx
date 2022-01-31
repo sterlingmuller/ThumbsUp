@@ -24,7 +24,7 @@ export const TripHistory = () => {
       <div className='siteNavigatorSquare' >
         Trip History
         <ul>
-          {prevTrips.map(trip => {return <TripHistoryDetails key={trip.id} trip={trip}/>})}
+          {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}
         </ul>
       </div>
     </div>

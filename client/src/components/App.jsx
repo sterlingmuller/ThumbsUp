@@ -19,12 +19,13 @@ import { RiderMenu } from './RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHistory.jsx';
 import { TripHistoryDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
+import { PostTrip } from './RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 
 const App = () => {
     const [userId, setUserId] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [currentPage, setCurrentPage] = useState('siteNavigator');
-    const [selectedTripD, setSelectedTripD] = useState(null);
+    const [selectedTrip, setSelectedTrip] = useState(null);
     const [siteMap, setSiteMap] = useState(
       { 'siteNavigator' : <SiteNavigator />,
         'login'         : <Login />,
@@ -43,7 +44,8 @@ const App = () => {
         'riderUpcomingTrips': <RiderUpcomingTrips />,
         'riderMenu'       : <RiderMenu />,
         'riderPortal'     : <RiderPortal />,
-        'tripHistoryDetials': <TripHistoryDetails />
+        'tripHistoryDetials': <TripHistoryDetails />,
+        'postTrip': <PostTrip />
 
     });
 
@@ -56,7 +58,7 @@ const App = () => {
                 currentPage, setCurrentPage,
                 siteMap, setSiteMap,
                 currentUser, setCurrentUser,
-                selectedTripD, setSelectedTripD
+                selectedTrip, setSelectedTrip
               }}>
                 {
                 siteMap[currentPage]}

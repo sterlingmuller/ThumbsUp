@@ -29,6 +29,18 @@ module.exports = {
     } else {
       trips.getDriverPrevious(user_id, callback)
     }
+  },
+
+  getDriverInfo: function(req, res) {
+    const { trip_id } = req.query;
+
+    trips.getDriverInfo(trip_id, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result.rows[0]);
+      }
+    });
   }
 
 }
