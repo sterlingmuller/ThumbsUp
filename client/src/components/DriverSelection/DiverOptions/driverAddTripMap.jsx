@@ -1,5 +1,5 @@
-import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React, { useState, useEffect, useRef, useCallback} from 'react'
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '400px',
@@ -7,21 +7,44 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: 41.878253,
+  lng: -87.72995
+};
+
+const directionsRequest = {
+  origin: 'Chicago, IL',
+  destination: 'Los Angeles, CA',
+  travelMode: 'DRIVING',
+  drivingOptions: {
+    departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+    trafficModel: 'optimistic'
+  }
 };
 
 function DriverTripMap() {
+  let [DirectionsResult, setDirections] = useState(undefined);
+
+  const directionsCallback = (result, status) => {
+    if (status === 'OK') {
+      console.log(result);
+      setDirections(result);
+    }
+  }
+
   return (
     <LoadScript
       googleMapsApiKey=''
     >
       <GoogleMap
+        id='map'
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10}
       >
         { /* Child components, such as markers, info windows, etc. */ }
+        {!DirectionsResult?<DirectionsService callback={directionsCallback} options={directionsRequest}/>:null}
+        {!DirectionsResult? null:<DirectionsRenderer directions={DirectionsResult}  onLoad={directionsRenderer => {
+                    console.log('DirectionsRenderer onLoad directionsRenderer: ', DirectionsResult)}}/>}
         <></>
       </GoogleMap>
     </LoadScript>
