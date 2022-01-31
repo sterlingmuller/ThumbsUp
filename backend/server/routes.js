@@ -14,6 +14,8 @@ router.post('/usersCreate', users.createUser)
 // Neil
 
 // Sterling
+const drivers = require('./controllers/drivers.js')
+router.get('/drivers', drivers.getTrips);
 
 // Ezra
 
