@@ -4,6 +4,7 @@ import {MainContext} from '../contexts/MainContext.js'
 import { SiteNavigator } from './siteNavigator.jsx';
 import { NewUser } from './LoginAndSelection/newUser.jsx';
 import { Login } from './LoginAndSelection/login.jsx';
+import { RiderOrDriverSelection } from './LoginAndSelection/riderOrDriverSelection.jsx';
 import { DriverAddTrip } from './DriverSelection/DiverOptions/driverAddTrip.jsx';
 import { DriverTripSelection } from './DriverSelection/DiverOptions/driverTripSelection.jsx';
 import { DriverPortal } from './DriverSelection/driverPortal.jsx';
@@ -20,12 +21,14 @@ import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHist
 
 const App = () => {
     const [userId, setUserId] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
     const [currentPage, setCurrentPage] = useState('siteNavigator');
     const [selectedTripD, setSelectedTripD] = useState(null);
     const [siteMap, setSiteMap] = useState(
       { 'siteNavigator' : <SiteNavigator />,
         'login'         : <Login />,
         'newUser'       : <NewUser />,
+        'riderOrDriver' : <RiderOrDriverSelection/>,
         'driverAddTrip' : <DriverAddTrip />,
         'driverTripHistory' : <DriverTripHistory />,
         'driverTripSelection' : <DriverTripSelection/>,
@@ -38,27 +41,32 @@ const App = () => {
         'riderTripHistory': <RiderTripHistory />,
         'riderUpcomingTrips': <RiderUpcomingTrips />,
         'riderMenu'       : <RiderMenu />,
-        'riderPortal'     : <RiderPortal />
+        'riderPortal'     : <RiderPortal />,
+
     });
 
 
 
      return(
-   <MainContext.Provider value={{
-         userId, setUserId,
-         currentPage, setCurrentPage,
-         siteMap, setSiteMap,
-         selectedTripD, setSelectedTripD
-       }}>
-         {
-         siteMap[currentPage]}
+       <div className="mainContainer">
+          <MainContext.Provider value={{
+                userId, setUserId,
+                currentPage, setCurrentPage,
+                siteMap, setSiteMap,
+                currentUser, setCurrentUser,
+                selectedTripD, setSelectedTripD
+              }}>
+                {
+                siteMap[currentPage]}
 
 
 
 
 
-       </MainContext.Provider>
+          </MainContext.Provider>
+       </div>
      );
+
 
 }
 
