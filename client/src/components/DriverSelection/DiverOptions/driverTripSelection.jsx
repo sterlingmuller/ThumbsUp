@@ -20,7 +20,7 @@ useEffect(() => {
 const handleSend = () => {
   axios
 .post(`http://localhost:3000/messages`, {
-  //build post object 
+  //build post object
 }).then((results) => {
   setMessages(results.data);
 });
