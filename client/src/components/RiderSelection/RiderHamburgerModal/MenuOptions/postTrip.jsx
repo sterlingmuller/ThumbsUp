@@ -8,6 +8,7 @@ export const PostTrip = () => {
   const { setCurrentPage, selectedTrip} = useContext(MainContext);
   const [rating, setRating] = useState(0);
   const [driver, setDriver] = useState({});
+  const [rated, setRated] = useState(false)
 
   const changeRating = (newRating) => {
     setRating(newRating)
@@ -16,7 +17,9 @@ export const PostTrip = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // axios.post('', rating)
+    axios.post('/trips/driver', {trip: selectedTrip, driver: driver.user_id, rating: rating})
+      .then(() => alert('Thank you for the feedback!'))
+      .then(() => setRated(true))
   }
 
   const getDriver = () => {
@@ -39,7 +42,7 @@ export const PostTrip = () => {
           starHoverColor='blue'
           starRatedColor='blue'
         />
-        <button onClick={handleSubmit}>Rate Me!</button>
+        {rated ? null: <button onClick={handleSubmit}>Rate Me!</button>}
       </div>
       <div>chat here</div>
     </div>

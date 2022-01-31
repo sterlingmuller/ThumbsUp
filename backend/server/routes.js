@@ -24,5 +24,6 @@ const trips = require('./controllers/trips.js')
 router.get('/trips/upcoming', trips.getUpcoming)
 router.get('/trips/previous', trips.getPrevious)
 router.get('/trips/driver', trips.getDriverInfo)
+router.post('/trips/driver', trips.postDriverRating)
 
 module.exports = router;

@@ -41,6 +41,18 @@ module.exports = {
         res.status(200).send(result.rows[0]);
       }
     });
+  },
+
+  postDriverRating: function (req, res) {
+    const { trip, driver, rating } = req.body;
+
+    trips.postDriverRating(trip, driver, rating, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send('posted');
+      }
+    });
   }
 
 }

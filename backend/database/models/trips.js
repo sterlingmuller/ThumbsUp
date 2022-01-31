@@ -41,6 +41,14 @@ module.exports = {
     WHERE dt.id = $1`;
     let queryArgs = [trip_id];
     pool.query(queryStr, queryArgs, callback)
+  },
+
+  postDriverRating: function (trip, driver, rating, callback) {
+    let queryStr = `
+    INSERT INTO completed_trips (id_driver_trips, user_id, rating)
+    VALUES ($1, $2, $3)`;
+    let queryArgs = [trip, driver, rating];
+    pool.query(queryStr, queryArgs, callback)
   }
 
 }
