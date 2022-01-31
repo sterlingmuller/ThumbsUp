@@ -21,6 +21,7 @@ import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHist
 const App = () => {
     const [userId, setUserId] = useState(null);
     const [currentPage, setCurrentPage] = useState('siteNavigator');
+    const [selectedTripD, setSelectedTripD] = useState(null);
     const [siteMap, setSiteMap] = useState(
       { 'siteNavigator' : <SiteNavigator />,
         'login'         : <Login />,
@@ -46,7 +47,8 @@ const App = () => {
    <MainContext.Provider value={{
          userId, setUserId,
          currentPage, setCurrentPage,
-         siteMap, setSiteMap
+         siteMap, setSiteMap,
+         selectedTripD, setSelectedTripD
        }}>
          {
          siteMap[currentPage]}
