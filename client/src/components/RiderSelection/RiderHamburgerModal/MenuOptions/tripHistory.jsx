@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../../contexts/MainContext.js';
 import axios from 'axios';
-import { RiderTripDetails } from './riderTripDetails.jsx';
+import { TripHistoryDetails } from './tripHistoryDetails.jsx';
 
 
-export const RiderTripHistory = () => {
+export const TripHistory = () => {
   const { setCurrentPage, currentUser } = useContext(MainContext);
   const[prevTrips, setPrevTrips] = useState([]);
-  const { userId, userType } = currentUser;
+  const { userId, usertype } = currentUser;
 
   const getPrevTrips = () => {
-    axios.get(`/trips/previous?user_id=${userId}&user_type=${userType}`)
+    axios.get(`/trips/previous?user_id=${userId}&user_type=${usertype}`)
       .then(({ data }) => setPrevTrips(data));
   }
 
@@ -24,7 +24,7 @@ export const RiderTripHistory = () => {
       <div className='siteNavigatorSquare' >
         Trip History
         <ul>
-          {prevTrips.map(trip => {return <RiderTripDetails key={trip.id} trip={trip}/>})}
+          {prevTrips.map(trip => {return <TripHistoryDetails key={trip.id} trip={trip}/>})}
         </ul>
       </div>
     </div>

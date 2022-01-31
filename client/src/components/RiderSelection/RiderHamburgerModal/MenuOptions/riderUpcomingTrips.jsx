@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../../contexts/MainContext.js';
 import axios from 'axios';
-import { RiderTripDetails } from './riderTripDetails.jsx';
+import { RiderUpcomingTripDetails } from './riderUpcomingTripDetails.jsx';
 
 
 export const RiderUpcomingTrips = () => {
@@ -24,7 +24,7 @@ export const RiderUpcomingTrips = () => {
       <div className='siteNavigatorSquare' >
         Upcoming Trips
         <ul>
-          {upcommingTrips.map(trip => {return <RiderTripDetails key={trip.id} trip={trip}/>})}
+          {upcommingTrips.map(trip => {return <RiderUpcomingTripDetails key={trip.id} trip={trip}/>})}
         </ul>
       </div>
     </div>

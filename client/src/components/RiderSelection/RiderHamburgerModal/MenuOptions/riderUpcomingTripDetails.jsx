@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { MainContext } from '../../../../contexts/MainContext.js'
 
 
-
-export const RiderTripDetails = ({ trip }) => {
+export const RiderUpcomingTripDetails = ({ trip }) => {
   const { setCurrentPage } = useContext(MainContext);
   const { start_address, end_address, start_time } = trip;
 

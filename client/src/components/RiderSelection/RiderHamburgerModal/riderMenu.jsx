@@ -13,7 +13,7 @@ export const RiderMenu = () => {
         <span>StarRating</span>
       </div>
       <div onClick={() => setCurrentPage('riderUpcomingTrips')}>My upcoming trips</div>
-      <div onClick={() => setCurrentPage('riderTripHistory')}>My trip history</div>
+      <div onClick={() => setCurrentPage('tripHistory')}>My trip history</div>
     </div>
   );
 

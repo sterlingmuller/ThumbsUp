@@ -12,12 +12,13 @@ import { RiderSearch } from './RiderSelection/NewRide/riderSearch.jsx';
 import { SaveMeASeat } from './RiderSelection/NewRide/saveMeASeat.jsx';
 import { RiderPaymentMethods } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderPaymentMethods.jsx';
 import { RiderQuestionAndComments } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderQuestionAndComments.jsx';
-import { RiderTripDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderTripDetails.jsx';
-import { RiderTripHistory } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderTripHistory.jsx';
+import { RiderUpcomingTripDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTripDetails.jsx';
+import { TripHistory } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistory.jsx';
 import { RiderUpcomingTrips } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHistory.jsx';
+import { TripHistoryDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
 
 const App = () => {
     const [userId, setUserId] = useState(null);
@@ -36,11 +37,12 @@ const App = () => {
         'saveMeASeat'     : <SaveMeASeat />,
         'riderPaymentMethods' : <RiderPaymentMethods />,
         'riderQuestionAndComments' : <RiderQuestionAndComments />,
-        'riderTripDetails': <RiderTripDetails />,
-        'riderTripHistory': <RiderTripHistory />,
+        'riderUpcomingTripDetails': <RiderUpcomingTripDetails />,
+        'tripHistory': <TripHistory />,
         'riderUpcomingTrips': <RiderUpcomingTrips />,
         'riderMenu'       : <RiderMenu />,
         'riderPortal'     : <RiderPortal />,
+        'tripHistoryDetials': <TripHistoryDetails />
 
     });
 
