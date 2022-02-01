@@ -49,13 +49,21 @@ export const PostTrip = () => {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
         <span>Driver: {driver.username}</span>
-        <StarRatings
+        {rated
+        ? <StarRatings
           rating={rating}
-          changeRating={changeRating}
-          starHoverColor='blue'
           starRatedColor='blue'
-        />
-        {rated ? null: <button onClick={handleSubmit}>Rate Me!</button>}
+          />
+        : <div>
+            <StarRatings
+              rating={rating}
+              changeRating={changeRating}
+              starHoverColor='blue'
+              starRatedColor='blue'
+            />
+            <button onClick={handleSubmit}>Rate Me!</button>
+          </div>
+        }
       </div>
       <div>chat here</div>
     </div>
