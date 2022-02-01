@@ -3,15 +3,18 @@ let router = require('express').Router();
 
 //Connect methods to their routes
 // Matt
+  //messages
 router.get('/messages', messages.get);
 
+router.get('/messagesChatRooms', messages.getRooms);    
 router.post('/messages', messages.post);
+  //users
+router.get('/messagesUsers', messages.getUser); 
 
 // Prith
 const users = require('./controllers/users.js');
 router.post('/usersLogin', users.checkLogin);
-router.post('/usersCreate', users.createUser)
-// Neil
+router.post('/usersCreate', users.createUser)// Neil
 
 // Sterling
 const drivers = require('./controllers/drivers.js')
