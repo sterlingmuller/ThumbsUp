@@ -6,7 +6,7 @@ module.exports = {
   getUpcomingTrips (req, res) {
     console.log("req query:::", req.query);
     let {user_id} = req.query;
-    let sql = 'SELECT username, dt.id, start_address, end_address, start_time, completed FROM users u, driver_trips dt WHERE u.user_id=$1 AND dt.completed=false';
+    let sql = 'SELECT username, dt.id, u.user_id, start_address, end_address, start_time, completed FROM users u, driver_trips dt WHERE u.user_id=$1 AND dt.completed=false';
 
     pool.query(sql, [user_id])
     .then(({rows}) => {
