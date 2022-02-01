@@ -1,30 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../../contexts/MainContext.js';
 import axios from 'axios';
-import { RiderUpcomingTripDetails } from './riderUpcomingTripDetails.jsx';
+import { TripHistoryDetails } from './tripHistoryDetails.jsx';
 
 
-export const RiderUpcomingTrips = () => {
+export const TripHistory = () => {
   const { setCurrentPage, currentUser } = useContext(MainContext);
-  const[upcomingTrips, setUpcomingTrips] = useState([]);
-  const { userId } = currentUser
+  const[prevTrips, setPrevTrips] = useState([]);
+  const { userId, usertype } = currentUser;
 
-  const getUpcomingTrips = () => {
-    axios.get(`/trips/upcoming?user_id=${userId}`)
-      .then(({ data }) => setUpcomingTrips(data));
+  const getPrevTrips = () => {
+    axios.get(`/trips/previous?user_id=${userId}&user_type=${usertype}`)
+      .then(({ data }) => setPrevTrips(data));
   }
 
   useEffect(() => {
-    getUpcomingTrips()
+    getPrevTrips()
   }, [])
 
   return (
     <div>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
-        Upcoming Trips
+        Trip History
         <ul>
-          {upcomingTrips.map(trip => {return <RiderUpcomingTripDetails key={trip.rider_trip_id} trip={trip}/>})}
+          {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}
         </ul>
       </div>
     </div>
