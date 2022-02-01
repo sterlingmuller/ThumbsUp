@@ -3,6 +3,7 @@ import {MainContext} from '../../contexts/MainContext.js';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import './Rider.css';
 
 
@@ -28,22 +29,23 @@ export const RiderPortal = () => {
   };
   
   const center = {
-    lat: lat,
-    lng: long
+    lat: +lat,
+    lng: +long
   };
 
   const handleClick = (e) => {
     setCurrentPage('riderSearch');
+    
   }
 
   const handelHamburgerClick = () => {
     setCurrentPage("riderMenu");
   }
 
-  let key = axios.get('/apikey')
-    .then((response) => {
-      console.log(response);
-    });
+  // let key = axios.get('/apikey')
+  //   .then((response) => {
+  //     console.log(response);
+  //   });
 
   return (
     <div className="rider-portal-container">
@@ -52,7 +54,7 @@ export const RiderPortal = () => {
       <div className='siteNavigatorSquare' >
         This is {currentPage} make it more awesomer!!!
         <LoadScript
-        googleMapsApiKey={key}
+        googleMapsApiKey=""
       >
         <GoogleMap className="rider-map"
           mapContainerStyle={containerStyle}
@@ -65,8 +67,11 @@ export const RiderPortal = () => {
         </GoogleMap>
       </LoadScript>
       </div>
+      <Link to="/riderSearch">
       <button onClick={handleClick}>New Ride</button>
+      </Link>
     </div>
   );
 
 }
+
