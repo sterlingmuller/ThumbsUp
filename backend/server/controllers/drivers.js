@@ -2,23 +2,11 @@ const {pool} = require('../../database/index.js');
 
 
 module.exports = {
-  // get: function (req, res) {
-  //   console.log('got a gett all request!!');
-  //   var callback = (err, result) => {
-  //     if (err) {
-  //       console.log('there is an error', err);
-  //     } else {
-  //       res.send(result.rows);
-  //       // console.log('result:', result);
-  //     }
-  //   };
-  //   messages.getMessages(callback,req.body);
-  // }, // a function which handles a get request for all messages
 
-  getTrips (req, res) {
+  getUpcomingTrips (req, res) {
     console.log("req query:::", req.query);
     let {user_id} = req.query;
-    let sql = 'SELECT username, dt.id, start_address, end_address, start_time, completed FROM users u, driver_trips dt WHERE u.user_id=$1';
+    let sql = 'SELECT username, dt.id, start_address, end_address, start_time, completed FROM users u, driver_trips dt WHERE u.user_id=$1 AND dt.completed=false';
 
     pool.query(sql, [user_id])
     .then(({rows}) => {
@@ -26,9 +14,25 @@ module.exports = {
       res.status(200).send(rows);
     })
     .catch(err => console.log('err:', err));
+  },
+
+  markCompleted (req, res) {
+    let {trip_id} = req.query;
+    let sql = 'UPDATE driver_trips SET completed = true WHERE id=$1'
+
+    pool.query(sql, [trip_id])
+    .then(res.status(201).send('Trip complete!'))
+    .catch(err => console.log(err));
+  },
+
+  cancelTrip (req, res) {
+    let {trip_id} = req.query;
+    let sql = 'DELETE FROM driver_trips WHERE id=$1';
+
+    pool.query(sql, [trip_id])
+      .then(res.status(201).send("Trip canceled"))
+      .catch(err => console.log(err));
   }
 
 
-
-  // a function which handles posting a message to the database
 };

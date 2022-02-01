@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js';
-import {DriverContext} from '../../contexts/DriverContext.js';
 import axios from 'axios';
-
-
+import { Button, Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const DriverPortal = () => {
-  const { setCurrentPage, userId } = useContext(MainContext);
+  const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
 
  const [upcomingRides, setUpcomingRides] = useState([]);
 
  const getUpcomingRides = () => {
-  axios.get(`/drivers?user_id=1`)
+  axios.get(`/drivers?user_id=${currentUser.userId}`)
+  // axios.get(`/drivers?user_id=1`)
   .then ( ({data}) => {
     setUpcomingRides(data);
-    console.log('data:::', data)})
+  })
  }
 
  useEffect (() => {
@@ -29,10 +29,21 @@ const TripHistoryClick = () => {
   setCurrentPage('driverTripHistory');
 }
 
-function TripDetailsClick (id, username) {
-  // setSelectedTripD ({id: id, username: username});
-  setSelectedTripD ({id, username});
+function TripDetailsClick (id) {
+  setSelectedTrip({id});
   setCurrentPage('driverTripSelection');
+}
+
+const RideCompleteClick = (id) => {
+  console.log("Ride completed!");
+  axios.put(`drivers?trip_id=${id}`)
+  .then(getUpcomingRides());
+}
+
+function CancelRideClick (id) {
+  console.log("Ride canceled!");
+  axios.delete(`drivers?trip_id=${id}`)
+  .then(getUpcomingRides());
 }
 
 
@@ -43,16 +54,27 @@ function TripDetailsClick (id, username) {
         <h1>Driver Portal</h1>
         <div className="upcomingTrips">
           <h2>Upcoming Trips</h2>
-          <ul>
+
+          <Card style={{alignItems: 'center'}}>
             {upcomingRides.map((ride) => {
-              return (<div onClick={() => TripDetailsClick(ride.id, ride.username)}>Starting location: {ride.start_address}
-                Destination: {ride.end_address}
-                 Departing at: {ride.start_time} </div>)
+              return (<div key={ride.id}>
+
+                <Card style={{alignItems: 'center'}}>
+                  <div className="card-body" onClick={() => TripDetailsClick(ride.id)}>
+                    <div className="card-title">{ride.start_address} to {ride.end_address}</div>
+                    <div className="card-text">Departing at: {ride.start_time}</div>
+                  </div>
+                  <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.id)}> Ride Complete </span>
+                <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.id)}> Cancel Ride </span>
+                </Card>
+
+                 </div>)
             })}
-          </ul>
-          <input type="button" value="Add Trip" onClick={(e) => AddTripClick(e)}/>
-          <input type="button" value="Trip History" onClick={(e) => TripHistoryClick(e)}/>
+          </Card>
+
         </div>
+          <Button  className="col-sm" onClick={(e) => AddTripClick(e)}> Add Trip </Button>
+          <Button className="col-sm" onClick={(e) => TripHistoryClick(e)}> Trip History </Button>
       </div>
     </div>
   );
