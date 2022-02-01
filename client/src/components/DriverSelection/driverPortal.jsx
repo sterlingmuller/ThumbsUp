@@ -26,7 +26,7 @@ function AddTripClick () {
 }
 
 const TripHistoryClick = () => {
-  setCurrentPage('driverTripHistory');
+  setCurrentPage('tripHistory');
 }
 
 function TripDetailsClick (id) {
