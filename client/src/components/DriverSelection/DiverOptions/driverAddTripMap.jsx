@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback} from 'react'
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Autocomplete} from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox} from '@react-google-maps/api';
 
 const librariesArray = ['places'];
 const containerStyle = {
@@ -12,20 +12,25 @@ const center = {
   lng: -87.72995
 };
 
-const directionsRequest = {
-  origin: '233 S Wacker Dr, Chicago, IL 60606',
-  destination: 'Los Angeles, CA',
-  travelMode: 'DRIVING',
-  drivingOptions: {
-    departureTime: new Date(Date.now()),
-    trafficModel: 'optimistic'
-  }
-};
-
 function DriverTripMap(props) {
   let [DirectionsResult, setDirections] = useState(undefined);
-  let [start, setStart] = useState('');
-  let end = '';
+  let [newTrip, setNewTrip] = useState({});
+  let [startPoint, setStartPoint] = useState('');
+  let [endPoint, setEndPoint] = useState('');
+  let [directionsRequest, setRequest] = useState({
+    origin: '233 S Wacker Dr, Chicago, IL 60606',
+    destination: 'Los Angeles, CA',
+    travelMode: 'DRIVING',
+    drivingOptions: {
+      departureTime: new Date(Date.now()),
+      trafficModel: 'optimistic'
+    }
+  });
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyB9OONxUCodrHTc9ivWR-gigt2TaP0BqD4",
+    libraries: librariesArray
+  });
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
@@ -34,22 +39,22 @@ function DriverTripMap(props) {
     }
   }
 
-  const startInput = (event) => {
-    console.log('Startpoint:')
+  const renderDirections = () => {
+    setRequest({...directionsRequest, origin: startPoint.formatted_address, destination: endPoint.formatted_address})
   }
 
-  const endInput = (event) => {
-    console.log('Endpoint: ')
+  const onStartLoad = ref => setStartPoint(ref);
 
-  }
+  const onEndLoad = ref => setEndPoint(ref);
 
+  const onStartChanged = () => setStartPoint(startPoint.getPlaces());
+
+  const onEndChanged = () => setEndPoint(endPoint.getPlaces());
 
   return (
-    <LoadScript
-      googleMapsApiKey=''
-      libraries={librariesArray}
-    >
-      {console.log('Loading load script')}
+    !isLoaded? <div>Loading</div>:
+    <div>
+      {console.log('Loading load script', startPoint, endPoint)}
       <GoogleMap
         id='map'
         mapContainerStyle={containerStyle}
@@ -61,24 +66,56 @@ function DriverTripMap(props) {
         {!DirectionsResult? null:<DirectionsRenderer directions={DirectionsResult}  onLoad={directionsRenderer => {
                     console.log('DirectionsRenderer onLoad directionsRenderer: ', DirectionsResult)}}/>}
         <></>
+        <StandaloneSearchBox
+          onLoad={onStartLoad}
+          onPlacesChanged={onStartChanged}
+        >
+        <input
+        type="text"
+        placeholder="Start Point"
+        style={{
+          boxSizing: `border-box`,
+          border: `1px solid transparent`,
+          width: `240px`,
+          height: `32px`,
+          padding: `0 12px`,
+          borderRadius: `3px`,
+          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+          fontSize: `14px`,
+          outline: `none`,
+          textOverflow: `ellipses`,
+          position: "absolute",
+          bottom: "9%"
+        }}
+        />
+      </StandaloneSearchBox>
+      <StandaloneSearchBox
+          onLoad={onEndLoad}
+          onPlacesChanged={onEndChanged}
+        >
+          <input
+        type="text"
+        placeholder="End Point"
+        style={{
+          boxSizing: `border-box`,
+          border: `1px solid transparent`,
+          width: `240px`,
+          height: `32px`,
+          padding: `0 12px`,
+          borderRadius: `3px`,
+          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+          fontSize: `14px`,
+          outline: `none`,
+          textOverflow: `ellipses`,
+          position: "absolute",
+          bottom: '0'
+        }}
+        />
+        </StandaloneSearchBox>
       </GoogleMap>
-      <Autocomplete onLoad={()=>console.log('startinput: ')} onPlacesChanged={startInput}>
-        <input
-            type="text"
-            placeholder="Starting Point"
-
-        />
-      </Autocomplete>
-      <Autocomplete onPlacesChanged={console.log('Ezra: ', this)}>
-        <input
-            type="text"
-            placeholder="End Point"
-            onChange={endInput}
-        />
-      </Autocomplete>
       <button>Get Directions</button>
-      <button onClick={() => console.log(start, end)}>Add Trip</button>
-    </LoadScript>
+      <button onClick={null}>Add Trip</button>
+    </div>
   )
 }
 
