@@ -43,7 +43,7 @@ module.exports = {
    * @param {*} res 
    */
   getRooms: function (req, res) {
-    console.log('here at roomsxvasdvsdgsdfgsdfgsdfgsdfgsdfgsfgsdfgsdgsdfgsd');
+
     var callback = (err, result) => {
       if (err) {
         console.log('there is an error', err);

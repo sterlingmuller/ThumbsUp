@@ -7,31 +7,29 @@ module.exports = {
    * @param {Object} chatObject
    */
   getMessages: function (callback, chatObject) {
-    let stmt = `SELECT * FROM messages where id_driver_trips = $1 AND (recepient_id = $2 OR sender_id = $2);`;
+    console.log('asdsdf',chatObject);
+    let stmt = `SELECT * FROM messages where id_driver_trips = $1 AND (message_recepient = $2  OR  message_sender = $2);`;
     let todos = [
       chatObject.tripId,
-      chatObject.userId
+      chatObject.sender_id
     ];
     pool.query(stmt,todos, callback);
   },
 
   getUser: function (callback, chatObject) {
 
-    let stmt = `SELECT * FROM users WHERE user_id = $1 OR user_id = $2;`;
+    let stmt = `SELECT * FROM users WHERE user_id = $1 ;`;
     let todos = [
       chatObject.sender_id,
-      chatObject.recepient_id
     ];
     pool.query(stmt,todos, callback);
   },
 
   getRooms: function (callback, chatObject) {
-
-    let stmt = `SELECT DISTINCT ON (message_sender) FROM messages m WHERE id_driver_trips = $1 ORDER BY message_time;`;
+    let stmt = `SELECT DISTINCT m.message_sender FROM messages m WHERE id_driver_trips = $1;`;
     let todos = [
       chatObject.tripId,
-      chatObject.sender_id,
-      chatObject.recepient_id
+
     ];
     pool.query(stmt,todos, callback);
   },
@@ -56,7 +54,7 @@ module.exports = {
       if (err) {
         return console.error(err.message);
       }
-      console.log('Row inserted:' + results.affectedRows);
+      console.log('Row inserted:' );
     }
     );
   }
