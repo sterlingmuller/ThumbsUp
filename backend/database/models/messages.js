@@ -7,13 +7,33 @@ module.exports = {
    * @param {Object} chatObject
    */
   getMessages: function (callback, chatObject) {
-    let stmt = `SELECT * FROM messages where id_driver_trips = $1;`;
+    console.log('asdsdf',chatObject);
+    let stmt = `SELECT * FROM messages where id_driver_trips = $1 AND (message_recepient = $2  OR  message_sender = $2);`;
     let todos = [
-      //chatObject.stuff
-      1
+      chatObject.tripId,
+      chatObject.sender_id
     ];
     pool.query(stmt,todos, callback);
   },
+
+  getUser: function (callback, chatObject) {
+
+    let stmt = `SELECT * FROM users WHERE user_id = $1 ;`;
+    let todos = [
+      chatObject.sender_id,
+    ];
+    pool.query(stmt,todos, callback);
+  },
+
+  getRooms: function (callback, chatObject) {
+    let stmt = `SELECT DISTINCT m.message_sender FROM messages m WHERE id_driver_trips = $1;`;
+    let todos = [
+      chatObject.tripId,
+
+    ];
+    pool.query(stmt,todos, callback);
+  },
+
 
 /**
  * a function which can be used to insert a message into the database
@@ -23,13 +43,18 @@ module.exports = {
     let stmt = `INSERT INTO messages ( id_driver_trips, message_sender, message_recepient, message_body, message_time)  VALUES ( $1, $2, $3, $4, $5)`;
     let todos = [
 
-      //messageObject.stuff
+      messageObject.tripId,
+      messageObject.message_sender,
+      messageObject.message_recepient,
+      messageObject.message_body,
+      messageObject.message_time,
+
     ];
     pool.query(stmt, todos, (err, results, fields, meadows) => {
       if (err) {
         return console.error(err.message);
       }
-      console.log('Row inserted:' + results.affectedRows);
+      console.log('Row inserted:' );
     }
     );
   }
