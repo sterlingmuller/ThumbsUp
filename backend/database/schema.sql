@@ -58,10 +58,10 @@ CREATE TABLE messages (
 INSERT INTO users( username,password)
 VALUES ('MrFripple', '123');
 INSERT INTO users(username,password)
-VALUES ('person', '123');
+VALUES ('tom', '123');
 INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
 VALUES (1,'Las Vegas', 'Denver', '2017-03-31 09:30:20-07');
 INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
-VALUES (1, 2,1, 'Mrfripple sent this to person','2017-03-31 09:30:20-07');
+VALUES (1, 3,1, 'Mrfripple sent this to person','2017-03-31 09:30:20-07');
 
 -- psql -d blueocean -f ./backend/database/schema.sql

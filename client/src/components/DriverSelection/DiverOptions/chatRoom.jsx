@@ -16,8 +16,8 @@ export const ChatRoom = (props) => {
     useEffect(() => {
       const interval = setInterval(() => {
         getMessages();
-        console.log('This will run every second!');
-      }, 3000);
+        console.log('This will run every 5 seconds!');
+      }, 5000);
       return () => clearInterval(interval);
     }, []);
 
