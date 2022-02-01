@@ -12,7 +12,7 @@ export const DriverAddTrip = () => {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
         This is {currentPage} make it more awesomer!!!
-        <DriverTripMap/>
+        <DriverTripMap />
       </div>
     </div>
   );

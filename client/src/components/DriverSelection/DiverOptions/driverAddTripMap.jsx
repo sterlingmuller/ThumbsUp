@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback} from 'react'
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Autocomplete} from '@react-google-maps/api';
 
+const librariesArray = ['places'];
 const containerStyle = {
   width: '400px',
   height: '400px'
@@ -16,13 +17,15 @@ const directionsRequest = {
   destination: 'Los Angeles, CA',
   travelMode: 'DRIVING',
   drivingOptions: {
-    departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+    departureTime: new Date(Date.now()),
     trafficModel: 'optimistic'
   }
 };
 
 function DriverTripMap(props) {
   let [DirectionsResult, setDirections] = useState(undefined);
+  let [start, setStart] = useState('');
+  let end = '';
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
@@ -31,11 +34,22 @@ function DriverTripMap(props) {
     }
   }
 
+  const startInput = (event) => {
+    console.log('Startpoint:')
+  }
+
+  const endInput = (event) => {
+    console.log('Endpoint: ')
+
+  }
+
+
   return (
     <LoadScript
       googleMapsApiKey=''
-
+      libraries={librariesArray}
     >
+      {console.log('Loading load script')}
       <GoogleMap
         id='map'
         mapContainerStyle={containerStyle}
@@ -48,6 +62,22 @@ function DriverTripMap(props) {
                     console.log('DirectionsRenderer onLoad directionsRenderer: ', DirectionsResult)}}/>}
         <></>
       </GoogleMap>
+      <Autocomplete onLoad={()=>console.log('startinput: ')} onPlacesChanged={startInput}>
+        <input
+            type="text"
+            placeholder="Starting Point"
+
+        />
+      </Autocomplete>
+      <Autocomplete onPlacesChanged={console.log('Ezra: ', this)}>
+        <input
+            type="text"
+            placeholder="End Point"
+            onChange={endInput}
+        />
+      </Autocomplete>
+      <button>Get Directions</button>
+      <button onClick={() => console.log(start, end)}>Add Trip</button>
     </LoadScript>
   )
 }
