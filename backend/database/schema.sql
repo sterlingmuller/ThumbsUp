@@ -36,6 +36,7 @@ CREATE TABLE completed_trips (
   id SERIAL PRIMARY KEY,
   id_driver_trips INT,
   user_id INT,
+  rator_id INT,
   rating INT,
   FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id),
   FOREIGN KEY (user_id) REFERENCES users (user_id)

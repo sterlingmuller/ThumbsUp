@@ -43,11 +43,20 @@ module.exports = {
     pool.query(queryStr, queryArgs, callback)
   },
 
-  postDriverRating: function (trip, driver, rating, callback) {
+  postDriverRating: function (trip, driver, rator, rating, callback) {
     let queryStr = `
-    INSERT INTO completed_trips (id_driver_trips, user_id, rating)
-    VALUES ($1, $2, $3)`;
-    let queryArgs = [trip, driver, rating];
+    INSERT INTO completed_trips (id_driver_trips, user_id, rator_id, rating)
+    VALUES ($1, $2, $3, $4)`;
+    let queryArgs = [trip, driver, rator, rating];
+    pool.query(queryStr, queryArgs, callback)
+  },
+
+  getRated: function (driver, rider, callback) {
+    let queryStr = `
+    SELECT rating
+    FROM completed_trips
+    WHERE user_id = $1 AND rator_id = $2`;
+    let queryArgs = [driver, rider];
     pool.query(queryStr, queryArgs, callback)
   }
 

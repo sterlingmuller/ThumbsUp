@@ -25,5 +25,6 @@ router.get('/trips/upcoming', trips.getUpcoming)
 router.get('/trips/previous', trips.getPrevious)
 router.get('/trips/driver', trips.getDriverInfo)
 router.post('/trips/driver', trips.postDriverRating)
+router.get('/trips/rated', trips.getRated)
 
 module.exports = router;

@@ -5,7 +5,7 @@ import StarRatings from 'react-star-ratings';
 
 
 export const PostTrip = () => {
-  const { setCurrentPage, selectedTrip} = useContext(MainContext);
+  const { setCurrentPage, selectedTrip, currentUser } = useContext(MainContext);
   const [rating, setRating] = useState(0);
   const [driver, setDriver] = useState({});
   const [rated, setRated] = useState(false)
@@ -17,14 +17,27 @@ export const PostTrip = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('/trips/driver', {trip: selectedTrip, driver: driver.user_id, rating: rating})
+    axios.post('/trips/driver', {trip: selectedTrip, driver: driver.user_id, rator: currentUser.userId, rating: rating})
       .then(() => alert('Thank you for the feedback!'))
       .then(() => setRated(true))
   }
 
   const getDriver = () => {
     axios.get(`/trips/driver?trip_id=${selectedTrip}`)
-      .then(({ data }) => setDriver(data))
+      .then(({ data }) => {
+        getRated(data.user_id);
+        setDriver(data);
+      })
+  }
+
+  const getRated = (driver_id) => {
+    axios.get(`/trips/rated?driver=${driver_id}&rider=${currentUser.userId}`)
+      .then(({ data }) => {
+        if (data.length > 0) {
+          setRated(true);
+          setRating(data[0].rating)
+        }
+      })
   }
 
   useEffect(() => {

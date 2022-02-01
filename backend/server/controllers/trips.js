@@ -44,13 +44,25 @@ module.exports = {
   },
 
   postDriverRating: function (req, res) {
-    const { trip, driver, rating } = req.body;
+    const { trip, driver, rator, rating } = req.body;
 
-    trips.postDriverRating(trip, driver, rating, (err, result) => {
+    trips.postDriverRating(trip, driver, rator, rating, (err, result) => {
       if (err) {
         res.status(400).send(err);
       } else {
         res.status(200).send('posted');
+      }
+    });
+  },
+
+  getRated: function (req, res) {
+    const { driver, rider } = req.query;
+
+    trips.getRated(driver, rider, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result.rows);
       }
     });
   }
