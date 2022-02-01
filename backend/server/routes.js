@@ -9,8 +9,9 @@ router.post('/messages', messages.post);
 
 // Prith
 const users = require('./controllers/users.js');
-router.post('/usersLogin', users.checkLogin);
+const passport = require('passport');
 router.post('/usersCreate', users.createUser)
+router.post('/login', passport.authenticate('local'), users.checkLogin);
 // Neil
 
 // Sterling
