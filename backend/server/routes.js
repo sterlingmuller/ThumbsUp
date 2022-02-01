@@ -6,10 +6,10 @@ let router = require('express').Router();
   //messages
 router.get('/messages', messages.get);
 
-router.get('/messagesChatRooms', messages.getRooms);    
+router.get('/messagesChatRooms', messages.getRooms);
 router.post('/messages', messages.post);
   //users
-router.get('/messagesUsers', messages.getUser); 
+router.get('/messagesUsers', messages.getUser);
 
 // Prith
 const users = require('./controllers/users.js');
@@ -21,6 +21,8 @@ const drivers = require('./controllers/drivers.js')
 router.get('/drivers', drivers.getTrips);
 
 // Ezra
+const addTrip = require('./controllers/addTrip.js');
+router.post('/AddDriverTrip', addTrip.trip);
 
 // Mitchell
 const trips = require('./controllers/trips.js')

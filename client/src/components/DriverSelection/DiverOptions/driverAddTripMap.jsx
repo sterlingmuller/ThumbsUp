@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback} from 'react'
+import React, { useState, useEffect, useRef, useContext} from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox} from '@react-google-maps/api';
+import {MainContext} from '../../../contexts/MainContext.js'
+import axios from 'axios';
 
 const librariesArray = ['places'];
 const containerStyle = {
@@ -13,13 +15,14 @@ const center = {
 };
 
 function DriverTripMap(props) {
-  let [DirectionsResult, setDirections] = useState(undefined);
+  let [directionsResult, setDirections] = useState(undefined);
   let [newTrip, setNewTrip] = useState({});
   let [startPoint, setStartPoint] = useState('');
   let [endPoint, setEndPoint] = useState('');
+  let {currentUser} = useContext(MainContext);
   let [directionsRequest, setRequest] = useState({
-    origin: '233 S Wacker Dr, Chicago, IL 60606',
-    destination: 'Los Angeles, CA',
+    origin: 'New York, NY, USA',
+    destination: 'New York, NY, USA',
     travelMode: 'DRIVING',
     drivingOptions: {
       departureTime: new Date(Date.now()),
@@ -27,8 +30,12 @@ function DriverTripMap(props) {
     }
   });
 
+  useEffect(() => {
+    console.log('Use Effect Triggered')
+  },[directionsRequest])
+
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyB9OONxUCodrHTc9ivWR-gigt2TaP0BqD4",
+    googleMapsApiKey: '',
     libraries: librariesArray
   });
 
@@ -40,21 +47,38 @@ function DriverTripMap(props) {
   }
 
   const renderDirections = () => {
-    setRequest({...directionsRequest, origin: startPoint.formatted_address, destination: endPoint.formatted_address})
+    console.log('Get Directions: ')
+    setRequest({...directionsRequest, origin: startPoint[0].formatted_address, destination: endPoint[0].formatted_address});
+    setDirections(undefined);
   }
 
-  const onStartLoad = ref => setStartPoint(ref);
+  const onStartLoad = (ref) => setStartPoint(ref);
 
-  const onEndLoad = ref => setEndPoint(ref);
+  const onEndLoad = (ref) => setEndPoint(ref);
 
   const onStartChanged = () => setStartPoint(startPoint.getPlaces());
 
   const onEndChanged = () => setEndPoint(endPoint.getPlaces());
 
+  const addTrip = () => {
+    axios.post('/AddDriverTrip', {
+      start_address: directionsResult.request.origin.query,
+      end_address: directionsResult.request.destination.query,
+      start_time: directionsResult.request.drivingOptions.departureTime,
+      user_id: currentUser.userId
+    })
+    .then((response) => {
+      console.log('AddTrip: ', response);
+    })
+    .catch((error) => {
+      console.log('AddTrip Error: ', error);
+    });
+  }
+
   return (
     !isLoaded? <div>Loading</div>:
     <div>
-      {console.log('Loading load script', startPoint, endPoint)}
+      {console.log('Loading load script', startPoint, endPoint, directionsRequest)}
       <GoogleMap
         id='map'
         mapContainerStyle={containerStyle}
@@ -62,9 +86,9 @@ function DriverTripMap(props) {
         zoom={10}
       >
         { /* Child components, such as markers, info windows, etc. */ }
-        {!DirectionsResult?<DirectionsService callback={directionsCallback} options={directionsRequest}/>:null}
-        {!DirectionsResult? null:<DirectionsRenderer directions={DirectionsResult}  onLoad={directionsRenderer => {
-                    console.log('DirectionsRenderer onLoad directionsRenderer: ', DirectionsResult)}}/>}
+        {!directionsResult?<DirectionsService callback={directionsCallback} options={directionsRequest}/>:null}
+        {!directionsResult? null:<DirectionsRenderer directions={directionsResult}  onLoad={directionsRenderer => {
+                    console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsResult)}}/>}
         <></>
         <StandaloneSearchBox
           onLoad={onStartLoad}
@@ -113,7 +137,7 @@ function DriverTripMap(props) {
         />
         </StandaloneSearchBox>
       </GoogleMap>
-      <button>Get Directions</button>
+      <button onClick={renderDirections}>Get Directions</button>
       <button onClick={null}>Add Trip</button>
     </div>
   )
