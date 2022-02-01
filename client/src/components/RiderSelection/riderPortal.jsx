@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
+import axios from "axios";
+import './Rider.css';
 
 
 
@@ -18,6 +20,7 @@ export const RiderPortal = () => {
     setLong(newLong);
   })
   }, [])
+
 
   const containerStyle = {
     width: '400px',
@@ -37,16 +40,21 @@ export const RiderPortal = () => {
     setCurrentPage("riderMenu");
   }
 
+  let key = axios.get('/apikey')
+    .then((response) => {
+      console.log(response);
+    });
+
   return (
-    <div>
+    <div className="rider-portal-container">
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <GiHamburgerMenu onClick={handelHamburgerClick} />
       <div className='siteNavigatorSquare' >
         This is {currentPage} make it more awesomer!!!
         <LoadScript
-        googleMapsApiKey="AIzaSyAkjSEOsvRPqcJNJGmFwQnjwSRR2nCwRu8"
+        googleMapsApiKey={key}
       >
-        <GoogleMap
+        <GoogleMap className="rider-map"
           mapContainerStyle={containerStyle}
           center={center}
           zoom={10}

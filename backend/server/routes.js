@@ -12,7 +12,8 @@ const users = require('./controllers/users.js');
 router.post('/usersLogin', users.checkLogin);
 router.post('/usersCreate', users.createUser)
 // Neil
-
+const riderControllers = require('./controllers/riderControllers.js')
+router.post('/apikey', riderControllers.getApiKey);
 // Sterling
 const drivers = require('./controllers/drivers.js')
 router.get('/drivers', drivers.getTrips);
