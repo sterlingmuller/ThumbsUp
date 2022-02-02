@@ -19,7 +19,18 @@ module.exports = {
     };
     messages.getMessages(callback,req.query);
   }, 
+  
+  getDriveInfo: function (req, res) {
 
+    var callback = (err, result) => {
+      if (err) {
+        console.log('there is an error', err);
+      } else {
+        res.send(result.rows);
+      }
+    };
+    messages.getDriveInfo(callback,req.query);
+  }, 
 
   /**
    * This function gets 2 usernames based on 2 user ids

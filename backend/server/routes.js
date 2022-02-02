@@ -9,6 +9,8 @@ router.delete('/messagesReject', messages.rejectRider);
 router.post('/messagesAccept', messages.acceptRider);
 router.get('/messagesChatRooms', messages.getRooms);
 router.post('/messages', messages.post);
+router.get('/messagesDriveInfo', messages.getDriveInfo);
+
   //users
 router.get('/messagesUsers', messages.getUser);
 

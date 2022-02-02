@@ -2,14 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js'
 import { ChatRoom } from './chatRoom.jsx';
 import axios from 'axios';
-
+import moment from 'moment';
 
 export const DriverTiles = () => {
   const { currentPage, setCurrentPage, setUserId, userId, currentUser, selectedTrip } = useContext(MainContext);
   const [driverTiles, setDriverTiles] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
   const [chatPartnerNameArr, setChatPartnerNameArr] = useState([]);
-  var dummy = [];
+  const [driveInfo, setDriveInfo] = useState(null);
 
 
 
@@ -17,6 +17,8 @@ export const DriverTiles = () => {
   useEffect(() => {
     getDriverTiles();
     setChatPartnerNameArr([]);
+    setDriveInfo(null);
+    getDriveInfo();
   }, [])
 
   useEffect(() => {
@@ -28,7 +30,17 @@ export const DriverTiles = () => {
     return () => clearInterval(intervals);
   }, []);
 
-
+  const getDriveInfo = () => {
+    axios
+      .get(`/messagesDriveInfo`, {
+        params: {
+          tripId: selectedTrip || 1,
+        }
+      }).then((results) => {
+        setDriveInfo(results.data[0]);
+        })
+  
+  };
 
   const getDriverTiles = () => {
     axios
@@ -59,44 +71,26 @@ export const DriverTiles = () => {
       });
   }
 
-  const handleAccept = (senderId) => {
-    return axios
-      .post(`/messagesAccept`, {
-        params: {
-          user_id:senderId,
-          id_driver_trips:selectedTrip,
-          pending: false
-        }
-      })
-
-  }
-
-  const handleReject = (senderId) => {
-    return axios
-    .delete(`/messagesReject`, {
-      params: {
-        tripId:selectedTrip,
-        sender_id:senderId,
-
-      }
-    })
-
-  }
 
 
   return (
     <div>
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
-        !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 ? <div> loading...</div> :
+        !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
+            <Link to= "driverTripSelection">
+            <div>BACK ICON</div>
+            </Link>
+            <h1>Chats for your upcoming drive from {driveInfo.start_address} to {driveInfo.end_address} on {moment(driveInfo.start_time).format('LLLL')}</h1>
             {chatPartnerNameArr.map((oneTile) => {
-              console.log('this is equal?, ', oneTile, currentUser.userId);
               return (
-                <div style={{ border: 'black solid 2px' }}> {oneTile.user_id == currentUser.userId ? null :
-                  <div ><span onClick={() => { setCurrentChat(oneTile.user_id) }} >{oneTile.username}</span>
-                  {}
-                    <span style={{ border: 'green solid 1px',float: 'right' }} onClick={() => {handleAccept(oneTile.user_id) }}>ACCEPT ICON </span>
-                    <span style={{ border: 'green solid 1px',float: 'right' }} onClick={() => {handleReject(oneTile.user_id) }}>REJECT ICON</span>
+                <div style={{ margin:'auto',  width: '70%', hieght:'auto',marginTop:'1em' }}> {oneTile.user_id == currentUser.userId ? null :
+                  <div style= {{border: 'black solid 2px',}}>
+                    
+                    <span style={{  fontSize:'3rem' }} onClick={() => { setCurrentChat(oneTile.user_id) }} >{oneTile.username} </span>
+                    <span style={{ float:'right', fontSize:'3rem' }}>💬</span>
+             
+
                   </div>}</div>
               );
             })}
