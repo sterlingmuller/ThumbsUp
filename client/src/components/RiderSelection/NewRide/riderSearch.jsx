@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../../contexts/MainContext.js'
+import {MainContext} from '../../../contexts/MainContext.js';
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,7 +57,10 @@ export const RiderSearch = () => {
               onChange={handleChange} />
           </label>
         </form>
+        <Link to=''>
         <button onClick={handleClick}>Submit</button>
+        </Link>
+        
       </div>
       <div>
         <h2>Available Rides</h2>
