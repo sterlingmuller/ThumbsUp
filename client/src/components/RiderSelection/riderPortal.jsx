@@ -41,10 +41,6 @@ export const RiderPortal = () => {
     setCurrentPage("riderMenu");
   }
 
-  // let key = axios.get('/apikey')
-  //   .then((response) => {
-  //     console.log(response);
-  //   });
 
   return (
     <div className="rider-portal-container">

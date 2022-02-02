@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -20,11 +21,16 @@ export const RiderSearch = () => {
   const handleChange = (e) => {
     const selected = e.target.name;
     setRiderSearchDetails({...riderSearchDetails, [selected]:e.target.value})
+   
   }
 
   const handleAvailableRideClick = () => {
     setCurrentPage('saveMeASeat');
   }
+
+  useEffect(() => {
+    console.log(riderSearchDetails);
+  }, [riderSearchDetails])
 
   return (
 
@@ -57,9 +63,9 @@ export const RiderSearch = () => {
               onChange={handleChange} />
           </label>
         </form>
-        <Link to=''>
+        
         <button onClick={handleClick}>Submit</button>
-        </Link>
+        
         
       </div>
       <div>
