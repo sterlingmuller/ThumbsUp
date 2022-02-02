@@ -14,8 +14,11 @@ router.get('/messagesUsers', messages.getUser);
 
 // Prith
 const users = require('./controllers/users.js');
-router.post('/usersLogin', users.checkLogin);
-router.post('/usersCreate', users.createUser)// Neil
+const passport = require('passport');
+const local = require('./strategies/local.js');
+router.post('/usersCreate', users.createUser)
+router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
+// Neil
 
 // Sterling
 const drivers = require('./controllers/drivers.js')
