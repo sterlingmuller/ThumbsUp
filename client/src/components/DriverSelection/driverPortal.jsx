@@ -1,38 +1,38 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js';
-//import {DriverContext} from '../../contexts/DriverContext.js';
 import axios from 'axios';
-
-
+import { Button, Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
 export const DriverPortal = () => {
-  const { setCurrentPage, userId } = useContext(MainContext);
+  const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
 
  const [upcomingRides, setUpcomingRides] = useState([]);
 
  const getUpcomingRides = () => {
-  axios.get(`/drivers?user_id=1`)
+  axios.get(`/drivers?user_id=${currentUser.userId}`)
   .then ( ({data}) => {
     setUpcomingRides(data);
-    console.log('data:::', data)})
+  })
  }
 
  useEffect (() => {
    getUpcomingRides()
  }, [])
 
-function AddTripClick () {
-  setCurrentPage('driverAddTrip');
+function TripDetailsClick (id) {
+  setSelectedTrip({id});
 }
 
-const TripHistoryClick = () => {
-  setCurrentPage('driverTripHistory');
+const RideCompleteClick = (id) => {
+  axios.put(`drivers?trip_id=${id}`)
+  .then(getUpcomingRides());
 }
 
-function TripDetailsClick (id, username) {
-  // setSelectedTripD ({id: id, username: username});
-  setSelectedTripD ({id, username});
-  setCurrentPage('driverTripSelection');
+function CancelRideClick (id) {
+  axios.delete(`drivers?trip_id=${id}`)
+  .then(getUpcomingRides());
 }
 
 
@@ -43,16 +43,34 @@ function TripDetailsClick (id, username) {
         <h1>Driver Portal</h1>
         <div className="upcomingTrips">
           <h2>Upcoming Trips</h2>
-          <ul>
+
+          <Card style={{alignItems: 'center'}}>
             {upcomingRides.map((ride) => {
-              return (<div onClick={() => TripDetailsClick(ride.id, ride.username)}>Starting location: {ride.start_address}
-                Destination: {ride.end_address}
-                 Departing at: {ride.start_time} </div>)
-            })}
-          </ul>
-          <input type="button" value="Add Trip" onClick={(e) => AddTripClick(e)}/>
-          <input type="button" value="Trip History" onClick={(e) => TripHistoryClick(e)}/>
+              return (
+
+              <div key={ride.trip_id}>
+                <Card style={{alignItems: 'center'}}>
+
+                  {/* <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img> */}
+                  <div className="card-body" onClick={() => TripDetailsClick(ride.trip_id)}>
+                    <div className="card-title">{ride.start_address} to {ride.end_address}</div>
+                    <div className="card-text">Departing at: {ride.start_time}</div>
+                  </div>
+                  <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </span>
+                <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </span>
+                </Card>
+              </div>
+
+              )})}
+          </Card>
+
         </div>
+          <Link to="/driverAddTrip">
+            <Button  className="col-sm" > Add Trip </Button>
+          </Link>
+          <Link to="/tripHistory">
+            <Button className="col-sm" > Trip History </Button>
+          </Link>
       </div>
     </div>
   );
