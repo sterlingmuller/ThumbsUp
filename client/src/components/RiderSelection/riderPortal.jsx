@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import './Rider.css';
 
@@ -54,7 +53,7 @@ export const RiderPortal = () => {
       <div className='siteNavigatorSquare' >
         This is {currentPage} make it more awesomer!!!
         <LoadScript
-        googleMapsApiKey=""
+        googleMapsApiKey={process.env.MAPS_API_KEY}
       >
         <GoogleMap className="rider-map"
           mapContainerStyle={containerStyle}
@@ -68,7 +67,7 @@ export const RiderPortal = () => {
       </LoadScript>
       </div>
       <Link to="/riderSearch">
-      <button onClick={handleClick}>New Ride</button>
+        <button onClick={handleClick}>New Ride</button>
       </Link>
     </div>
   );
