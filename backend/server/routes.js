@@ -25,9 +25,11 @@ const searchTrips = require('./controllers/searchTrip.js');
 router.get('/searchTrip', searchTrips.getRiderTrips);
 // Sterling
 const drivers = require('./controllers/drivers.js')
+const newMessage = require('./controllers/newMessage.js')
 router.get('/drivers', drivers.getUpcomingTrips);
 router.put('/drivers', drivers.markCompleted);
 router.delete('/drivers', drivers.cancelTrip);
+router.get('/read', newMessage.checkStatus);
 
 // Ezra
 const addTrip = require('./controllers/addTrip.js');
