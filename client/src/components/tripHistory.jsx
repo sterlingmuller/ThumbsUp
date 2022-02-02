@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../contexts/MainContext.js';
 import axios from 'axios';
 import { TripHistoryDetails } from './tripHistoryDetails.jsx';
+import { Card, ListGroup } from 'react-bootstrap';
 
 
 export const TripHistory = () => {
@@ -19,12 +20,12 @@ export const TripHistory = () => {
   }, [])
 
   return (
-    <div className='siteNavigatorSquare'>
-      Trip History
-      <ul>
+    <Card>
+      <Card.Title>Trip History</Card.Title>
+      <ListGroup>
         {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}
-      </ul>
-    </div>
+      </ListGroup>
+    </Card>
   );
 
 }

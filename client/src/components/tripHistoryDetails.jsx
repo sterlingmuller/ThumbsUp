@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { MainContext } from '../contexts/MainContext.js';
 import { useNavigate } from "react-router-dom";
+import { ListGroup } from 'react-bootstrap';
+import moment from 'moment';
 
 
 export const TripHistoryDetails = ({ trip }) => {
@@ -9,16 +11,14 @@ export const TripHistoryDetails = ({ trip }) => {
   const navigate = useNavigate();
 
   return (
-    <li className='siteNavigatorSquare' onClick={() => {
+    <ListGroup.Item className='siteNavigatorSquare' action onClick={() => {
       if (currentUser.usertype === 'rider') {
         setSelectedTrip(driver_trip_id);
         navigate('/postTrip');
       }
     }}>
-    <span>{start_address} -</span>
-    <span> {end_address} | </span>
-    <span>{start_time}</span>
-    </li>
+      <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+    </ListGroup.Item>
   );
 
 }
