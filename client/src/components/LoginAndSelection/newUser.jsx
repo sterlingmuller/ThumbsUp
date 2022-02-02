@@ -65,7 +65,7 @@ export const NewUser = () => {
           <Button variant="primary" type="submit" disabled={!validateForm()}>
             Create Account
           </Button>{' '}
-          <Button variant="secondary" type="button" onClick={() => {setCurrentPage('login')}}>
+          <Button variant="secondary" type="button" onClick={() => {navigate('/login')}}>
             Already Have an Account? Log In...
           </Button>{' '}
           </>
