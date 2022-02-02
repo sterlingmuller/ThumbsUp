@@ -22,7 +22,9 @@ router.post('/login', passport.authenticate('local', { failureMessage: true}), (
 
 // Sterling
 const drivers = require('./controllers/drivers.js')
-router.get('/drivers', drivers.getTrips);
+router.get('/drivers', drivers.getUpcomingTrips);
+router.put('/drivers', drivers.markCompleted);
+router.delete('/drivers', drivers.cancelTrip);
 
 // Ezra
 const addTrip = require('./controllers/addTrip.js');
