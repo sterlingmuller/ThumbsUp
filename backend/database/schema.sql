@@ -72,10 +72,8 @@ CREATE TABLE rider_trips (
   user_id INT NOT NULL,
   id_driver_trips INT NOT NULL,
   pending BOOLEAN DEFAULT true,
-  -- completed_driver_trips BOOLEAN,
   FOREIGN KEY (user_id) REFERENCES users (user_id),
-  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips (id)
-  -- FOREIGN KEY (completed_driver_trips) REFERENCES driver_trips (completed)
+  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips (id) ON DELETE CASCADE
 );
 
 -- rider trips dummy data

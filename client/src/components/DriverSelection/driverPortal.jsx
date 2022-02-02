@@ -26,13 +26,11 @@ function TripDetailsClick (id) {
 }
 
 const RideCompleteClick = (id) => {
-  console.log("Ride completed!", upcomingRides);
   axios.put(`drivers?trip_id=${id}`)
   .then(getUpcomingRides());
 }
 
 function CancelRideClick (id) {
-  console.log("Ride canceled!", id);
   axios.delete(`drivers?trip_id=${id}`)
   .then(getUpcomingRides());
 }
