@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../../contexts/MainContext';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
-
+import { ChatRoom } from '../../../DriverSelection/DiverOptions/chatRoom';
 
 export const PostTrip = () => {
   const { setCurrentPage, selectedTrip, currentUser } = useContext(MainContext);
@@ -65,7 +65,7 @@ export const PostTrip = () => {
           </div>
         }
       </div>
-      <div>chat here</div>
+      <div><ChatRoom /></div>
     </div>
   );
 
