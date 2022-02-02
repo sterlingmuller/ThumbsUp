@@ -26,15 +26,16 @@ export const Login = () => {
       "password": password
     }
     axios
-      .post('/usersLogin', payload)
+      .post('/login', payload)
       .then((data) => {
-        if (data.data) {
-          console.log(data.data)
+        console.log(data)
+        if (data.status === 200) {
           setCurrentUser(data.data);
           alert('Successfully Logged In');
           setCurrentPage('riderOrDriver');
-        } else {
-          alert('Invalid login attempt!')
+        }
+        if (data.status == 401) {
+          alert('Invalid username/password combination');
         }
       })
   }
@@ -42,7 +43,7 @@ export const Login = () => {
   function loginForm() {
     return (
       <div className="Login">
-        <Form onSubmit={handleSubmit}>
+        <Form action="/login" onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>
             <Form.Control
