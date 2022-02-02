@@ -29,6 +29,7 @@ router.delete('/drivers', drivers.cancelTrip);
 // Ezra
 const addTrip = require('./controllers/addTrip.js');
 router.post('/AddDriverTrip', addTrip.trip);
+router.get('/specificTrip', addTrip.specificTrip);
 
 // Mitchell
 const trips = require('./controllers/trips.js')

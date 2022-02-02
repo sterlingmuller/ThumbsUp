@@ -26,8 +26,8 @@ function TripMap(props) {
   let [directionsResult, setDirections] = useState(undefined);
   let { currentUser } = useContext(MainContext);
   let [directionsRequest, setRequest] = useState({
-         origin: 'New York, NY, USA',
-         destination: 'Newark, NJ, USA',
+         origin: props.trip.data.start_address,
+         destination: props.trip.data.end_address,
          travelMode: 'DRIVING'
        });
 
@@ -36,7 +36,7 @@ function TripMap(props) {
   }, [directionsRequest])
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyB9OONxUCodrHTc9ivWR-gigt2TaP0BqD4',
+    googleMapsApiKey: '',
     libraries: librariesArray
   });
 
@@ -50,7 +50,7 @@ function TripMap(props) {
   return (
     !isLoaded ? <div>Loading</div> :
       <div>
-        {console.log('Loading load script', directionsRequest)}
+        {console.log('Loading load script', props.trip)}
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
