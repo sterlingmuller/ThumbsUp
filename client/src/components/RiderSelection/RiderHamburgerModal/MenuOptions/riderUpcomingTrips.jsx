@@ -5,7 +5,7 @@ import { RiderUpcomingTripDetails } from './riderUpcomingTripDetails.jsx';
 
 
 export const RiderUpcomingTrips = () => {
-  const { setCurrentPage, currentUser } = useContext(MainContext);
+  const { currentUser } = useContext(MainContext);
   const[upcomingTrips, setUpcomingTrips] = useState([]);
   const { userId } = currentUser
 
@@ -19,14 +19,11 @@ export const RiderUpcomingTrips = () => {
   }, [])
 
   return (
-    <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='siteNavigatorSquare' >
-        Upcoming Trips
-        <ul>
-          {upcomingTrips.map(trip => {return <RiderUpcomingTripDetails key={trip.rider_trip_id} trip={trip}/>})}
-        </ul>
-      </div>
+    <div className='siteNavigatorSquare' >
+      Upcoming Trips
+      <ul>
+        {upcomingTrips.map(trip => {return <RiderUpcomingTripDetails key={trip.rider_trip_id} trip={trip}/>})}
+      </ul>
     </div>
   );
 

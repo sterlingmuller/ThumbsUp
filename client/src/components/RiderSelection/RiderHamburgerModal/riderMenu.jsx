@@ -1,19 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js';
+import { Link } from "react-router-dom";
 
 
 export const RiderMenu = () => {
-  const { setCurrentPage, currentUser } = useContext(MainContext);
+  const { currentUser } = useContext(MainContext);
 
   return (
-    <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='siteNavigatorSquare' >
-        <span>{currentUser.username}</span>
-        <span>{currentUser.rating}</span>
-      </div>
-      <div onClick={() => setCurrentPage('riderUpcomingTrips')}>My upcoming trips</div>
-      <div onClick={() => setCurrentPage('tripHistory')}>My trip history</div>
+    <div className='siteNavigatorSquare'>
+      <div>{currentUser.username}</div>
+      {/* <span>{currentUser.rating}</span> */}
+      <Link to='/riderUpcomingTrips'>
+        <div>My upcoming trips</div>
+      </Link>
+      <Link to='/tripHistory'>
+        <div>My trip history</div>
+      </Link>
     </div>
   );
 
