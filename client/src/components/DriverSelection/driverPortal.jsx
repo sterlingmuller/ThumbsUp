@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+// import newMessage from '../../../dist/New.png';
+import {FaExclamationCircle} from 'react-icons/fa'
 
 export const DriverPortal = () => {
   const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
@@ -22,7 +24,11 @@ export const DriverPortal = () => {
  }, [])
 
 function TripDetailsClick (id) {
-  setSelectedTrip({id});
+  console.log("Ive been clicked!");
+  setSelectedTrip(id);
+
+  // axios.put(`drivers/newMessage?trip_id=${id}`)
+  // .then(setSelectedTrip(id));
 }
 
 const RideCompleteClick = (id) => {
@@ -51,11 +57,17 @@ function CancelRideClick (id) {
               <div key={ride.trip_id}>
                 <Card style={{alignItems: 'center'}}>
 
-                  {/* <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img> */}
+                  {/* <img className="card-img-top" src={'New.png'} alt="No new messages"></img> */}
+                  <Link to="/driverTripSelection">
                   <div className="card-body" onClick={() => TripDetailsClick(ride.trip_id)}>
                     <div className="card-title">{ride.start_address} to {ride.end_address}</div>
                     <div className="card-text">Departing at: {ride.start_time}</div>
+                   {/* {ride.unreadMessage &&
+                    <FaExclamationCircle/>
+                   } */}
+                   <FaExclamationCircle/>
                   </div>
+                  </Link>
                   <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </span>
                 <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </span>
                 </Card>
