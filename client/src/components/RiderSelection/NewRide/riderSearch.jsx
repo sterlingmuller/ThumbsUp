@@ -1,41 +1,42 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../../contexts/MainContext.js';
+import { MainContext } from '../../../contexts/MainContext.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from "moment";
 
 
 
 export const RiderSearch = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const { currentPage, setCurrentPage, slectedTrip, setSelectedTrip } = useContext(MainContext);
   const [riderSearchDetails, setRiderSearchDetails] = useState({
     startingLocation: "",
     destination: "",
     time: ""
   });
-  
+  const [allMatchingTrips, setAllMatchingTrips] = useState({});
+
 
   const handleClick = () => {
-      console.log("clicked");
+    searchUpcomingTrips();
   }
 
   const handleChange = (e) => {
     const selected = e.target.name;
-    setRiderSearchDetails({...riderSearchDetails, [selected]:e.target.value})
-   
+    setRiderSearchDetails({ ...riderSearchDetails, [selected]: e.target.value })
+
   }
 
-  const handleAvailableRideClick = () => {
-    setCurrentPage('saveMeASeat');
+  const searchUpcomingTrips = () => {
+    axios.get(`/searchTrip`, { params: riderSearchDetails })
+      .then(({ data }) => {
+        setAllMatchingTrips(data);
+        console.log('data:::', data)
+      })
   }
-
-  useEffect(() => {
-    console.log(riderSearchDetails);
-  }, [riderSearchDetails])
 
   return (
 
     <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
         <h2>New Ride</h2>
         <form>
@@ -63,16 +64,40 @@ export const RiderSearch = () => {
               onChange={handleChange} />
           </label>
         </form>
-        
+
         <button onClick={handleClick}>Submit</button>
-        
-        
+
+
       </div>
       <div>
         <h2>Available Rides</h2>
-        {/* map through matching queries  onClick={handleAvailableRideClick}*/}
-        <button>Ride 1</button>
-        <button>Ride 2</button>
+        {
+          Object.keys(allMatchingTrips).length !== 0 ?
+
+            allMatchingTrips.map((trip) => {
+              return (
+                <div>
+                  <Link to="/saveMeASeat">
+
+                    <div className="card-body" onClick={() => {
+                      setSelectedTrip(trip.id);
+                      console.log("New selected trip id: ", trip.id);
+                    }} key={trip.id}>{`From ${trip.start_address}\n 
+                                        To ${trip.end_address}\n 
+                                        At ${moment(trip.start_time).format("LLLL")}`}
+                    </div>
+
+                  </Link>
+                </div>
+              )
+            })
+
+
+
+            : "Search For a Ride!"
+        }
+
+
       </div>
     </div>
   );

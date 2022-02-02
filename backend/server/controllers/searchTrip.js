@@ -1,15 +1,24 @@
-const searchTrip = require('../../database/models/searchTrip.js');
+var searchTrip = require('../../database/models/searchTrip.js');
 
 module.exports = {
-  searchTrips: function (req, res) {
-    const { user_id } = req.query;
-
-    trips.getUpcomingTrips(user_id, (err, result) => {
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.status(200).send(result.rows)
-      }
-    });
-  }
+  getRiderTrips (req, res) {
+    var callback = (err, results) => {
+      err ? console.log(err) : res.send(results.rows);
+    };
+    searchTrip.getRiderTrips(callback, req);
 }
+}
+
+
+
+// getRooms: function (req, res) {
+
+//   var callback = (err, result) => {
+//     if (err) {
+//       console.log('there is an error', err);
+//     } else {
+//       res.send(result.rows);
+//     }
+//   };
+//   messages.getRooms(callback,req.query);
+// }
