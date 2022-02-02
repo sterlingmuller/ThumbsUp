@@ -34,6 +34,27 @@ module.exports = {
     pool.query(stmt,todos, callback);
   },
 
+  acceptRider: function(callback, chatObject) {
+    let stmt = `INSERT INTO rider_trips (user_id, id_driver_trips, pending) VALUES ($1, $2, $3 ) ;`;
+    let todos = [
+      chatObject.user_id,
+      chatObject.id_driver_trips,
+      chatObject.pending //false
+    ];
+    pool.query(stmt,todos, callback);
+  },
+
+  
+  rejectRider: function(callback, chatObject) {
+    let stmt = `DELETE FROM messages m WHERE id_driver_trips = $1 AND message_sender = $2
+                DELETE FROM rider_trips r WHERE id_driver_trips = $1 AND user_id = $2;`;
+    let todos = [
+      chatObject.tripId,
+      chatObject.sender_id
+
+    ];
+    pool.query(stmt,todos, callback);
+  },
 
 /**
  * a function which can be used to insert a message into the database

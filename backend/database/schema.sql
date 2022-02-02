@@ -26,7 +26,7 @@ CREATE TABLE rider_trips (
   user_id INT,
   id_driver_trips INT,
   pending BOOLEAN DEFAULT true,
-  completed_driver_trips BOOLEAN,
+  -- completed_driver_trips BOOLEAN,
   FOREIGN KEY (user_id) REFERENCES users (user_id),
   FOREIGN KEY (id_driver_trips) REFERENCES driver_trips (id)
   -- FOREIGN KEY (completed_driver_trips) REFERENCES driver_trips (completed)
@@ -58,10 +58,15 @@ CREATE TABLE messages (
 INSERT INTO users( username,password)
 VALUES ('MrFripple', '123');
 INSERT INTO users(username,password)
-VALUES ('person', '123');
+VALUES ('bob', '123');
 INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
 VALUES (1,'Las Vegas', 'Denver', '2017-03-31 09:30:20-07');
 INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
-VALUES (1, 2,1, 'Mrfripple sent this to person','2017-03-31 09:30:20-07');
+VALUES (2, 2,1, 'im person save me a seat ','2017-03-31 09:30:20-07');
+INSERT INTO driver_trips(user_id,start_address,end_address,start_time, completed)
+VALUES (1,'texas', 'lasvegas', '2017-03-31 09:30:20-07', true);
 
+
+INSERT INTO rider_trips(user_id,id_driver_trips,pending,completed_driver_trips)
+VALUES (2,2,false,true);
 -- psql -d blueocean -f ./backend/database/schema.sql

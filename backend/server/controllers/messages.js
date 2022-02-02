@@ -54,6 +54,16 @@ module.exports = {
     messages.getRooms(callback,req.query);
   }, 
 
+  acceptRider: function (req, res) {
+    var callback = (err, result) => {
+      if (err) {
+        console.log('there is an error', err);
+      } else {
+        res.send(result.rows);
+      }
+    };
+    messages.acceptRider(callback,req.query);
+  },
 
 /**
  * This function adds 1 message to 1 chatroom
@@ -63,5 +73,16 @@ module.exports = {
   post: function (req, res) {
     messages.createMessage(req.body);
     res.send('you posted');
-  } 
+  },
+
+  rejectRider: function (req, res) {
+    var callback = (err, result) => {
+      if (err) {
+        console.log('there is an error', err);
+      } else {
+        res.send(result.rows);
+      }
+    };
+    messages.rejectRider(callback,req.query);
+  },
 };
