@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
@@ -22,7 +22,7 @@ export const SaveMeASeat = () => {
         
         */}
       </div>
-
+        <Link to= "riderportal">
       <div onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
                 .then(({ data }) => {
@@ -39,8 +39,8 @@ export const SaveMeASeat = () => {
                 })
 
           
-      }}> Save me a seat</div>  
+      }}> Save me a seat</div>  </Link>
     </div>
+    
   );
-
 }
