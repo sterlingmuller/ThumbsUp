@@ -144,8 +144,60 @@ CREATE TABLE messages (
   FOREIGN KEY (message_recepient) REFERENCES users(user_id)
 );
 
--- psql -d blueocean -f ./backend/database/schema.sql
+-- messages dummy data
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (1, 2, 1, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (1, 1, 2, 'Will do!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (1, 4, 1, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (1, 1, 4, 'Looking forward to it!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (2, 2, 1, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (2, 1, 2, 'Hello again!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (3, 5, 1, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (3, 1, 5, 'Where do you want me to pick you up?', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (4, 6, 1, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (4, 1, 6, 'This is going to be awesome', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (5, 4, 3, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (5, 3, 4, 'Cannot wait for this trip', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (6, 5, 3, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (6, 3, 5, 'Going to be fun!!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (7, 6, 3, 'Save me a seat!', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (7, 3, 6, 'Do you want to stop for tea first', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (8, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
 INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
 VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
 
+-- end
+-- psql -d blueocean -f ./backend/database/schema.sql
