@@ -14,10 +14,6 @@ const app = express();
 // Router
 const router = require('./routes.js');
 
-<<<<<<< HEAD
-
-// Set up message route
-=======
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
@@ -28,7 +24,6 @@ app.use(session({
   resave: false,
 }));
 // Set up routes
->>>>>>> passport
 app.use(router);
 
 //passport session
