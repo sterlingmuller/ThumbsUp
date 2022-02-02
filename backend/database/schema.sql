@@ -140,7 +140,7 @@ CREATE TABLE messages (
   message_recepient INT,
   message_body VARCHAR(500),
   message_time TIMESTAMP,
-  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id),
+  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id) ON DELETE CASCADE,
   FOREIGN KEY (message_sender) REFERENCES users(user_id),
   FOREIGN KEY (message_recepient) REFERENCES users(user_id)
 );
@@ -199,5 +199,6 @@ VALUES (8, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
 INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
 VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
+
 
 -- psql -d blueocean -f ./backend/database/schema.sql

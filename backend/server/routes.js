@@ -5,22 +5,28 @@ let router = require('express').Router();
 // Matt
   //messages
 router.get('/messages', messages.get);
-
-router.get('/messagesChatRooms', messages.getRooms);    
+router.delete('/messagesReject', messages.rejectRider);
+router.post('/messagesAccept', messages.acceptRider);
+router.get('/messagesChatRooms', messages.getRooms);
 router.post('/messages', messages.post);
   //users
-router.get('/messagesUsers', messages.getUser); 
+router.get('/messagesUsers', messages.getUser);
 
 // Prith
 const users = require('./controllers/users.js');
-router.post('/usersLogin', users.checkLogin);
-router.post('/usersCreate', users.createUser)// Neil
+const passport = require('passport');
+const local = require('./strategies/local.js');
+router.post('/usersCreate', users.createUser)
+router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
+// Neil
 
 // Sterling
 const drivers = require('./controllers/drivers.js')
 router.get('/drivers', drivers.getTrips);
 
 // Ezra
+const addTrip = require('./controllers/addTrip.js');
+router.post('/AddDriverTrip', addTrip.trip);
 
 // Mitchell
 const trips = require('./controllers/trips.js')
