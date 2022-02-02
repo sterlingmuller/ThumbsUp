@@ -10,6 +10,7 @@ import "./Login.css";
 
 export const Login = () => {
   const { currentPage, setCurrentPage, setUserId, setCurrentUser } = useContext(MainContext);
+  console.log(useContext(MainContext));
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
