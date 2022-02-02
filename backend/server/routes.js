@@ -5,7 +5,8 @@ let router = require('express').Router();
 // Matt
   //messages
 router.get('/messages', messages.get);
-
+router.delete('/messagesReject', messages.rejectRider);
+router.post('/messagesAccept', messages.acceptRider);
 router.get('/messagesChatRooms', messages.getRooms);    
 router.post('/messages', messages.post);
   //users

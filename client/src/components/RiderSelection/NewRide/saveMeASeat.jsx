@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
-
+import axios from 'axios';
 
 
 export const SaveMeASeat = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
 
   useEffect(() => {
     //query to get current rides from db
@@ -22,6 +22,24 @@ export const SaveMeASeat = () => {
         
         */}
       </div>
+
+      <div onClick = {() => {
+              axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
+                .then(({ data }) => {
+                  axios
+                  .post(`http://localhost:3000/messages`, {
+                   tripId:  selectedTrip || 1, 
+                   message_sender: Number(currentUser.userId),
+                   message_recepient:  data.user_id,
+                   message_body: `Hey this is ${currentUser.username} can you save me a seat?`,
+                   message_time: new Date(),
+                  }).then(() => {
+                   alert('message sent!');//setCurrentPage 
+                  });
+                })
+
+          
+      }}> Save me a seat</div>  
     </div>
   );
 
