@@ -35,7 +35,8 @@ export const Login = () => {
           alert('Successfully Logged In');
           navigate('/riderOrDriver');
         }
-        if (data.status == 401) {
+        else {
+          console.log('failed')
           alert('Invalid username/password combination');
         }
       })
