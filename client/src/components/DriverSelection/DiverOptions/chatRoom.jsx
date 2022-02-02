@@ -16,7 +16,7 @@ export const ChatRoom = (props) => {
     useEffect(() => {
       const interval = setInterval(() => {
         getMessages();
-        console.log('This will run every 5 seconds!');
+
       }, 5000);
       return () => clearInterval(interval);
     }, []);
@@ -60,7 +60,6 @@ const getMessages = ()=>{
        message_body: typedMessage,
        message_time: new Date(),
       }).then(() => {
-        console.log('got essages after posting!!');
         setTypedMessage('');
         getMessages();
       });
