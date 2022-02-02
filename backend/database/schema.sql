@@ -50,7 +50,7 @@ CREATE TABLE messages (
   message_recepient INT,
   message_body VARCHAR(500),
   message_time TIMESTAMP,
-  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id),
+  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id) ON DELETE CASCADE,
   FOREIGN KEY (message_sender) REFERENCES users(user_id),
   FOREIGN KEY (message_recepient) REFERENCES users(user_id)
 );
@@ -58,27 +58,3 @@ CREATE TABLE messages (
 -- psql -d blueocean -f ./backend/database/schema.sql
 
 
-INSERT INTO users( username,password)
-VALUES ('MrFripple', '123');
-INSERT INTO users(username,password)
-VALUES ('bob', '123');
-INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
-VALUES (1,'Las Vegas', 'Denver', '2017-03-31 09:30:20-07');
-INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
-VALUES (2, 2,1, 'im person save me a seat ','2017-03-31 09:30:20-07');
-INSERT INTO driver_trips(user_id,start_address,end_address,start_time, completed)
-VALUES (1,'texas', 'lasvegas', '2017-03-31 09:30:20-07', true);
-
-<<<<<<< HEAD
-INSERT INTO users( username,password)
-VALUES ('hotdog', 'abc');
-INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
-VALUES (3,'portland', 'san diego', '2019-07-12 07:30:20-07');
-INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
-VALUES (2, 2, 3, 'hotdog sent this to person','2019-07-31 06:30:20-07');
-=======
-
-INSERT INTO rider_trips(user_id,id_driver_trips,pending,completed_driver_trips)
-VALUES (2,2,false,true);
--- psql -d blueocean -f ./backend/database/schema.sql
->>>>>>> main

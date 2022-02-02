@@ -28,6 +28,7 @@ module.exports = {
   cancelTrip (req, res) {
     let {trip_id} = req.query;
     let sql = 'DELETE FROM driver_trips WHERE id=$1';
+    // let sql2 = 'DELETE FROM messages WHERE id_driver_trips=$1; DELETE FROM driver_trips WHERE id=$1';
 
     pool.query(sql, [trip_id])
       .then(res.status(201).send("Trip canceled"))

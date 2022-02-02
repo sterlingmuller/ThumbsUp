@@ -12,7 +12,6 @@ export const DriverPortal = () => {
 
  const getUpcomingRides = () => {
   axios.get(`/drivers?user_id=${currentUser.userId}`)
-  // axios.get(`/drivers?user_id=1`)
   .then ( ({data}) => {
     setUpcomingRides(data);
   })
@@ -22,27 +21,18 @@ export const DriverPortal = () => {
    getUpcomingRides()
  }, [])
 
-// function AddTripClick () {
-//   setCurrentPage('driverAddTrip');
-// }
-
-// const TripHistoryClick = () => {
-//   setCurrentPage('tripHistory');
-// }
-
 function TripDetailsClick (id) {
   setSelectedTrip({id});
-  // setCurrentPage('driverTripSelection');
 }
 
 const RideCompleteClick = (id) => {
-  console.log("Ride completed!");
+  console.log("Ride completed!", upcomingRides);
   axios.put(`drivers?trip_id=${id}`)
   .then(getUpcomingRides());
 }
 
 function CancelRideClick (id) {
-  console.log("Ride canceled!");
+  console.log("Ride canceled!", id);
   axios.delete(`drivers?trip_id=${id}`)
   .then(getUpcomingRides());
 }
@@ -58,21 +48,22 @@ function CancelRideClick (id) {
 
           <Card style={{alignItems: 'center'}}>
             {upcomingRides.map((ride) => {
-              return (<div key={ride.id}>
+              return (
 
+              <div key={ride.trip_id}>
                 <Card style={{alignItems: 'center'}}>
 
                   {/* <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img> */}
-                  <div className="card-body" onClick={() => TripDetailsClick(ride.id)}>
+                  <div className="card-body" onClick={() => TripDetailsClick(ride.trip_id)}>
                     <div className="card-title">{ride.start_address} to {ride.end_address}</div>
                     <div className="card-text">Departing at: {ride.start_time}</div>
                   </div>
-                  <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.id)}> Ride Complete </span>
-                <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.id)}> Cancel Ride </span>
+                  <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </span>
+                <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </span>
                 </Card>
+              </div>
 
-                 </div>)
-            })}
+              )})}
           </Card>
 
         </div>
