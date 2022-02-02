@@ -1,9 +1,12 @@
 .rider-portal-container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
-.siteNavigatorSquare {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+
+
+
+/* Mitchell */

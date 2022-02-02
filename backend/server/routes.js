@@ -19,7 +19,8 @@ const local = require('./strategies/local.js');
 router.post('/usersCreate', users.createUser)
 router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
 // Neil
-
+const searchTrips = require('./controllers/searchTrip.js');
+router.get('/searchTrip', searchTrips.getRiderTrips);
 // Sterling
 const drivers = require('./controllers/drivers.js')
 const newMessage = require('./controllers/newMessage.js')
