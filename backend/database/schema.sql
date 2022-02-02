@@ -200,5 +200,5 @@ VALUES (8, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
 VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
 
-
+-- end
 -- psql -d blueocean -f ./backend/database/schema.sql
