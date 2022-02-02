@@ -3,6 +3,8 @@ import { MainContext } from '../../../../contexts/MainContext';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import { ChatRoom } from '../../../DriverSelection/DiverOptions/chatRoom';
+import { Button, Card } from 'react-bootstrap';
+import moment from 'moment';
 
 export const PostTrip = () => {
   const { setCurrentPage, selectedTrip, currentUser } = useContext(MainContext);
@@ -45,28 +47,30 @@ export const PostTrip = () => {
   }, [])
 
   return (
-    <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='siteNavigatorSquare' >
-        <span>Driver: {driver.username}</span>
+    <Card>
+      <Card.Header as='h3'>
+        {driver.start_address} - {driver.end_address} | {moment(driver.start_time).format('LLLL')}
+      </Card.Header>
+      <Card.Body>
+        <Card.Title>Driver: {driver.username}</Card.Title>
         {rated
         ? <StarRatings
-          rating={rating}
-          starRatedColor='blue'
-          />
+        rating={rating}
+        starRatedColor='blue'
+        />
         : <div>
             <StarRatings
               rating={rating}
               changeRating={changeRating}
               starHoverColor='blue'
               starRatedColor='blue'
-            />
-            <button onClick={handleSubmit}>Rate Me!</button>
+              />
+            <Button variant='primary' onClick={handleSubmit}>Rate Me!</Button>
           </div>
         }
-      </div>
-      <div><ChatRoom /></div>
-    </div>
+        <div><ChatRoom /></div>
+      </Card.Body>
+    </Card>
   );
 
 }

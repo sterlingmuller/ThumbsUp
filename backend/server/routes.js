@@ -34,6 +34,7 @@ router.get('/read', newMessage.checkStatus);
 // Ezra
 const addTrip = require('./controllers/addTrip.js');
 router.post('/AddDriverTrip', addTrip.trip);
+router.get('/specificTrip', addTrip.specificTrip);
 
 // Mitchell
 const trips = require('./controllers/trips.js')

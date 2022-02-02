@@ -9,15 +9,13 @@ import { DriverTripSelection } from './components/DriverSelection/DiverOptions/d
 import { DriverPortal } from './components/DriverSelection/driverPortal.jsx';
 import { RiderSearch } from './components/RiderSelection/NewRide/riderSearch.jsx';
 import { SaveMeASeat } from './components/RiderSelection/NewRide/saveMeASeat.jsx';
-import { RiderPaymentMethods } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderPaymentMethods.jsx';
-import { RiderQuestionAndComments } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderQuestionAndComments.jsx';
 import { RiderUpcomingTripDetails } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTripDetails.jsx';
-import { TripHistory } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/tripHistory.jsx';
+import { TripHistory } from './components/tripHistory.jsx';
 import { RiderUpcomingTrips } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './components/RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './components/RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './components/DriverSelection/DiverOptions/driverTripHistory.jsx';
-import { TripHistoryDetails } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
+import { TripHistoryDetails } from './components/tripHistoryDetails.jsx';
 import { PostTrip } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 
 const RouteComponent = () => {
@@ -35,8 +33,6 @@ return (
     <Route path="driverPortal" element={<DriverPortal />} />
     <Route path="riderSearch" element={<RiderSearch />} />
     <Route path="saveMeASeat" element={<SaveMeASeat />} />
-    <Route path="riderPaymentMethods" element={<RiderPaymentMethods />} />
-    <Route path="riderQuestionAndComments" element={<RiderQuestionAndComments />} />
     <Route path="riderUpcomingTripDetails" element={<RiderUpcomingTripDetails />} />
     <Route path="tripHistory" element={<TripHistory />} />
     <Route path="riderUpcomingTrips" element={<RiderUpcomingTrips />} />
@@ -53,7 +49,7 @@ return (
       }
     />
   </Routes>
-  
+
   <div>
           <nav
             style={{

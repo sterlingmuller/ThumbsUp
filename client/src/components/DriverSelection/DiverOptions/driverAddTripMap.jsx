@@ -16,7 +16,7 @@ const center = {
 
 function DriverTripMap(props) {
   let [directionsResult, setDirections] = useState(undefined);
-  let [newTrip, setNewTrip] = useState({});
+  let [startTime, setStartTime] = useState('');
   let [startPoint, setStartPoint] = useState('');
   let [endPoint, setEndPoint] = useState('');
   let { currentUser } = useContext(MainContext);
@@ -37,7 +37,7 @@ function DriverTripMap(props) {
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
-      console.log(result);
+      console.log('DirectionsService API response: ', result);
       setDirections(result);
     }
   }
@@ -60,21 +60,27 @@ function DriverTripMap(props) {
     axios.post('/AddDriverTrip', {
       start_address: directionsResult.request.origin.query,
       end_address: directionsResult.request.destination.query,
-      start_time: directionsResult.request.drivingOptions.departureTime,
+      start_time: startTime,
       user_id: currentUser.userId
     })
       .then((response) => {
-        console.log('AddTrip: ', response);
+        console.log('AddTrip: ');
+        alert('Trip Added!');
       })
       .catch((error) => {
         console.log('AddTrip Error: ', error);
       });
   }
 
+  const addStartTime = (event) => {
+    console.log('Start Time Selection: ', event.target.value);
+    setStartTime(event.target.value);
+  }
+
   return (
     !isLoaded ? <div>Loading</div> :
       <div>
-        {console.log('Loading load script', startPoint, endPoint, directionsRequest)}
+        {console.log('Loading load script')}
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
@@ -135,11 +141,22 @@ function DriverTripMap(props) {
           </StandaloneSearchBox>
         </GoogleMap>
         <button onClick={renderDirections}>Get Directions</button>
-        <button onClick={null}>Add Trip</button>
+        <button onClick={addTrip}>Add Trip</button>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"
-          min="2022-02-01T00:00" max="2022-06-14T00:00" />
+          min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
+        {!directionsResult ? null :
+          <div>
+            From: {' ' + directionsResult.request.origin.query}
+            <br />
+            To: {' ' + directionsResult.request.destination.query}
+            <br />
+            length:{' ' + directionsResult.routes[0].legs[0].distance.text}
+            <br />
+            duration:{' ' + directionsResult.routes[0].legs[0].duration.text}
+          </div>
+        }
       </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js'
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
@@ -13,14 +14,14 @@ export const NewUser = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate()
+
   function validateForm() {
     return username.length > 2 && password.length > 2;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(username)
-    console.log(password)
     const payload = {
       'username': username,
       'password': password
@@ -30,7 +31,7 @@ export const NewUser = () => {
       .then((data) => {
         if (data.data === 'Created Account') {
           alert(data.data);
-          setCurrentPage('login');
+          navigate('/login')
         } else {
           alert(data.data);
         }
@@ -64,7 +65,7 @@ export const NewUser = () => {
           <Button variant="primary" type="submit" disabled={!validateForm()}>
             Create Account
           </Button>{' '}
-          <Button variant="secondary" type="button" onClick={() => {setCurrentPage('login')}}>
+          <Button variant="secondary" type="button" onClick={() => {navigate('/login')}}>
             Already Have an Account? Log In...
           </Button>{' '}
           </>
@@ -77,7 +78,6 @@ export const NewUser = () => {
   return (
     <div className="newUser">
       <h1>Thumbs Up</h1>
-      <div className='backToMainNav' style={{cursor: 'pointer'}}onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       {createUser()}
     </div>
   );
