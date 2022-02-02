@@ -37,7 +37,7 @@ function DriverTripMap(props) {
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
-      console.log(result);
+      console.log('DirectionsService API response: ',result);
       setDirections(result);
     }
   }
