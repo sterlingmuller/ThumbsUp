@@ -11,20 +11,21 @@ CREATE TABLE users (
 
 CREATE TABLE driver_trips (
   id SERIAL PRIMARY KEY,
-  user_id INT,
+  user_id INT NOT NULL,
   start_address VARCHAR(500) NOT NULL,
   end_address VARCHAR(500) NOT NULL,
   start_time TIMESTAMP NOT NULL,
   completed BOOLEAN DEFAULT false,
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  FOREIGN KEY (user_id)
+  REFERENCES users(user_id)
 );
 
 /* finished up to here */
 
 CREATE TABLE rider_trips (
   id SERIAL PRIMARY KEY,
-  user_id INT,
-  id_driver_trips INT,
+  user_id INT NOT NULL,
+  id_driver_trips INT NOT NULL,
   pending BOOLEAN DEFAULT true,
   completed_driver_trips BOOLEAN,
   FOREIGN KEY (user_id) REFERENCES users (user_id),
@@ -56,12 +57,6 @@ CREATE TABLE messages (
 
 -- psql -d blueocean -f ./backend/database/schema.sql
 
-INSERT INTO users( username,password)
-VALUES ('hotdog', 'abc');
-INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
-VALUES (3,'portland', 'san diego', '2019-07-12 07:30:20-07');
-INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
-VALUES (2, 2, 3, 'hotdog sent this to person','2019-07-31 06:30:20-07');
 
 INSERT INTO users( username,password)
 VALUES ('MrFripple', '123');
@@ -71,3 +66,10 @@ INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
 VALUES (1,'Las Vegas', 'Denver', '2017-03-31 09:30:20-07');
 INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
 VALUES (1, 2,1, 'Mrfripple sent this to person','2017-03-31 09:30:20-07');
+
+INSERT INTO users( username,password)
+VALUES ('hotdog', 'abc');
+INSERT INTO driver_trips(user_id,start_address,end_address,start_time)
+VALUES (3,'portland', 'san diego', '2019-07-12 07:30:20-07');
+INSERT INTO messages(id_driver_trips,message_sender,message_recepient,message_body,message_time)
+VALUES (2, 2, 3, 'hotdog sent this to person','2019-07-31 06:30:20-07');

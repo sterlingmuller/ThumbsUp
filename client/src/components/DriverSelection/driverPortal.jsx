@@ -3,6 +3,7 @@ import {MainContext} from '../../contexts/MainContext.js';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
 export const DriverPortal = () => {
   const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
@@ -10,8 +11,8 @@ export const DriverPortal = () => {
  const [upcomingRides, setUpcomingRides] = useState([]);
 
  const getUpcomingRides = () => {
-  axios.get(`/drivers?user_id=${currentUser.userId}`)
-  // axios.get(`/drivers?user_id=1`)
+  // axios.get(`/drivers?user_id=${currentUser.userId}`)
+  axios.get(`/drivers?user_id=1`)
   .then ( ({data}) => {
     setUpcomingRides(data);
   })
@@ -21,17 +22,17 @@ export const DriverPortal = () => {
    getUpcomingRides()
  }, [])
 
-function AddTripClick () {
-  setCurrentPage('driverAddTrip');
-}
+// function AddTripClick () {
+//   setCurrentPage('driverAddTrip');
+// }
 
-const TripHistoryClick = () => {
-  setCurrentPage('tripHistory');
-}
+// const TripHistoryClick = () => {
+//   setCurrentPage('tripHistory');
+// }
 
 function TripDetailsClick (id) {
   setSelectedTrip({id});
-  setCurrentPage('driverTripSelection');
+  // setCurrentPage('driverTripSelection');
 }
 
 const RideCompleteClick = (id) => {
@@ -60,6 +61,8 @@ function CancelRideClick (id) {
               return (<div key={ride.id}>
 
                 <Card style={{alignItems: 'center'}}>
+
+                  <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img>
                   <div className="card-body" onClick={() => TripDetailsClick(ride.id)}>
                     <div className="card-title">{ride.start_address} to {ride.end_address}</div>
                     <div className="card-text">Departing at: {ride.start_time}</div>
@@ -73,8 +76,12 @@ function CancelRideClick (id) {
           </Card>
 
         </div>
-          <Button  className="col-sm" onClick={(e) => AddTripClick(e)}> Add Trip </Button>
-          <Button className="col-sm" onClick={(e) => TripHistoryClick(e)}> Trip History </Button>
+          <Link to="/driverAddTrip">
+            <Button  className="col-sm" > Add Trip </Button>
+          </Link>
+          <Link to="/tripHistory">
+            <Button className="col-sm" > Trip History </Button>
+          </Link>
       </div>
     </div>
   );
