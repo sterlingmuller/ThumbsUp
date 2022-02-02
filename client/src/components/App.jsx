@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext} from 'react';
-import axios from 'axios';
-import {MainContext} from '../contexts/MainContext.js'
+import React, { useState, useEffect, useContext } from 'react';
+import RouteComponent from '../RouteComponent.jsx';
+import { MainContext } from '../contexts/MainContext.js'
 import { SiteNavigator } from './siteNavigator.jsx';
 import { NewUser } from './LoginAndSelection/newUser.jsx';
 import { Login } from './LoginAndSelection/login.jsx';
@@ -21,55 +21,54 @@ import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHist
 import { TripHistoryDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
 import { PostTrip } from './RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 
+
 const App = () => {
-    const [userId, setUserId] = useState(null);
-    const [currentUser, setCurrentUser] = useState(null);
-    const [currentPage, setCurrentPage] = useState('siteNavigator');
-    const [selectedTrip, setSelectedTrip] = useState(null);
-    const [siteMap, setSiteMap] = useState(
-      { 'siteNavigator' : <SiteNavigator />,
-        'login'         : <Login />,
-        'newUser'       : <NewUser />,
-        'riderOrDriver' : <RiderOrDriverSelection/>,
-        'driverAddTrip' : <DriverAddTrip />,
-        'driverTripHistory' : <DriverTripHistory />,
-        'driverTripSelection' : <DriverTripSelection/>,
-        'driverPortal'    : <DriverPortal />,
-        'riderSearch'     : <RiderSearch />,
-        'saveMeASeat'     : <SaveMeASeat />,
-        'riderPaymentMethods' : <RiderPaymentMethods />,
-        'riderQuestionAndComments' : <RiderQuestionAndComments />,
-        'riderUpcomingTripDetails': <RiderUpcomingTripDetails />,
-        'tripHistory': <TripHistory />,
-        'riderUpcomingTrips': <RiderUpcomingTrips />,
-        'riderMenu'       : <RiderMenu />,
-        'riderPortal'     : <RiderPortal />,
-        'tripHistoryDetials': <TripHistoryDetails />,
-        'postTrip': <PostTrip />
+  
+  const [userId, setUserId] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [currentPage, setCurrentPage] = useState('siteNavigator');
+  const [selectedTrip, setSelectedTrip] = useState(null);
+  // const [siteMap, setSiteMap] = useState(
+  //   {
+  //     'siteNavigator': <SiteNavigator />,
+  //     'login': <Login />,
+  //     'newUser': <NewUser />,
+  //     'riderOrDriver': <RiderOrDriverSelection />,
+  //     'driverAddTrip': <DriverAddTrip />,
+  //     'driverTripHistory': <DriverTripHistory />,
+  //     'driverTripSelection': <DriverTripSelection />,
+  //     'driverPortal': <DriverPortal />,
+  //     'riderSearch': <RiderSearch />,
+  //     'saveMeASeat': <SaveMeASeat />,
+  //     'riderPaymentMethods': <RiderPaymentMethods />,
+  //     'riderQuestionAndComments': <RiderQuestionAndComments />,
+  //     'riderUpcomingTripDetails': <RiderUpcomingTripDetails />,
+  //     'tripHistory': <TripHistory />,
+  //     'riderUpcomingTrips': <RiderUpcomingTrips />,
+  //     'riderMenu': <RiderMenu />,
+  //     'riderPortal': <RiderPortal />,
+  //     'tripHistoryDetials': <TripHistoryDetails />,
+  //     'postTrip': <PostTrip />
 
-    });
-
-
-
-     return(
-       <div className="mainContainer">
-          <MainContext.Provider value={{
-                userId, setUserId,
-                currentPage, setCurrentPage,
-                siteMap, setSiteMap,
-                currentUser, setCurrentUser,
-                selectedTrip, setSelectedTrip
-              }}>
-                {
-                siteMap[currentPage]}
+  //   });
 
 
-
-
-
-          </MainContext.Provider>
-       </div>
-     );
+  return (
+    <div className="mainContainer">
+      <MainContext.Provider value={{
+        userId, setUserId,
+        currentPage, setCurrentPage,
+        // siteMap, setSiteMap,
+        currentUser, setCurrentUser,
+        selectedTrip, setSelectedTrip
+      }}>
+        
+        
+        {/* {siteMap[currentPage]} */}
+        <RouteComponent />
+      </MainContext.Provider>
+    </div>
+  );
 
 
 }

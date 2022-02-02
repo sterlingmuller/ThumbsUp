@@ -21,6 +21,10 @@ export const RiderSearch = () => {
     setRiderSearchDetails({...riderSearchDetails, [selected]:e.target.value})
   }
 
+  const handleAvailableRideClick = () => {
+    setCurrentPage('saveMeASeat');
+  }
+
   return (
 
     <div>
@@ -56,7 +60,7 @@ export const RiderSearch = () => {
       </div>
       <div>
         <h2>Available Rides</h2>
-        {/* map through matching queries */}
+        {/* map through matching queries  onClick={handleAvailableRideClick}*/}
         <button>Ride 1</button>
         <button>Ride 2</button>
       </div>
