@@ -3,6 +3,7 @@ import { MainContext } from '../../../contexts/MainContext.js'
 import { ChatRoom } from './chatRoom.jsx';
 import axios from 'axios';
 import moment from 'moment';
+import { Link } from "react-router-dom";
 
 export const DriverTiles = () => {
   const { currentPage, setCurrentPage, setUserId, userId, currentUser, selectedTrip } = useContext(MainContext);

@@ -103,8 +103,6 @@ export const ChatRoom = (props) => {
   return (
     !messages ? <div>loading...</div> :
       <div>
-
-
         <div style={{ border: 'grey solid 3px', borderRadius: '2rem', width: '40%', height: '25rem', overflow: 'auto', margin: 'auto' }}>
           {messages.map((oneMessage) => {
             let sideOfChat = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'right' : 'left';
