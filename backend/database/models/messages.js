@@ -26,7 +26,7 @@ module.exports = {
   },
 
   getRooms: function (callback, chatObject) {
-    let stmt = `SELECT DISTINCT m.message_sender FROM messages m WHERE id_driver_trips = $1;`;
+    let stmt = `SELECT DISTINCT m.message_sender FROM messages m LEFT JOIN driver_trips dt ON id_driver_trips = $1 WHERE dt.completed = false;`;
     let todos = [
       chatObject.tripId,
 
@@ -46,8 +46,8 @@ module.exports = {
 
   
   rejectRider: function(callback, chatObject) {
-    let stmt = `DELETE FROM messages m WHERE id_driver_trips = $1 AND message_sender = $2
-                DELETE FROM rider_trips r WHERE id_driver_trips = $1 AND user_id = $2;`;
+    let stmt = `DELETE FROM messages m WHERE id_driver_trips = $1 AND message_sender = $2;`;
+                //DELETE FROM rider_trips r WHERE id_driver_trips = $1 AND user_id = $2
     let todos = [
       chatObject.tripId,
       chatObject.sender_id

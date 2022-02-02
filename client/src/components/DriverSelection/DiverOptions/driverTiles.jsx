@@ -93,9 +93,10 @@ export const DriverTiles = () => {
               console.log('this is equal?, ', oneTile, currentUser.userId);
               return (
                 <div style={{ border: 'black solid 2px' }}> {oneTile.user_id == currentUser.userId ? null :
-                  <div onClick={() => { setCurrentChat(oneTile.user_id) }}><span >{oneTile.username}</span>
-                    <span style={{ float: 'right' }} onClick={() => {handleAccept(oneTile.user_id) }}>ACCEPT ICON </span>
-                    <span style={{ float: 'right' }} onClick={() => {handleReject(oneTile.user_id) }}>REJECT ICON</span>
+                  <div ><span onClick={() => { setCurrentChat(oneTile.user_id) }} >{oneTile.username}</span>
+                  {}
+                    <span style={{ border: 'green solid 1px',float: 'right' }} onClick={() => {handleAccept(oneTile.user_id) }}>ACCEPT ICON </span>
+                    <span style={{ border: 'green solid 1px',float: 'right' }} onClick={() => {handleReject(oneTile.user_id) }}>REJECT ICON</span>
                   </div>}</div>
               );
             })}

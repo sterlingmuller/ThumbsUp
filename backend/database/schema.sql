@@ -1,6 +1,6 @@
 -- DROP DATABASE IF EXISTS blueocean;
 -- CREATE DATABASE blueocean;
-\c blueocean;
+-- \c blueocean;
 
 -- User table
 CREATE TABLE users (
