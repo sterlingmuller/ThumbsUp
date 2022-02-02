@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { MainContext } from '../../../../contexts/MainContext.js';
+import { MainContext } from '../contexts/MainContext.js';
 import axios from 'axios';
 import { TripHistoryDetails } from './tripHistoryDetails.jsx';
 

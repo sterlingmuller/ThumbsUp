@@ -10,12 +10,12 @@ import { DriverPortal } from './components/DriverSelection/driverPortal.jsx';
 import { RiderSearch } from './components/RiderSelection/NewRide/riderSearch.jsx';
 import { SaveMeASeat } from './components/RiderSelection/NewRide/saveMeASeat.jsx';
 import { RiderUpcomingTripDetails } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTripDetails.jsx';
-import { TripHistory } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/tripHistory.jsx';
+import { TripHistory } from './components/tripHistory.jsx';
 import { RiderUpcomingTrips } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './components/RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './components/RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './components/DriverSelection/DiverOptions/driverTripHistory.jsx';
-import { TripHistoryDetails } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
+import { TripHistoryDetails } from './components/tripHistoryDetails.jsx';
 import { PostTrip } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 
 const RouteComponent = () => {

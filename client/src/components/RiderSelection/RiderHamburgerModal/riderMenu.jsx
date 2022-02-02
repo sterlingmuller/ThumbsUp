@@ -8,7 +8,7 @@ export const RiderMenu = () => {
   const navigate = useNavigate();
   return (
     <div className='siteNavigatorSquare'>
-      <div>{currentUser.username}</div>
+      <h1>{currentUser.username}</h1>
       {/* <span>{currentUser.rating}</span> */}
       <div onClick={() => navigate('/riderUpcomingTrips')}>My upcoming trips</div>
       <div onClick={() => navigate('/tripHistory')}>My trip history</div>
