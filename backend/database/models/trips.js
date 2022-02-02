@@ -34,7 +34,7 @@ module.exports = {
 
   getDriverInfo: function (trip_id, callback) {
     let queryStr = `
-    SELECT u.user_id, username, profile_picture
+    SELECT u.user_id, username, profile_picture, dt.start_address, dt.end_address, dt.start_time
     FROM users u
     INNER JOIN driver_trips dt
     ON u.user_id = dt.user_id
