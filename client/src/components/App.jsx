@@ -10,20 +10,18 @@ import { DriverTripSelection } from './DriverSelection/DiverOptions/driverTripSe
 import { DriverPortal } from './DriverSelection/driverPortal.jsx';
 import { RiderSearch } from './RiderSelection/NewRide/riderSearch.jsx';
 import { SaveMeASeat } from './RiderSelection/NewRide/saveMeASeat.jsx';
-import { RiderPaymentMethods } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderPaymentMethods.jsx';
-import { RiderQuestionAndComments } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderQuestionAndComments.jsx';
 import { RiderUpcomingTripDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTripDetails.jsx';
-import { TripHistory } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistory.jsx';
+import { TripHistory } from './tripHistory.jsx';
 import { RiderUpcomingTrips } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHistory.jsx';
-import { TripHistoryDetails } from './RiderSelection/RiderHamburgerModal/MenuOptions/tripHistoryDetails.jsx';
+import { TripHistoryDetails } from './tripHistoryDetails.jsx';
 import { PostTrip } from './RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 
 
 const App = () => {
-  
+
   const [userId, setUserId] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentPage, setCurrentPage] = useState('siteNavigator');
@@ -62,8 +60,8 @@ const App = () => {
         currentUser, setCurrentUser,
         selectedTrip, setSelectedTrip
       }}>
-        
-        
+
+
         {/* {siteMap[currentPage]} */}
         <RouteComponent />
       </MainContext.Provider>

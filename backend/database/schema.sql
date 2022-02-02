@@ -104,6 +104,9 @@ VALUES (6, 7, false);
 INSERT INTO rider_trips (user_id, id_driver_trips, pending)
 VALUES (2, 8, false);
 
+INSERT INTO rider_trips (user_id, id_driver_trips, pending)
+VALUES (2, 7, false);
+
 -- completed trips table for ratings
 CREATE TABLE completed_trips (
   id SERIAL PRIMARY KEY,
@@ -199,6 +202,9 @@ VALUES (8, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
 INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
 VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
+
+INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
+VALUES (7, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
 -- end
 -- psql -d blueocean -f ./backend/database/schema.sql

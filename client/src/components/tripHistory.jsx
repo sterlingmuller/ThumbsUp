@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { MainContext } from '../../../../contexts/MainContext.js';
+import { MainContext } from '../contexts/MainContext.js';
 import axios from 'axios';
 import { TripHistoryDetails } from './tripHistoryDetails.jsx';
+import { Card, ListGroup } from 'react-bootstrap';
 
 
 export const TripHistory = () => {
-  const { setCurrentPage, currentUser } = useContext(MainContext);
+  const { currentUser } = useContext(MainContext);
   const[prevTrips, setPrevTrips] = useState([]);
   const { userId, usertype } = currentUser;
 
@@ -19,15 +20,12 @@ export const TripHistory = () => {
   }, [])
 
   return (
-    <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='siteNavigatorSquare' >
-        Trip History
-        <ul>
-          {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}
-        </ul>
-      </div>
-    </div>
+    <Card>
+      <Card.Title>Trip History</Card.Title>
+      <ListGroup>
+        {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}
+      </ListGroup>
+    </Card>
   );
 
 }
