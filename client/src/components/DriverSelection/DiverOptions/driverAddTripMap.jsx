@@ -60,7 +60,7 @@ function DriverTripMap(props) {
     axios.post('/AddDriverTrip', {
       start_address: directionsResult.request.origin.query,
       end_address: directionsResult.request.destination.query,
-      start_time: directionsResult.request.drivingOptions.departureTime,
+      start_time: "2022-06-14T00:00",//directionsResult.request.drivingOptions.departureTime,
       user_id: currentUser.userId
     })
       .then((response) => {
@@ -135,7 +135,7 @@ function DriverTripMap(props) {
           </StandaloneSearchBox>
         </GoogleMap>
         <button onClick={renderDirections}>Get Directions</button>
-        <button onClick={null}>Add Trip</button>
+        <button onClick={addTrip}>Add Trip</button>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"
