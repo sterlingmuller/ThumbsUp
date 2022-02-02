@@ -22,6 +22,11 @@ module.exports = {
       "crypto": false
     }
   },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true
+ },
   module: {
     rules: [
       {
