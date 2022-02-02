@@ -11,8 +11,8 @@ export const DriverPortal = () => {
  const [upcomingRides, setUpcomingRides] = useState([]);
 
  const getUpcomingRides = () => {
-  // axios.get(`/drivers?user_id=${currentUser.userId}`)
-  axios.get(`/drivers?user_id=1`)
+  axios.get(`/drivers?user_id=${currentUser.userId}`)
+  // axios.get(`/drivers?user_id=1`)
   .then ( ({data}) => {
     setUpcomingRides(data);
   })
@@ -62,7 +62,7 @@ function CancelRideClick (id) {
 
                 <Card style={{alignItems: 'center'}}>
 
-                  <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img>
+                  {/* <img className="card-img-top" src={require ("/Users/style/HackReactor/BlueOcean/client/dist/New.png")} alt="No new messages"></img> */}
                   <div className="card-body" onClick={() => TripDetailsClick(ride.id)}>
                     <div className="card-title">{ride.start_address} to {ride.end_address}</div>
                     <div className="card-text">Departing at: {ride.start_time}</div>
