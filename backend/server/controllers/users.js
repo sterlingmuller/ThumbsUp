@@ -1,4 +1,5 @@
 const users = require("../../database/models/users.js");
+const {pool} = require('../../database/index.js')
 
 module.exports = {
   checkLogin: function (req, res) {
@@ -47,17 +48,27 @@ module.exports = {
   createUser: function (req, res) {
     let { username, password, profile_picture } = req.body;
     profile_picture = profile_picture || "";
-    console.log(username, password);
+    if (username.length < 2 || password.length < 2) {
+      res.send('Username and Password must be at least 3 characters long');
+      return;
+    }
     console.log("User Creation attempt");
-    const callback = (err, result) => {
+    pool.query(`SELECT * from users where username = ($1)`, [username], (err, data) => {
       if (err) {
-        console.log(err.detail);
-        res.send(err.detail);
-        return;
+        console.log(err)
+        res.send(err)
       }
-      console.log("Created Account");
-      res.send("Created Account");
-    };
-    users.newUserCreation(callback, username, password, profile_picture);
+      if (data.rows.length) {
+        res.send('Username already taken')
+      } else if (!data.rows.length) {
+        pool.query(`INSERT INTO users (username, password, profile_picture) VALUES ($1, $2, $3)`, [username, password, profile_picture], (err, data2) => {
+          if (err) {
+            console.log(err)
+            res.send(err)
+          }
+          res.send('Created Account');
+        })
+      }
+    })
   },
 };
