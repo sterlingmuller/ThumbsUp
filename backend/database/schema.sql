@@ -1,6 +1,6 @@
 -- DROP DATABASE IF EXISTS blueocean;
 -- CREATE DATABASE blueocean;
-\c blueocean;
+-- \c blueocean;
 
 -- User table
 CREATE TABLE users (
@@ -32,12 +32,13 @@ VALUES ('Stan', 'P@ssword123', '');
 -- driver trips table
 CREATE TABLE driver_trips (
   id SERIAL PRIMARY KEY,
-  user_id INT,
+  user_id INT NOT NULL,
   start_address VARCHAR(500) NOT NULL,
   end_address VARCHAR(500) NOT NULL,
   start_time TIMESTAMP NOT NULL,
   completed BOOLEAN DEFAULT false,
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  FOREIGN KEY (user_id)
+  REFERENCES users(user_id)
 );
 
 -- driver trips dummy data
@@ -68,13 +69,11 @@ VALUES (3, 'Atlanta, GA', 'Topeka, KS', '2017-06-12T08:30', false);
 -- rider trips table
 CREATE TABLE rider_trips (
   id SERIAL PRIMARY KEY,
-  user_id INT,
-  id_driver_trips INT,
+  user_id INT NOT NULL,
+  id_driver_trips INT NOT NULL,
   pending BOOLEAN DEFAULT true,
-  -- completed_driver_trips BOOLEAN,
   FOREIGN KEY (user_id) REFERENCES users (user_id),
-  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips (id)
-  -- FOREIGN KEY (completed_driver_trips) REFERENCES driver_trips (completed)
+  FOREIGN KEY (id_driver_trips) REFERENCES driver_trips (id) ON DELETE CASCADE
 );
 
 -- rider trips dummy data
@@ -142,6 +141,7 @@ CREATE TABLE messages (
   message_sender INT,
   message_recepient INT,
   message_body VARCHAR(500),
+  message_read BOOLEAN DEFAULT false,
   message_time TIMESTAMP,
   FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id) ON DELETE CASCADE,
   FOREIGN KEY (message_sender) REFERENCES users(user_id),
@@ -208,3 +208,4 @@ VALUES (7, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
 -- end
 -- psql -d blueocean -f ./backend/database/schema.sql
+-- CREATE EXTENSION pg_trgm;

@@ -9,6 +9,8 @@ router.delete('/messagesReject', messages.rejectRider);
 router.post('/messagesAccept', messages.acceptRider);
 router.get('/messagesChatRooms', messages.getRooms);
 router.post('/messages', messages.post);
+router.get('/messagesDriveInfo', messages.getDriveInfo);
+
   //users
 router.get('/messagesUsers', messages.getUser);
 
@@ -19,14 +21,20 @@ const local = require('./strategies/local.js');
 router.post('/usersCreate', users.createUser)
 router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
 // Neil
-
+const searchTrips = require('./controllers/searchTrip.js');
+router.get('/searchTrip', searchTrips.getRiderTrips);
 // Sterling
 const drivers = require('./controllers/drivers.js')
-router.get('/drivers', drivers.getTrips);
+const newMessage = require('./controllers/newMessage.js')
+router.get('/drivers', drivers.getUpcomingTrips);
+router.put('/drivers', drivers.markCompleted);
+router.delete('/drivers', drivers.cancelTrip);
+router.get('/read', newMessage.checkStatus);
 
 // Ezra
 const addTrip = require('./controllers/addTrip.js');
 router.post('/AddDriverTrip', addTrip.trip);
+router.get('/specificTrip', addTrip.specificTrip);
 
 // Mitchell
 const trips = require('./controllers/trips.js')

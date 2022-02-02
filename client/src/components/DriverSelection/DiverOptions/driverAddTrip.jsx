@@ -10,6 +10,7 @@ export const DriverAddTrip = () => {
 
   return (
     <div>
+      <Link to="/driverPortal"><div>Go To Driver Portal</div></Link>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='siteNavigatorSquare' >
         This is {currentPage} make it more awesomer!!!
