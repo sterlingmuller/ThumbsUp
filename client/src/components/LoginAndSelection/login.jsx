@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js'
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
@@ -10,10 +11,11 @@ import "./Login.css";
 
 export const Login = () => {
   const { currentPage, setCurrentPage, setUserId, setCurrentUser } = useContext(MainContext);
-  console.log(useContext(MainContext));
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
+
+  const navigate = useNavigate();
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -28,13 +30,13 @@ export const Login = () => {
     axios
       .post('/login', payload)
       .then((data) => {
-        console.log(data)
         if (data.status === 200) {
           setCurrentUser(data.data);
           alert('Successfully Logged In');
-          setCurrentPage('riderOrDriver');
+          navigate('/riderOrDriver');
         }
-        if (data.status == 401) {
+        else {
+          console.log('failed')
           alert('Invalid username/password combination');
         }
       })
@@ -67,7 +69,7 @@ export const Login = () => {
           <Button variant="primary" type="submit" disabled={!validateForm()}>
             Login
           </Button>{' '}
-          <Button variant="secondary" type="button" onClick={() => { setCurrentPage('newUser') }} >
+          <Button variant="secondary" type="button" onClick={() => { navigate('/newUser') }} >
             Create Account
           </Button>{' '}
           </>
@@ -79,7 +81,6 @@ export const Login = () => {
   return (
     <div className="LoginAndSelection">
       <h1>Thumbs Up</h1>
-      <div className='backToMainNav' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       {loginForm()}
     </div>
   );
