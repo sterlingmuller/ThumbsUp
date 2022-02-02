@@ -138,6 +138,7 @@ CREATE TABLE messages (
   message_sender INT,
   message_recepient INT,
   message_body VARCHAR(500),
+  message_read BOOLEAN DEFAULT false,
   message_time TIMESTAMP,
   FOREIGN KEY (id_driver_trips) REFERENCES driver_trips(id) ON DELETE CASCADE,
   FOREIGN KEY (message_sender) REFERENCES users(user_id),

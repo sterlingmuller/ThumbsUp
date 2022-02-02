@@ -18,8 +18,9 @@ export const DriverTripSelection = () => {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div>MAP COMPONENT</div>
       <div >
+        {console.log('user type:::', currentUser.usertype)};
         { currentUser.usertype === 'driver'  ? <DriverTiles /> : <ChatRoom />}
-        
+
       </div>
     </div>
   );
