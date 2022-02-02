@@ -202,3 +202,4 @@ VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
 
 -- end
 -- psql -d blueocean -f ./backend/database/schema.sql
+-- CREATE EXTENSION pg_trgm;
