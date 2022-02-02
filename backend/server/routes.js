@@ -10,8 +10,9 @@ router.post('/messages', messages.post);
 // Prith
 const users = require('./controllers/users.js');
 const passport = require('passport');
+const local = require('./strategies/local.js');
 router.post('/usersCreate', users.createUser)
-router.post('/login', passport.authenticate('local'), users.checkLogin);
+router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
 // Neil
 
 // Sterling

@@ -1,6 +1,7 @@
 const LocalStrategy = require("passport-local");
 const passport = require("passport");
 const { pool } = require("../../database/index.js");
+const users = require('../controllers/users.js')
 
 passport.serializeUser((user, done) => {
   done(null, user.username);
@@ -24,7 +25,6 @@ passport.use(
         `SELECT * from users where username = ($1)`,
         [username]
       );
-      console.log(result);
       if (result.rows.length === 0) {
         done(null, false);
       } else {

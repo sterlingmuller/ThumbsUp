@@ -5,7 +5,6 @@ const path = require('path');
 const passport = require('passport');
 const LocalStrategy = require('passport-local')
 const local = require('./strategies/local.js');
-const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 
@@ -19,14 +18,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
 app.use(session({
-  secret: 'some secret',
-  cookie: {maxAge: 30000},
-  saveUninitialized: true,
-
-}))
-
-
-
+  secret: 'keyboard cat',
+  cookie: {maxAge: 8640000},
+  saveUninitialized: false,
+  resave: false,
+}));
 // Set up routes
 app.use(router);
 

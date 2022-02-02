@@ -32,8 +32,6 @@ export const Login = () => {
           setCurrentUser(data.data);
           alert('Successfully Logged In');
           setCurrentPage('riderOrDriver');
-        } else {
-          alert('Invalid login attempt!')
         }
         if (data.status == 401) {
           alert('Invalid username/password combination');
