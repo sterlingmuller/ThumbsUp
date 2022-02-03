@@ -1,15 +1,17 @@
-@media all and (min-width: 480px) {
-  .Login {
-    padding: 60px 0;
-    justify-content: center;
+.Login {
+  justify-content: center;
+  margin: 0 auto;
+  padding: 4em;
+  max-width: 320px;
+  margin-top: 10%;
+  background-color: #FA991C;
 
-  }
-
-  .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
 }
+
+/* .Login form {
+  margin: 0 auto;
+  max-width: 320px;
+} */
 
 .LoginAndSelection {
   min-height: 100vh;
