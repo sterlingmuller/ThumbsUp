@@ -5,6 +5,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import './Rider.css';
 import { Button } from "react-bootstrap";
+import { Offcanvas } from 'react-bootstrap';
+import { RiderMenu } from './RiderHamburgerModal/riderMenu.jsx';
 
 
 
@@ -13,6 +15,11 @@ export const RiderPortal = () => {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const newLat = position.coords.latitude;
@@ -46,7 +53,11 @@ export const RiderPortal = () => {
   return (
     <div className="rider-portal-container">
 
-      <GiHamburgerMenu onClick={()=>navigate('/riderMenu')} />
+      <GiHamburgerMenu onClick={handleShow} />
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <RiderMenu />
+      </Offcanvas>
 
       <LoadScript
         googleMapsApiKey={process.env.MAPS_API_KEY}
