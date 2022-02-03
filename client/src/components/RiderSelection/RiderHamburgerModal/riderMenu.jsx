@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js';
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from 'react-bootstrap';
+// import '../Rider.css';
 
 
 export const RiderMenu = () => {
@@ -13,8 +14,8 @@ export const RiderMenu = () => {
         <Offcanvas.Title>{currentUser.username}</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <div onClick={() => navigate('/riderUpcomingTrips')}>My upcoming trips</div>
-        <div onClick={() => navigate('/tripHistory')}>My trip history</div>
+        <div className='offcanvasBody' onClick={() => navigate('/riderUpcomingTrips')}>My upcoming trips</div>
+        <div className='offcanvasBody' onClick={() => navigate('/tripHistory')}>My trip history</div>
       </Offcanvas.Body>
     </>
   );
