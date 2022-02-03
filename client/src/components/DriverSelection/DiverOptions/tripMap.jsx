@@ -36,7 +36,7 @@ function TripMap(props) {
   }, [directionsRequest])
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: '',
+    googleMapsApiKey: process.env.MAPS_API_KEY,
     libraries: librariesArray
   });
 
