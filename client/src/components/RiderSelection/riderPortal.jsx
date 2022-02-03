@@ -4,6 +4,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import './Rider.css';
+import { Button } from "react-bootstrap";
 
 
 
@@ -62,7 +63,7 @@ export const RiderPortal = () => {
       </LoadScript>
 
       <Link to="/riderSearch">
-        <button onClick={handleClick}>New Ride</button>
+        <Button variant="primary" onClick={handleClick}>New Ride</Button>
       </Link>
     </div>
   );
