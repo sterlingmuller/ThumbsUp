@@ -32,7 +32,6 @@ export const Login = () => {
       .then((data) => {
         if (data.status === 200) {
           setCurrentUser(data.data);
-          alert('Successfully Logged In');
           navigate('/riderOrDriver');
         }
         else {
