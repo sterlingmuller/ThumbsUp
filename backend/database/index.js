@@ -3,13 +3,13 @@ require('dotenv').config();
 
 
 const pool = new Pool ({
-  user: process.env.USER,
+  user: 'postgres', //process.env.USER,
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD
 });
 
-
+//repo stuff here for heroku
 pool.connect(err => {
   if (err) {
     console.error('connection error', err.stack)

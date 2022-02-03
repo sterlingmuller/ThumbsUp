@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
@@ -23,7 +24,8 @@ export const SaveMeASeat = () => {
         */}
       </div>
         <Link to= "/riderportal">
-      <div onClick = {() => {
+
+      <Button onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
                 .then(({ data }) => {
                   axios
@@ -34,12 +36,12 @@ export const SaveMeASeat = () => {
                    message_body: `Hey this is ${currentUser.username} can you save me a seat?`,
                    message_time: new Date(),
                   }).then(() => {
-                   alert('message sent!');//setCurrentPage
+                   alert('Request sent!');
                   });
                 })
 
 
-      }}> Save me a seat</div>  </Link>
+      }}> Save me a seat</Button>  </Link>
     </div>
 
   );
