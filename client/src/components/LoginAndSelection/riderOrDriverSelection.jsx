@@ -30,9 +30,23 @@ export const RiderOrDriverSelection = () => {
   return (
     <div className="riderOrDriver">
       <h1>Today I'd like to</h1>
-        <img className="rider" name="rider" onClick={becomeRider} src="https://us.123rf.com/450wm/zerolost/zerolost1908/zerolost190800298/128045676-hand-holds-smartphone-calling-taxi-service.jpg?ver=6"></img>
-        <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img>
+      <div className="RorDwrapper">
+        <div className="imgWrapper">
+          <h2>Ride</h2>
+          <img className="rider" name="rider" onClick={becomeRider} src="https://icon-library.com/images/carpool-icon/carpool-icon-28.jpg"></img>
+        </div>
+        <div className="imgWrapper">
+          <h2>Drive</h2>
+          <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img>
+        </div>
+      </div>
     </div>
   );
 
 }
+
+
+
+
+{/* <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img> */}
+

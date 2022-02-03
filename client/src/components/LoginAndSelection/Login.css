@@ -1,10 +1,10 @@
 .Login {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  padding: 4em;
-  max-width: 320px;
-  margin-top: 10%;
-  background-color: #FA991C;
+  align-items: center;
+  padding-top: 10%;
+  /* background-color: #FA991C; */
 
 }
 
@@ -19,16 +19,37 @@
 }
 
 .riderOrDriver {
+  position: relative;
   justify-content: center;
 }
 
 
 .riderOrDriver img {
   display: inline-block;
-  width: auto;
-  padding: 5em;
-  margin: 5em;
+  right: 10%;
+  width: 30rem;
+  margin: 2rem;
   cursor: pointer;
+  padding: 3rem;
+}
+
+.imgWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RorDwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .RorDwrapper {
+    flex-direction: column;
+  }
 }
 
 .backToMainNav {
