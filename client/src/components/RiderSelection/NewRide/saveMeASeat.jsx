@@ -1,15 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+=======
+import { Link, useNavigate } from "react-router-dom";
+import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
+import {Button} from 'react-bootstrap';
+>>>>>>> main
 
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const navigate = useNavigate();
+  const [trip, setTrip] = useState(undefined);
 
-  useEffect(() => {
-    //query to get current rides from db
-  }, [])
+  useEffect(()=>{
+    axios.get(`/specificTrip?trip_id=${selectedTrip}`)
+    .then((data)=>{
+      setTrip(data)
+    })
+    .catch((err)=>console.log(err))
+  },[currentUser])
 
   return (
     <div>
@@ -23,10 +35,17 @@ export const SaveMeASeat = () => {
 
         */}
       </div>
+<<<<<<< HEAD
         <Link to= "/riderportal">
 
       <Button onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
+=======
+      {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
+
+      <Button variant='primary' onClick = {() => {
+              axios.get(`/trips/driver?trip_id=${selectedTrip}`)
+>>>>>>> main
                 .then(({ data }) => {
                   axios
                   .post(`http://localhost:3000/messages`, {
@@ -36,12 +55,21 @@ export const SaveMeASeat = () => {
                    message_body: `Hey this is ${currentUser.username} can you save me a seat?`,
                    message_time: new Date(),
                   }).then(() => {
+<<<<<<< HEAD
                    alert('Request sent!');
                   });
                 })
 
 
       }}> Save me a seat</Button>  </Link>
+=======
+                   alert('message sent!');//setCurrentPage
+                  }).then(() => navigate('/riderPortal'))
+                })
+
+
+      }}> Save me a seat</Button>
+>>>>>>> main
     </div>
 
   );

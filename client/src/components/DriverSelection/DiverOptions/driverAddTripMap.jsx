@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox } from '@react-google-maps/api';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
+import {Button} from 'react-bootstrap';
 
 const librariesArray = ['places'];
 const containerStyle = {
@@ -62,7 +63,6 @@ function DriverTripMap(props) {
       user_id: currentUser.userId
     })
       .then((response) => {
-        console.log('AddTrip: ');
         alert('Trip Added!');
       })
       .catch((error) => {
@@ -71,14 +71,12 @@ function DriverTripMap(props) {
   }
 
   const addStartTime = (event) => {
-    console.log('Start Time Selection: ', event.target.value);
     setStartTime(event.target.value);
   }
 
   return (
     !isLoaded ? <div>Loading</div> :
       <div>
-        {console.log('Loading load script')}
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
@@ -87,9 +85,7 @@ function DriverTripMap(props) {
         >
           { /* Child components, such as markers, info windows, etc. */}
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
-          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult} onLoad={directionsRenderer => {
-            console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsResult)
-          }} />}
+          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
           <></>
           <StandaloneSearchBox
             onLoad={onStartLoad}
@@ -138,8 +134,8 @@ function DriverTripMap(props) {
             />
           </StandaloneSearchBox>
         </GoogleMap>
-        <button onClick={renderDirections}>Get Directions</button>
-        <button onClick={addTrip}>Add Trip</button>
+        <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
+        <Button variant='primary' onClick={addTrip}>Add Trip</Button>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"

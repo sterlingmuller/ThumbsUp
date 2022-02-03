@@ -3,6 +3,8 @@ import { MainContext } from '../../../contexts/MainContext.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from "moment";
+import "./Ride.css";
+import {Button} from 'react-bootstrap';
 
 
 
@@ -36,7 +38,7 @@ export const RiderSearch = () => {
 
   return (
 
-    <div>
+    <div className="rider-search-container">
       <div className='siteNavigatorSquare' >
         <h2>New Ride</h2>
         <form>
@@ -65,7 +67,7 @@ export const RiderSearch = () => {
           </label>
         </form>
 
-        <button onClick={handleClick}>Submit</button>
+        <Button varient="primary" onClick={handleClick}>Submit</Button>
 
 
       </div>

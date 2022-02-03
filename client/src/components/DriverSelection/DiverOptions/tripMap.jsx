@@ -31,10 +31,6 @@ function TripMap(props) {
          travelMode: 'DRIVING'
        });
 
-  useEffect(() => {
-    console.log('Use Effect Triggered')
-  }, [directionsRequest])
-
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.MAPS_API_KEY,
     libraries: librariesArray
@@ -42,7 +38,6 @@ function TripMap(props) {
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
-      console.log('DirectionsService API response: ', result);
       setDirections(result);
     }
   }
@@ -50,7 +45,6 @@ function TripMap(props) {
   return (
     !isLoaded ? <div>Loading</div> :
       <div>
-        {console.log('Loading load script', props.trip)}
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
@@ -59,9 +53,7 @@ function TripMap(props) {
         >
           { /* Child components, such as markers, info windows, etc. */}
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
-          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult} onLoad={() => {
-            console.log('DirectionsRenderer onLoad directionsResult: ', directionsResult)
-          }} />}
+          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
           <></>
         </GoogleMap>
       </div>

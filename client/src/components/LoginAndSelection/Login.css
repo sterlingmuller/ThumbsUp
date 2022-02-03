@@ -1,20 +1,55 @@
-@media all and (min-width: 480px) {
-  .Login {
-    padding: 60px 0;
-  }
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+  /* background-color: #FA991C; */
 
-  .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
 }
 
+/* .Login form {
+  margin: 0 auto;
+  max-width: 320px;
+} */
+
 .LoginAndSelection {
-  width: 100%;
+  min-height: 100vh;
+  background-color: #1c768F;
 }
 
 .riderOrDriver {
+  position: relative;
+  justify-content: center;
+}
 
+
+.riderOrDriver img {
+  display: inline-block;
+  right: 10%;
+  width: 30rem;
+  margin: 2rem;
+  cursor: pointer;
+  padding: 3rem;
+}
+
+.imgWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RorDwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .RorDwrapper {
+    flex-direction: column;
+  }
 }
 
 .backToMainNav {
@@ -31,3 +66,4 @@
 h1 {
   text-align: center;
 }
+

@@ -1,18 +1,45 @@
+/* Colors:
 
-.siteNavigator {
+Orange: #FA991C rgb(250, 153, 28)'
+Cream #FBF3F2
+Light Blue: #1C768F  'rgb(28, 118, 143)
+Dark Blue : #032539
+Wrapper:
   display: flex;
-  height: 35px;
-  top:20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-  margin:25px;
-  border: 5px solid black;
+*/
+
+html, body, #app {
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+  background-color: #1c768F;
+  color: #FBF3F2;
 }
 
 
-.siteNavigatorSquare{
-  justify-self: center;
-  margin-left: 5px;
-  min-height: 21px;
-  width: 195px;
-  border: 1px solid black;
+.btn-primary {
+  color: #FBF3F2!important;
+  background-color: #FA991C !important;
+  border-color: #FA991C!important;
 }
+
+.btn-secondary {
+  color: #FBF3F2!important;
+  background-color: #032539 !important;
+  border-color: #032539 !important;
+}
+/* Colors:
+
+Orange: #FA991C rgb(250, 153, 28)'
+Cream #FBF3F2
+Light Blue: #1C768F  'rgb(28, 118, 143)
+Dark Blue : #032539 */
