@@ -1,0 +1,28 @@
+.chatBubble {
+   max-width: 30em; 
+   border-radius: 1rem; 
+   padding: 4px; 
+   margin-top: 6px; 
+   margin:4px;
+}
+
+
+.chatBox {
+   border: grey solid 3px; 
+   border-radius: 2rem; 
+   height: 25rem; 
+   overflow: auto; 
+   min-width: 80%;
+}
+.bigDiv {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+} 
+.text-input{
+display:flex;
+flex-direction: row;
+justify-content: flex-end;
+min-width: 50%;
+}
