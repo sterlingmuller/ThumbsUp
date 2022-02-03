@@ -134,14 +134,14 @@ function DriverTripMap(props) {
             />
           </StandaloneSearchBox>
         </GoogleMap>
-        <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
-        <Button variant='primary' onClick={addTrip}>Add Trip</Button>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"
           min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
+        <br/>
+        <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
         {!directionsResult ? null :
-          <div>
+          <p>
             From: {' ' + directionsResult.request.origin.query}
             <br />
             To: {' ' + directionsResult.request.destination.query}
@@ -149,8 +149,9 @@ function DriverTripMap(props) {
             length:{' ' + directionsResult.routes[0].legs[0].distance.text}
             <br />
             duration:{' ' + directionsResult.routes[0].legs[0].duration.text}
-          </div>
+          </p>
         }
+        <Button variant='primary' onClick={addTrip}>Add Trip</Button>
       </div>
   )
 }
