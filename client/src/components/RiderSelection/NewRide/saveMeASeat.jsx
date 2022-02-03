@@ -2,15 +2,21 @@ import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-//import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
+import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
 
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    //query to get current rides from db
-  }, [])
+  const [trip, setTrip] = useState(undefined);
+
+  useEffect(()=>{
+    axios.get(`/specificTrip?trip_id=${selectedTrip}`)
+    .then((data)=>{
+      setTrip(data)
+    })
+    .catch((err)=>console.log(err))
+  },[currentUser])
 
   return (
     <div>
@@ -24,7 +30,7 @@ export const SaveMeASeat = () => {
 
         */}
       </div>
-      {/* {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>} */}
+      {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
 
       <Button variant='primary' onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)
