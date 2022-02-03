@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
-import { Link } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Button } from 'react-bootstrap';
+import './chatRoom.css';
 
 export const ChatRoom = (props) => {
-  const { currentPage, setCurrentPage, setUserId, userId, currentUser, selectedTrip } = useContext(MainContext);
+  const { currentUser, selectedTrip, currentChat,setCurrentChat } = useContext(MainContext);
   const [messages, setMessages] = useState(null);
   const [typedMessage, setTypedMessage] = useState('');
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -26,7 +29,7 @@ export const ChatRoom = (props) => {
     if (currentUser.usertype === 'driver') {
       passObj = {
         tripId: selectedTrip || 1,
-        sender_id: props.currentChatRoom
+        sender_id: currentChat
       }
     } else {
       passObj = {
@@ -102,30 +105,35 @@ export const ChatRoom = (props) => {
 
   return (
     !messages ? <div>loading...</div> :
-      <div>
-        <div style={{ border: 'grey solid 3px', borderRadius: '2rem', width: '40%', height: '25rem', overflow: 'auto', margin: 'auto' }}>
+      <div className = 'bigDiv'>
+        <IoMdArrowRoundBack onClick = {() => {
+            setCurrentChat(null)
+            navigate('/driverPortal');
+        }}/>
+
+        <div className='chatBox'>
           {messages.map((oneMessage) => {
             let sideOfChat = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'right' : 'left';
             let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.4)' : 'rgb(28, 118, 143,.4)';
             return (
               <div style={{ width: '100%', height: '3rem' }}>
-                <div style={{ border: `${colorBubble} solid 2px`, backgroundColor: `${colorBubble}`, width: 'auto', borderRadius: '1rem', float: sideOfChat, padding: '4px', marginTop: '6px', margin:'6px' }}> {oneMessage.message_body}</div>
+                <div className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat }}> {oneMessage.message_body}</div>
               </div>
             );
           })}
 
         </div>
         {currentUser.usertype === 'driver' && messages.length === 1 ?
-          <span style={{marginLeft: '21rem' }}>
-            <span style={{ border: 'green solid 1px' }} onClick={() => { handleAccept(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>ACCEPT Ride ICON </span>
+          <span >
+            <Button varient='primary'  onClick={() => { handleAccept(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>ACCEPT Ride ICON </Button>
             <Link to='driverPortal' >
-              <span style={{ border: 'green solid 1px' }} onClick={() => { handleReject(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>REJECT Ride ICON</span>
+              <Button varient='primary' onClick={() => { handleReject(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>REJECT Ride ICON</Button>
             </ Link>
             Accept the ride to chat!
           </span>
-          : <div style={{ float: 'right', marginRight: '3%', marginTop: '3%', width: '80%' }}>
-            <input style={{ width: '45%', marginLeft: '16rem' }} placeholder={`message here`} value={typedMessage} onChange={(e) => { handleTyping(e) }}></input>
-            <button onClick={() => { handleSend() }}>Send</button></div>}
+          : <div  className= 'text-input'>
+          <input  className= 'text-input' placeholder={`message here`} value={typedMessage} onChange={(e) => { handleTyping(e) }}></input>
+            <Button varient='primary' onClick={() => { handleSend() }}>Send</Button></div>}
       </div>
   );
 
