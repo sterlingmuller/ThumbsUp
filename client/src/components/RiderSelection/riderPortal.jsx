@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../contexts/MainContext.js';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Rider.css';
 
 
@@ -11,7 +11,7 @@ export const RiderPortal = () => {
   const { currentPage, setCurrentPage, selectedTrip, setSelectedTrip } = useContext(MainContext);
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const newLat = position.coords.latitude;
@@ -37,15 +37,15 @@ export const RiderPortal = () => {
 
   }
 
-  const handelHamburgerClick = () => {
-    setCurrentPage("riderMenu");
-  }
+  // const handelHamburgerClick = () => {
+  //   setCurrentPage("riderMenu");
+  // }
 
 
   return (
     <div className="rider-portal-container">
 
-      <GiHamburgerMenu onClick={handelHamburgerClick} />
+      <GiHamburgerMenu onClick={()=>navigate('/riderMenu')} />
 
       <LoadScript
         googleMapsApiKey={process.env.MAPS_API_KEY}
