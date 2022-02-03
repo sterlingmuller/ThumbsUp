@@ -50,7 +50,7 @@ return (
     />
   </Routes>
 
-  <div>
+  {/* <div>
           <nav
             style={{
               borderBottom: "solid 1px",
@@ -77,7 +77,7 @@ return (
             <Link to="/tripHistoryDetails">tripHistoryDetails</Link> |{" "}
             <Link to="/postTrip">postTrip</Link>
           </nav>
-        </div>
+        </div> */}
 </BrowserRouter>
 )
 }
