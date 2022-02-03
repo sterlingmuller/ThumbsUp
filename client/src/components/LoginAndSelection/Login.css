@@ -1,6 +1,8 @@
 @media all and (min-width: 480px) {
   .Login {
     padding: 60px 0;
+    justify-content: center;
+
   }
 
   .Login form {
@@ -10,11 +12,21 @@
 }
 
 .LoginAndSelection {
-  width: 100%;
+  min-height: 100vh;
+  background-color: #1c768F;
 }
 
 .riderOrDriver {
+  justify-content: center;
+}
 
+
+.riderOrDriver img {
+  display: inline-block;
+  width: auto;
+  padding: 5em;
+  margin: 5em;
+  cursor: pointer;
 }
 
 .backToMainNav {
@@ -31,3 +43,4 @@
 h1 {
   text-align: center;
 }
+

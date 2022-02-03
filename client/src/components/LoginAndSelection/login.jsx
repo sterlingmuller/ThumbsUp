@@ -44,6 +44,7 @@ export const Login = () => {
   function loginForm() {
     return (
       <div className="Login">
+        <h1>Thumbs Up</h1>
         <Form action="/login" onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>
@@ -79,7 +80,6 @@ export const Login = () => {
 
   return (
     <div className="LoginAndSelection">
-      <h1>Thumbs Up</h1>
       {loginForm()}
     </div>
   );
