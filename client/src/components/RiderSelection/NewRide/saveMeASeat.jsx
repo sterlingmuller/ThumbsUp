@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
-
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const navigate = useNavigate();
   const [trip, setTrip] = useState(undefined);
-
   useEffect(()=>{
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
     .then((data)=>{
@@ -19,7 +15,6 @@ export const SaveMeASeat = () => {
     })
     .catch((err)=>console.log(err))
   },[currentUser])
-
   return (
     <div>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
@@ -29,15 +24,9 @@ export const SaveMeASeat = () => {
           render map
           render custom message
           render button Save me a seat - sends either custom message or "Save me a seat to the driver"
-
         */}
       </div>
-        <Link to= "/riderportal">
-
-      <Button onClick = {() => {
-              axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
-
       <Button variant='primary' onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)
                 .then(({ data }) => {
@@ -49,19 +38,10 @@ export const SaveMeASeat = () => {
                    message_body: `Hey this is ${currentUser.username} can you save me a seat?`,
                    message_time: new Date(),
                   }).then(() => {
-                   alert('Request sent!');
-                  });
-                })
-
-
-      }}> Save me a seat</Button>  </Link>
                    alert('message sent!');//setCurrentPage
                   }).then(() => navigate('/riderPortal'))
                 })
-
-
       }}> Save me a seat</Button>
     </div>
-
   );
 }
