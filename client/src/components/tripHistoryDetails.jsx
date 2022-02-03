@@ -11,14 +11,20 @@ export const TripHistoryDetails = ({ trip }) => {
   const navigate = useNavigate();
 
   return (
-    <ListGroup.Item className='siteNavigatorSquare' action onClick={() => {
-      if (currentUser.usertype === 'rider') {
+    <>
+    {currentUser.usertype === 'rider'
+    ? <ListGroup.Item action onClick={() => {
         setSelectedTrip(driver_trip_id);
         navigate('/postTrip');
-      }
-    }}>
-      <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
-    </ListGroup.Item>
+      }}>
+        <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+      </ListGroup.Item>
+
+    : <ListGroup.Item>
+        <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+      </ListGroup.Item>
+    }
+    </>
   );
 
 }
