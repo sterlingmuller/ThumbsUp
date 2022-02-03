@@ -1,0 +1,7 @@
+.rider-search-container {
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
