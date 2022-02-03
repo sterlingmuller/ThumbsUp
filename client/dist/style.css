@@ -1,21 +1,97 @@
 /* Colors:
 
-Orange: #FA991C rgb(250, 153, 28)' 
+Orange: #FA991C rgb(250, 153, 28)'
 Cream #FBF3F2
 Light Blue: #1C768F  'rgb(28, 118, 143)
 Dark Blue : #032539 */
 
-html, body, #app {
+
+
+html, body {
   min-height: 100vh;
+}
+
+body {
+  height: 100vh;
+  display:grid;
+  justify-items: center;
+  align-items: center;
+
+    background-color:#1c768F;
+background-image:
+radial-gradient(circle at 100% 150%, #1c768F 24%, white 24%, white 28%, #1c768F 28%, #1c768F 36%, white 36%, white 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, #1c768F 24%, white 24%, white 28%, #1c768F 28%, #1c768F 36%, white 36%, white 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, white 10%, #1c768F 10%, #1c768F 23%, white 23%, white 30%, #1c768F 30%, #1c768F 43%, white 43%, white 50%, #1c768F 50%, #1c768F 63%, white 63%, white 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, white 5%, #1c768F 5%, #1c768F 15%, white 15%, white 20%, #1c768F 20%, #1c768F 29%, white 29%, white 34%, #1c768F 34%, #1c768F 44%, white 44%, white 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, white 5%, #1c768F 5%, #1c768F 15%, white 15%, white 20%, #1c768F 20%, #1c768F 29%, white 29%, white 34%, #1c768F 34%, #1c768F 44%, white 44%, white 49%, transparent 49%, transparent);
+background-size: 100px 50px;
+}
+
+.wrapperSlide {
+  overflow: hidden;
+  /* height: 90%;
+  width: 90%; */
+  height: 330px;
+  width: 560px;
+  border: 3px solid #272727;
+  bottom: 20%;
+}
+
+.wrapper {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+  height: 100%;
+  background-color: #1c768F;
+  color: #FBF3F2;
+}
+
+.sliding-background {
+  background: url("http://freehtmldesigns.com/wp-content/uploads/2017/09/CSS-Background-Pattern-No-Img.png") repeat-x;
+  background-size: contain;
+  height: 100%;
+  width: 1000%;
+  animation: slide 30s linear infinite;
+
+}
+
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1692px, 0, 0);
+  }
 }
 
 #app {
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 90%;
+  width: 80%;
+  height: 95%;
   background-color: #1c768F;
   color: #FBF3F2;
+  align-items: center;
+
+  /* background-color:#1c768F;
+background-image:
+radial-gradient(circle at 100% 150%, #1c768F 24%, white 24%, white 28%, #1c768F 28%, #1c768F 36%, white 36%, white 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, #1c768F 24%, white 24%, white 28%, #1c768F 28%, #1c768F 36%, white 36%, white 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, white 10%, #1c768F 10%, #1c768F 23%, white 23%, white 30%, #1c768F 30%, #1c768F 43%, white 43%, white 50%, #1c768F 50%, #1c768F 63%, white 63%, white 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, white 5%, #1c768F 5%, #1c768F 15%, white 15%, white 20%, #1c768F 20%, #1c768F 29%, white 29%, white 34%, #1c768F 34%, #1c768F 44%, white 44%, white 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, white 5%, #1c768F 5%, #1c768F 15%, white 15%, white 20%, #1c768F 20%, #1c768F 29%, white 29%, white 34%, #1c768F 34%, #1c768F 44%, white 44%, white 49%, transparent 49%, transparent);
+background-size: 100px 50px; */
+
+/* background: url("http://freehtmldesigns.com/wp-content/uploads/2017/09/CSS-Background-Pattern-No-Img.png") repeat-x;
+background-size: contain;
+height: 100%;
+width: 1000%;
+animation: slide 30s linear infinite; */
+
+
 }
 
 
@@ -32,7 +108,7 @@ html, body, #app {
 }
 /* Colors:
 
-Orange: #FA991C rgb(250, 153, 28)' 
+Orange: #FA991C rgb(250, 153, 28)'
 Cream #FBF3F2
 Light Blue: #1C768F  'rgb(28, 118, 143)
 Dark Blue : #032539 */
