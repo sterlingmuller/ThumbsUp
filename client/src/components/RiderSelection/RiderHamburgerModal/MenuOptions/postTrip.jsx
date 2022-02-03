@@ -5,12 +5,15 @@ import StarRatings from 'react-star-ratings';
 import { ChatRoom } from '../../../DriverSelection/DiverOptions/chatRoom';
 import { Button, Card } from 'react-bootstrap';
 import moment from 'moment';
+import { useNavigate } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const PostTrip = () => {
-  const { setCurrentPage, selectedTrip, currentUser } = useContext(MainContext);
+  const { selectedTrip, currentUser } = useContext(MainContext);
   const [rating, setRating] = useState(0);
   const [driver, setDriver] = useState({});
   const [rated, setRated] = useState(false)
+  const navigate = useNavigate();
 
   const changeRating = (newRating) => {
     setRating(newRating)
@@ -52,6 +55,7 @@ export const PostTrip = () => {
         {driver.start_address} - {driver.end_address} | {moment(driver.start_time).format('LLLL')}
       </Card.Header>
       <Card.Body>
+        <IoMdArrowRoundBack onClick={() => navigate('/tripHistory')}/>
         <Card.Title>Driver: {driver.username}</Card.Title>
         {rated
         ? <StarRatings
