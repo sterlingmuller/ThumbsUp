@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from "react-router-dom";
 import {FaExclamationCircle} from 'react-icons/fa'
 import moment from 'moment';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const DriverPortal = () => {
   const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
@@ -28,9 +29,6 @@ function TripDetailsClick (id) {
   console.log("Ive been clicked!");
   setSelectedTrip(id);
   navigate("/driverTripSelection");
-
-  // axios.put(`drivers/newMessage?trip_id=${id}`)
-  // .then(setSelectedTrip(id));
 }
 
 const RideCompleteClick = (id) => {
@@ -49,6 +47,9 @@ function CancelRideClick (id) {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='driverPortal' >
         <h1>Driver Portal</h1>
+        <IoMdArrowRoundBack onClick = {() => {
+            navigate('/riderOrDriver');
+        }}/>
         <div className="upcomingTrips">
           <h2>Upcoming Trips</h2>
 
