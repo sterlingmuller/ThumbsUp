@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-=======
 import { Link, useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
->>>>>>> main
 
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
