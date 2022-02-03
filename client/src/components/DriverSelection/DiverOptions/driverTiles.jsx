@@ -5,10 +5,11 @@ import axios from 'axios';
 import moment from 'moment';
 import { ListGroup } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 
 export const DriverTiles = () => {
-  const { currentUser, selectedTrip,currentChat, setCurrentChat } = useContext(MainContext);
+  const { currentUser, selectedTrip, currentChat, setCurrentChat } = useContext(MainContext);
   const [driverTiles, setDriverTiles] = useState(null);
   const [chatPartnerNameArr, setChatPartnerNameArr] = useState([]);
   const [driveInfo, setDriveInfo] = useState(null);
@@ -41,7 +42,7 @@ export const DriverTiles = () => {
         }
       }).then((results) => {
         setDriveInfo(results.data[0]);
-        })
+      })
 
   };
 
@@ -78,23 +79,26 @@ export const DriverTiles = () => {
 
   return (
     <div>
+      <IoMdArrowRoundBack className='backArrow' onClick={() => {
+        navigate('/driverPortal');
+      }} />
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
 
             <h1>{driveInfo.start_address} - {driveInfo.end_address} | {moment(driveInfo.start_time).format('LLLL')}</h1>
             <ListGroup action>
-            {chatPartnerNameArr.map((oneTile) => {
-              return (
-                <ListGroup.Item className = 'chatListItem'  onClick={() => { setCurrentChat(oneTile.user_id); navigate('/chatRoom'); }}>
-                <div > {oneTile.user_id == currentUser.userId ? null :
-                  <div > 
-                    <span   >{oneTile.username} </span>
+              {chatPartnerNameArr.map((oneTile) => {
+                if (oneTile.user_id == currentUser.userId) {
+                  return (null);
+                }
+                return (
+                  <ListGroup.Item className='chatListItem' onClick={() => { setCurrentChat(oneTile.user_id); navigate('/chatRoom'); }}>
+                    <span className='driverTile'  >{oneTile.username} </span>
                     <span >💬</span>
-                  </div>}</div>
                   </ ListGroup.Item>
-              );
-            })}
+                );
+              })}
             </ ListGroup>
           </div>}
     </div>

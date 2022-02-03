@@ -2,27 +2,63 @@
    max-width: 30em; 
    border-radius: 1rem; 
    padding: .3em; 
-   margin-top: .4em; 
-   margin:.1em;
+   margin-top: .7em; 
+   margin:.2em;
+   max-width: 80%;
+   word-break: break-all;
+  white-space: normal;
+}
+.oneChat{
+
+   height: 3rem; 
 }
 
-
 .chatBox {
-   border: grey solid 3px; 
-   border-radius: 2rem; 
+   /* border: grey solid 3px; 
+   border-radius: 2rem;  */
    height: 25rem; 
    overflow: auto; 
-   min-width: 80%;
+   padding: .5em;
 }
 .bigDiv {
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
+  
 } 
 .text-input{
+  margin-top: .3em;
 display:flex;
 flex-direction: row;
 justify-content: flex-end;
-min-width: 50%;
+min-width: 70%;
+}
+
+.chatListItem {
+  /* display:flex;
+  flex-wrap: wrap;
+  align-content: space-around; */
+  border-color: rgb(28, 118, 143,.4);
+}
+
+.list-group {
+  display:flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.backArrow{
+  font-size: 2.5em;
+}
+
+.reject-button{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: .5em;
+}
+
+.driverTile {
+font-size: 1.5em;
 }

@@ -35,6 +35,7 @@ module.exports = {
 
   acceptRider: function(callback, chatObject) {
     let stmt = `INSERT INTO rider_trips (user_id, id_driver_trips, pending) VALUES ($1, $2, $3 ) ;`;
+    //make rider trip 
     let todos = [
       chatObject.user_id,
       chatObject.id_driver_trips,

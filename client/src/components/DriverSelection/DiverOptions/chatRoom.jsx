@@ -106,9 +106,9 @@ export const ChatRoom = (props) => {
   return (
     !messages ? <div>loading...</div> :
       <div className = 'bigDiv'>
-        <IoMdArrowRoundBack onClick = {() => {
+        <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
             setCurrentChat(null)
-            navigate('/driverPortal');
+            navigate('/driverTripSelection');
         }}/>
 
         <div className='chatBox'>
@@ -116,20 +116,20 @@ export const ChatRoom = (props) => {
             let sideOfChat = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'right' : 'left';
             let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.4)' : 'rgb(28, 118, 143,.4)';
             return (
-              <div style={{ width: '100%', height: '3rem' }}>
-                <div className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat }}> {oneMessage.message_body}</div>
+              <div className = 'oneChat' >
+                <p className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat }}> {oneMessage.message_body}</p>
               </div>
             );
           })}
 
         </div>
         {currentUser.usertype === 'driver' && messages.length === 1 ?
-          <span >
-            <Button varient='primary'  onClick={() => { handleAccept(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>ACCEPT Ride ICON </Button>
-            <Link to='driverPortal' >
-              <Button varient='primary' onClick={() => { handleReject(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>REJECT Ride ICON</Button>
+          <span className= 'reject-button'>
+            <Button className= 'reject-button' varient='primary'  onClick={() => { handleAccept(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>ACCEPT Ride ICON </Button>
+            <Link to='/driverTripSelection' >
+              <Button className= 'reject-button' varient='secondary' onClick={() => { handleReject(Number(currentUser.userId) === Number(messages[0].message_sender) ? Number(currentUser.userId) : messages[0].message_sender) }}>REJECT Ride ICON</Button>
             </ Link>
-            Accept the ride to chat!
+                           Accept the ride to chat!
           </span>
           : <div  className= 'text-input'>
           <input  className= 'text-input' placeholder={`message here`} value={typedMessage} onChange={(e) => { handleTyping(e) }}></input>

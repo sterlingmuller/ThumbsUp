@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../contexts/MainContext.js'
+import React, { useState, useEffect, useContext } from "react";
+import { MainContext } from "../../contexts/MainContext.js";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import axios from 'axios';
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-
+import axios from "axios";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 export const NewUser = () => {
-
   const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function validateForm() {
     return username.length > 2 && password.length > 2;
@@ -23,24 +20,23 @@ export const NewUser = () => {
   function handleSubmit(event) {
     event.preventDefault();
     const payload = {
-      'username': username,
-      'password': password
-    }
-    axios
-      .post('/usersCreate', payload)
-      .then((data) => {
-        if (data.data === 'Created Account') {
-          alert(data.data);
-          navigate('/login')
-        } else {
-          alert(data.data);
-        }
-      })
+      username: username,
+      password: password,
+    };
+    axios.post("/usersCreate", payload).then((data) => {
+      if (data.data === "Created Account") {
+        alert(data.data);
+        navigate("/login");
+      } else {
+        alert(data.data);
+      }
+    });
   }
 
   function createUser() {
     return (
       <div className="Login">
+        <h1>Thumbs Up</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>
@@ -49,7 +45,7 @@ export const NewUser = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required = {true}
+              required={true}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">
@@ -62,24 +58,27 @@ export const NewUser = () => {
             />
           </Form.Group>
           <>
-          <Button variant="primary" type="submit" disabled={!validateForm()}>
-            Create Account
-          </Button>{' '}
-          <Button variant="secondary" type="button" onClick={() => {navigate('/login')}}>
-            Already Have an Account? Log In...
-          </Button>{' '}
+            <Button variant="primary" type="submit" disabled={!validateForm()}>
+              Create Account
+            </Button>{" "}
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Already Have an Account? Log In...
+            </Button>{" "}
           </>
         </Form>
       </div>
     );
-
   }
 
   return (
     <div className="newUser">
-      <h1>Thumbs Up</h1>
       {createUser()}
     </div>
   );
-
-}
+};
