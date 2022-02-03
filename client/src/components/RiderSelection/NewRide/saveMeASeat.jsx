@@ -4,12 +4,14 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8768ca794c958754623e17cb7d023dbebd3357f
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const navigate = useNavigate();
   const [trip, setTrip] = useState(undefined);
-
   useEffect(()=>{
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
     .then((data)=>{
@@ -17,7 +19,6 @@ export const SaveMeASeat = () => {
     })
     .catch((err)=>console.log(err))
   },[currentUser])
-
   return (
     <div>
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
@@ -27,11 +28,9 @@ export const SaveMeASeat = () => {
           render map
           render custom message
           render button Save me a seat - sends either custom message or "Save me a seat to the driver"
-
         */}
       </div>
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
-
       <Button variant='primary' onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)
                 .then(({ data }) => {
@@ -46,10 +45,7 @@ export const SaveMeASeat = () => {
                    alert('message sent!');//setCurrentPage
                   }).then(() => navigate('/riderPortal'))
                 })
-
-
       }}> Save me a seat</Button>
     </div>
-
   );
 }
