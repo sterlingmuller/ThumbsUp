@@ -32,17 +32,14 @@ export const SaveMeASeat = () => {
 
         */}
       </div>
-<<<<<<< HEAD
         <Link to= "/riderportal">
 
       <Button onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip || 2}`)
-=======
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
 
       <Button variant='primary' onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)
->>>>>>> main
                 .then(({ data }) => {
                   axios
                   .post(`http://localhost:3000/messages`, {
@@ -52,21 +49,18 @@ export const SaveMeASeat = () => {
                    message_body: `Hey this is ${currentUser.username} can you save me a seat?`,
                    message_time: new Date(),
                   }).then(() => {
-<<<<<<< HEAD
                    alert('Request sent!');
                   });
                 })
 
 
       }}> Save me a seat</Button>  </Link>
-=======
                    alert('message sent!');//setCurrentPage
                   }).then(() => navigate('/riderPortal'))
                 })
 
 
       }}> Save me a seat</Button>
->>>>>>> main
     </div>
 
   );
