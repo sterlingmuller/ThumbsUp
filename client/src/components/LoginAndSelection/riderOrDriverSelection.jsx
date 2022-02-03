@@ -30,15 +30,23 @@ export const RiderOrDriverSelection = () => {
   return (
     <div className="riderOrDriver">
       <h1>Today I'd like to</h1>
-      <div className="d-grid gap-2">
-        <Button variant="primary" size="lg" name="rider" onClick={becomeRider}>
-          Rider
-        </Button>
-        <Button variant="secondary" size="lg" name="driver" onClick={becomeDriver}>
-          Driver
-        </Button>
+      <div className="RorDwrapper">
+        <div className="imgWrapper">
+          <h2>Ride</h2>
+          <img className="rider" name="rider" onClick={becomeRider} src="https://icon-library.com/images/carpool-icon/carpool-icon-28.jpg"></img>
+        </div>
+        <div className="imgWrapper">
+          <h2>Drive</h2>
+          <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img>
+        </div>
       </div>
     </div>
   );
 
 }
+
+
+
+
+{/* <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img> */}
+

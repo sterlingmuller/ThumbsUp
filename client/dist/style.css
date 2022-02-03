@@ -1,9 +1,16 @@
 /* Colors:
 
-Orange: #FA991C rgb(250, 153, 28)' 
+Orange: #FA991C rgb(250, 153, 28)'
 Cream #FBF3F2
 Light Blue: #1C768F  'rgb(28, 118, 143)
-Dark Blue : #032539 */
+Dark Blue : #032539
+Wrapper:
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+*/
 
 html, body, #app {
   min-height: 100vh;
@@ -32,7 +39,7 @@ html, body, #app {
 }
 /* Colors:
 
-Orange: #FA991C rgb(250, 153, 28)' 
+Orange: #FA991C rgb(250, 153, 28)'
 Cream #FBF3F2
 Light Blue: #1C768F  'rgb(28, 118, 143)
 Dark Blue : #032539 */
