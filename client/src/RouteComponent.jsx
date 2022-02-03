@@ -17,7 +17,7 @@ import { RiderPortal } from './components/RiderSelection/riderPortal.jsx';
 import { DriverTripHistory } from './components/DriverSelection/DiverOptions/driverTripHistory.jsx';
 import { TripHistoryDetails } from './components/tripHistoryDetails.jsx';
 import { PostTrip } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
-
+import { ChatRoom } from './components/DriverSelection/DiverOptions/chatRoom.jsx';
 const RouteComponent = () => {
 return (
 <BrowserRouter>
@@ -30,6 +30,7 @@ return (
     <Route path="driverAddTrip" element={<DriverAddTrip />} />
     <Route path="driverTripHistory" element={<DriverTripHistory />} />
     <Route path="driverTripSelection" element={<DriverTripSelection />} />
+    <Route path="chatRoom" element={<ChatRoom />} />
     <Route path="driverPortal" element={<DriverPortal />} />
     <Route path="riderSearch" element={<RiderSearch />} />
     <Route path="saveMeASeat" element={<SaveMeASeat />} />

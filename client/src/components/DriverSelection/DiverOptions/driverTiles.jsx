@@ -3,14 +3,16 @@ import { MainContext } from '../../../contexts/MainContext.js'
 import { ChatRoom } from './chatRoom.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import { Link } from "react-router-dom";
+import { ListGroup } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
+
 
 export const DriverTiles = () => {
-  const { currentPage, setCurrentPage, setUserId, userId, currentUser, selectedTrip } = useContext(MainContext);
+  const { currentUser, selectedTrip,currentChat, setCurrentChat } = useContext(MainContext);
   const [driverTiles, setDriverTiles] = useState(null);
-  const [currentChat, setCurrentChat] = useState(null);
   const [chatPartnerNameArr, setChatPartnerNameArr] = useState([]);
   const [driveInfo, setDriveInfo] = useState(null);
+  const navigate = useNavigate();
 
 
 
@@ -79,22 +81,21 @@ export const DriverTiles = () => {
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
-            <Link to= "/driverTripSelection">
-            <div>BACK ICON</div>
-            </Link>
-            <h1>Chats for your upcoming drive from {driveInfo.start_address} to {driveInfo.end_address} on {moment(driveInfo.start_time).format('LLLL')}</h1>
+
+            <h1>{driveInfo.start_address} - {driveInfo.end_address} | {moment(driveInfo.start_time).format('LLLL')}</h1>
+            <ListGroup action>
             {chatPartnerNameArr.map((oneTile) => {
               return (
-                <div style={{ margin:'auto',  width: '70%', hieght:'auto',marginTop:'1em' }}> {oneTile.user_id == currentUser.userId ? null :
-                  <div style= {{border: 'black solid 2px',}}>
-
-                    <span style={{  fontSize:'3rem' }} onClick={() => { setCurrentChat(oneTile.user_id) }} >{oneTile.username} </span>
-                    <span style={{ float:'right', fontSize:'3rem' }}>💬</span>
-
-
+                <ListGroup.Item className = 'chatListItem'  onClick={() => { setCurrentChat(oneTile.user_id); navigate('/chatRoom'); }}>
+                <div > {oneTile.user_id == currentUser.userId ? null :
+                  <div > 
+                    <span   >{oneTile.username} </span>
+                    <span >💬</span>
                   </div>}</div>
+                  </ ListGroup.Item>
               );
             })}
+            </ ListGroup>
           </div>}
     </div>
   );
