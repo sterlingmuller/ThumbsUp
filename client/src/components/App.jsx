@@ -26,6 +26,8 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentPage, setCurrentPage] = useState('siteNavigator');
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const [currentChat, setCurrentChat] = useState(null);
+
   // const [siteMap, setSiteMap] = useState(
   //   {
   //     'siteNavigator': <SiteNavigator />,
@@ -58,7 +60,8 @@ const App = () => {
         currentPage, setCurrentPage,
         // siteMap, setSiteMap,
         currentUser, setCurrentUser,
-        selectedTrip, setSelectedTrip
+        selectedTrip, setSelectedTrip,
+        currentChat, setCurrentChat
       }}>
 
 
