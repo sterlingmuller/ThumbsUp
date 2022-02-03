@@ -40,7 +40,7 @@ export const DriverTiles = () => {
       }).then((results) => {
         setDriveInfo(results.data[0]);
         })
-  
+
   };
 
   const getDriverTiles = () => {
@@ -79,7 +79,7 @@ export const DriverTiles = () => {
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
-            <Link to= "driverTripSelection">
+            <Link to= "/driverTripSelection">
             <div>BACK ICON</div>
             </Link>
             <h1>Chats for your upcoming drive from {driveInfo.start_address} to {driveInfo.end_address} on {moment(driveInfo.start_time).format('LLLL')}</h1>
@@ -87,10 +87,10 @@ export const DriverTiles = () => {
               return (
                 <div style={{ margin:'auto',  width: '70%', hieght:'auto',marginTop:'1em' }}> {oneTile.user_id == currentUser.userId ? null :
                   <div style= {{border: 'black solid 2px',}}>
-                    
+
                     <span style={{  fontSize:'3rem' }} onClick={() => { setCurrentChat(oneTile.user_id) }} >{oneTile.username} </span>
                     <span style={{ float:'right', fontSize:'3rem' }}>💬</span>
-             
+
 
                   </div>}</div>
               );

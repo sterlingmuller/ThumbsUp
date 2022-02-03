@@ -12,10 +12,8 @@ export const DriverTripSelection = () => {
   const [trip, setTrip] = useState(undefined);
 
   useEffect(()=>{
-    console.log('Use effect triggered: selected trip ', selectedTrip.id)
-    axios.get('/specificTrip', { params:{trip_id: selectedTrip.id}})
+    axios.get(`/specificTrip?trip_id=${selectedTrip}`)
     .then((data)=>{
-      console.log('Specific trip: ', data)
       setTrip(data)
     })
     .catch((err)=>console.log(err))
@@ -27,7 +25,6 @@ export const DriverTripSelection = () => {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
       <div >
-        {console.log('user type:::', currentUser.usertype)};
         { currentUser.usertype === 'driver'  ? <DriverTiles /> : <ChatRoom />}
 
       </div>

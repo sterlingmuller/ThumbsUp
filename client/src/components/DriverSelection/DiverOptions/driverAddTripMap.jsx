@@ -27,23 +27,21 @@ function DriverTripMap(props) {
   });
 
   useEffect(() => {
-    console.log('Use Effect Triggered')
+
   }, [directionsRequest])
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: '',
+    googleMapsApiKey: process.env.MAPS_API_KEY,
     libraries: librariesArray
   });
 
   const directionsCallback = (result, status) => {
     if (status === 'OK') {
-      console.log('DirectionsService API response: ', result);
       setDirections(result);
     }
   }
 
   const renderDirections = () => {
-    console.log('Get Directions: ')
     setRequest({ ...directionsRequest, origin: startPoint[0].formatted_address, destination: endPoint[0].formatted_address });
     setDirections(undefined);
   }
