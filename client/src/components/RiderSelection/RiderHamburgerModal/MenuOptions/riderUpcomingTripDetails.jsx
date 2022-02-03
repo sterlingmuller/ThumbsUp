@@ -11,7 +11,7 @@ export const RiderUpcomingTripDetails = ({ trip }) => {
   const navigate = useNavigate();
 
   return (
-    <ListGroup.Item className='siteNavigatorSquare' action onClick={() => {
+    <ListGroup.Item action onClick={() => {
       setSelectedTrip(driver_trip_id);
       navigate('/driverTripSelection');
     }}>
