@@ -16,6 +16,7 @@ Wrapper:
 
 html, body {
   min-height: 100vh;
+  background-color: #1c768F;
 }
 
 body {
@@ -82,7 +83,6 @@ background-size: 100px 50px;
   height: 100%;
   background-color: #1C768F;
   color: #FBF3F2;
-  align-items: center;
 }
 
 .driverPortalCard {

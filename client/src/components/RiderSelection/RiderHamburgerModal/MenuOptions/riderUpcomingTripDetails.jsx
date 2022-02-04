@@ -15,7 +15,8 @@ export const RiderUpcomingTripDetails = ({ trip }) => {
       setSelectedTrip(driver_trip_id);
       navigate('/driverTripSelection');
     }}>
-      <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+      <div>{start_address} - {end_address}</div>
+      <div>{moment(start_time).format('LLLL')}</div>
     </ListGroup.Item>
   );
 
