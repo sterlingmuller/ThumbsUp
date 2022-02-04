@@ -4,4 +4,31 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
+}
+
+form {
+  display: table;
+}
+
+input, label {
+  display: cell;
+}
+
+.new-ride-button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.save-me-a-seat-container {
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.saveSeat {
+  text-align: center;
+  margin-top: 2%;
 }

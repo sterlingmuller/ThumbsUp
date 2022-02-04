@@ -24,12 +24,12 @@ export const TripHistory = () => {
 
   return (
     <Card>
-      <IoMdArrowRoundBack className='backArrow' onClick={() => {
+      <IoMdArrowRoundBack className='backArrowCard' onClick={() => {
         currentUser.usertype === 'rider' ? navigate('/riderPortal') : navigate('/driverPortal')
       }}/>
       <Card.Body>
         <Card.Title>
-          <div className='cardTitle'>Trip History</div>
+          <h1 className='cardTitle'>Trip History</h1>
         </Card.Title>
         <ListGroup>
           {prevTrips.map(trip => {return <TripHistoryDetails key={trip.driver_trip_id} trip={trip}/>})}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox } from '@react-google-maps/api';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const librariesArray = ['places'];
 const containerStyle = {
@@ -20,6 +20,8 @@ function DriverTripMap(props) {
   let [startPoint, setStartPoint] = useState('');
   let [endPoint, setEndPoint] = useState('');
   let { currentUser } = useContext(MainContext);
+  let [startInput, setStartInput] = useState('');
+  let [endInput, setEndInput] = useState('');
   let [directionsRequest, setRequest] = useState({
     origin: 'New York, NY, USA',
     destination: 'New York, NY, USA',
@@ -46,13 +48,13 @@ function DriverTripMap(props) {
     setDirections(undefined);
   }
 
-  const onStartLoad = (ref) => setStartPoint(ref);
+  const onStartLoad = (ref) => setStartInput(ref);
 
-  const onEndLoad = (ref) => setEndPoint(ref);
+  const onEndLoad = (ref) => setEndInput(ref);
 
-  const onStartChanged = () => setStartPoint(startPoint.getPlaces());
+  const onStartChanged = () => setStartPoint(startInput.getPlaces());
 
-  const onEndChanged = () => setEndPoint(endPoint.getPlaces());
+  const onEndChanged = () => setEndPoint(endInput.getPlaces());
 
   const addTrip = () => {
     axios.post('/AddDriverTrip', {
@@ -75,43 +77,46 @@ function DriverTripMap(props) {
 
   return (
     !isLoaded ? <div>Loading</div> :
-      <div>
+      <div className='add-trip-map'>
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={5}
         >
           { /* Child components, such as markers, info windows, etc. */}
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
-          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
+          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult} />}
           <></>
 
 
         </GoogleMap>
-        <StandaloneSearchBox
-            onLoad={onStartLoad}
-            onPlacesChanged={onStartChanged}
-          >
-            <input
-              type="text"
-              placeholder="Start Point"
-              style={{
-                boxSizing: `border-box`,
-                border: `1px solid transparent`,
-                width: `240px`,
-                height: `32px`,
-                padding: `0 12px`,
-                borderRadius: `3px`,
-                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                fontSize: `14px`,
-                outline: `none`,
-                textOverflow: `ellipses`,
-                bottom: "9%"
-              }}
-            />
-          </StandaloneSearchBox>
-        <StandaloneSearchBox
+        <div className="d-flex flex-column align-items-center">
+          <div className='py-1'>
+            <StandaloneSearchBox
+              onLoad={onStartLoad}
+              onPlacesChanged={onStartChanged}
+            >
+              <input
+                type="text"
+                placeholder="Start Point"
+                style={{
+                  boxSizing: `border-box`,
+                  border: `1px solid transparent`,
+                  width: `230px`,
+                  height: `32px`,
+                  padding: `0 12px`,
+                  borderRadius: `3px`,
+                  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                  fontSize: `14px`,
+                  outline: `none`,
+                  textOverflow: `ellipses`,
+                  bottom: "9%"
+                }}
+              />
+            </StandaloneSearchBox>
+          </div>
+          <StandaloneSearchBox
             onLoad={onEndLoad}
             onPlacesChanged={onEndChanged}
           >
@@ -121,7 +126,7 @@ function DriverTripMap(props) {
               style={{
                 boxSizing: `border-box`,
                 border: `1px solid transparent`,
-                width: `240px`,
+                width: `230px`,
                 height: `32px`,
                 padding: `0 12px`,
                 borderRadius: `3px`,
@@ -133,24 +138,25 @@ function DriverTripMap(props) {
               }}
             />
           </StandaloneSearchBox>
-        <label htmlFor="start-time">Departure Date and Time:</label>
-        <input type="datetime-local" id="start-time"
-          name="start-time" value="2022-02-01T00:00"
-          min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
-        <br/>
-        <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
-        {!directionsResult ? null :
-          <p>
-            From: {' ' + directionsResult.request.origin.query}
-            <br />
-            To: {' ' + directionsResult.request.destination.query}
-            <br />
-            length:{' ' + directionsResult.routes[0].legs[0].distance.text}
-            <br />
-            duration:{' ' + directionsResult.routes[0].legs[0].duration.text}
-          </p>
-        }
-        <Button variant='primary' onClick={addTrip}>Add Trip</Button>
+          <label htmlFor="start-time">Departure Date and Time:</label>
+          <input type="datetime-local" className='w-60' id="start-time"
+            name="start-time" value={startTime}
+            min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
+          <br />
+          <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
+          {!directionsResult ? null :
+            <p>
+              From: {' ' + directionsResult.request.origin.query}
+              <br />
+              To: {' ' + directionsResult.request.destination.query}
+              <br />
+              length:{' ' + directionsResult.routes[0].legs[0].distance.text}
+              <br />
+              duration:{' ' + directionsResult.routes[0].legs[0].duration.text}
+            </p>
+          }
+          <Button variant='primary' onClick={addTrip}>Add Trip</Button>
+        </div>
       </div>
   )
 }

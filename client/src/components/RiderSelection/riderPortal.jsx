@@ -36,8 +36,8 @@ export const RiderPortal = () => {
 
 
   const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '70vw',
+    height: '65vh'
   };
 
   const center = {
@@ -50,16 +50,13 @@ export const RiderPortal = () => {
 
   }
 
-  // const handelHamburgerClick = () => {
-  //   setCurrentPage("riderMenu");
-  // }
-
-
   return (
     !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
-
-      <GiHamburgerMenu onClick={handleShow} />
+      <div className="div-h2">
+      <GiHamburgerMenu size={40} className='hamburger-menu hamburgerIcon' onClick={handleShow} />
+      <h1>Rider Portal</h1>
+      </div>
 
       <Offcanvas show={show} onHide={handleClose}>
         <RiderMenu />
@@ -69,7 +66,7 @@ export const RiderPortal = () => {
         <GoogleMap className="rider-map"
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={18}
           clickableIcons={true}
         >
           { /* Child components, such as markers, info windows, etc. */}
@@ -78,7 +75,7 @@ export const RiderPortal = () => {
       </div>
 
       <Link to="/riderSearch">
-        <Button variant="primary" onClick={handleClick}>New Ride</Button>
+        <Button className="rider-portal-button" variant="primary" onClick={handleClick}>New Ride</Button>
       </Link>
     </div>
   );

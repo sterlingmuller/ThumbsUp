@@ -1,17 +1,57 @@
+/* Colors:
+
+Orange: #FA991C rgb(250, 153, 28)'
+Cream #FBF3F2
+Light Blue: #1C768F  'rgb(28, 118, 143)
+Dark Blue : #032539 */
+
 .rider-portal-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
+
 }
 
+h2 {
+
+  text-align: center;
+  align-items: center;
+}
+
+.div-h2 {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  position:relative;
+  margin-bottom: 1rem
+
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 20%;
+  left: 0;
+
+}
+
+.new-ride-button {
+  float: right;
+  margin-top: 2rem;
+}
+
+
+.rider-portal-button {
+  float: right;
+  margin-top: 1rem;
+}
 
 
 
 
 /* Mitchell */
 .offcanvas {
-  background-color: #1c768F;
+  background-color: #1C768F;
   color: #FBF3F2;
 }
 
@@ -34,7 +74,7 @@
 }
 
 .card {
-  background-color: #1c768F;
+  background-color: #1C768F;
   text-align: center;
   border: none;
 }
@@ -50,14 +90,30 @@
 
 .backArrow {
   color: #FA991C;
-  font-size: 4rem;
-  text-align: left;
+  font-size: 3em;
+  filter:drop-shadow(.02em .03em .02em black);
+  cursor: pointer;
+}
+
+.backArrowCard {
+    color: #FA991C;
+    font-size: 3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter:drop-shadow(.02em .03em .02em black);
+    cursor: pointer;
 }
 
 .list-group-item {
   text-align: center;
   color: #FBF3F2;
   background-color: #032539;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin-bottom: 1em;
+  font-size: 2em;
+  filter:drop-shadow(.04em .05em .02em black);
+}
+
+.hamburgerIcon {
+  color: #FA991C;
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10%;
+  padding-top: 3%;
   /* background-color: #FA991C; */
 
 }
@@ -15,7 +15,7 @@
 
 .LoginAndSelection {
   min-height: 100vh;
-  background-color: #1c768F;
+  background-color: #1C768F;
 }
 
 .riderOrDriver {
@@ -27,7 +27,7 @@
 .riderOrDriver img {
   display: inline-block;
   right: 10%;
-  width: 30rem;
+  width: 25rem;
   margin: 2rem;
   cursor: pointer;
   padding: 3rem;
