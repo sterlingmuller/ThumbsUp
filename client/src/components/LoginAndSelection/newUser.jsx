@@ -72,6 +72,9 @@ export const NewUser = () => {
             </Button>{" "}
           </>
         </Form>
+        <div className="wrapperSlide">
+          <div className="sliding-background"></div>
+        </div>
       </div>
     );
   }
