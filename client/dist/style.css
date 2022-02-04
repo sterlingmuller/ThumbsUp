@@ -16,6 +16,7 @@ Wrapper:
 
 html, body {
   min-height: 100vh;
+  background-color: #1c768F;
 }
 
 body {

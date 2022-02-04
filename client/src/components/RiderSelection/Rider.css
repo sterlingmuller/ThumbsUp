@@ -1,10 +1,50 @@
+/* Colors:
+
+Orange: #FA991C rgb(250, 153, 28)' 
+Cream #FBF3F2
+Light Blue: #1C768F  'rgb(28, 118, 143)
+Dark Blue : #032539 */
+
 .rider-portal-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
+  
 }
 
+h2 {
+ 
+  text-align: center;
+  align-items: center;
+}
+
+.div-h2 {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  position:relative;
+  margin-bottom: 1rem
+  
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 20%;
+  left: 0;
+
+}
+
+.new-ride-button {
+  float: right;
+  margin-top: 2rem;
+}
+
+
+.rider-portal-button {
+  float: right;
+  margin-top: 1rem;
+}
 
 
 
@@ -16,15 +56,15 @@
 }
 
 .offcanvas-header {
-  border-bottom: solid .25em #FBF3F2;
+  border-bottom: solid .25rem #FBF3F2;
 }
 
 .offcanvas-title {
-  font-size: 3em;
+  font-size: 3rem;
 }
 
 .offcanvas-body {
-  font-size: 2em;
+  font-size: 1.5rem;
 }
 
 .offcanvasBody:hover {
@@ -36,16 +76,21 @@
 .card {
   background-color: #1c768F;
   text-align: center;
+  border: none;
+}
+
+.card-header {
+  background-color: #032539;
 }
 
 .card-title {
-  font-size: 4em;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
 }
 
 .backArrow {
   color: #FA991C;
-  font-size: 4em;
+  font-size: 4rem;
   text-align: left;
 }
 
@@ -53,6 +98,6 @@
   text-align: center;
   color: #FBF3F2;
   background-color: #032539;
-  margin-bottom: 1em;
-  font-size: 2em;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }

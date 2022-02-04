@@ -4,6 +4,7 @@ import { MainContext } from '../../../contexts/MainContext.js'
 
 const librariesArray = ['places'];
 const containerStyle = {
+
   height: '45vh'
 };
 

@@ -26,7 +26,7 @@ export const ChatRoom = (props) => {
 
   const getMessages = () => {
     var passObj
-    if (currentUser.usertype === 'driver') {
+    if (currentUser.usertype === 'driver') {  
       passObj = {
         tripId: selectedTrip || 1,
         sender_id: currentChat
@@ -83,6 +83,7 @@ export const ChatRoom = (props) => {
             message_body: 'Seat Saved!',
             message_time: new Date(),
           }).then(() => {
+            
             setTypedMessage('');
             getMessages();
           });
@@ -105,19 +106,19 @@ export const ChatRoom = (props) => {
 
   return (
     !messages ? <div>loading...</div> :
-      <div className = 'bigDiv'>
-        <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
+     <div className = 'bigDiv'>
+        {currentUser.usertype === 'driver'  ? <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
             setCurrentChat(null)
             navigate('/driverTripSelection');
-        }}/>
+        }}/>: null}
 
-        <div className='chatBox'>
+        <div className='chatBox' style = {currentUser.usertype === 'driver'?null:{height: '15rem'}}>
           {messages.map((oneMessage) => {
             let sideOfChat = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'right' : 'left';
-            let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.4)' : 'rgb(28, 118, 143,.4)';
+            let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.7)' : 'rgb(251, 243, 242,.7)';
             return (
               <div className = 'oneChat' >
-                <p className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat }}> {oneMessage.message_body}</p>
+                <p className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat, color: 'black' }}> {oneMessage.message_body}</p>
               </div>
             );
           })}
