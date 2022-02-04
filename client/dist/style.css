@@ -14,14 +14,14 @@ Wrapper:
 
 html, body, #app {
   min-height: 100vh;
+  background-color: #1c768F;
 }
 
 #app {
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 90%;
-  background-color: #1c768F;
+  width: 100%;
   color: #FBF3F2;
 }
 

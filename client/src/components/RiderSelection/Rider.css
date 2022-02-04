@@ -1,10 +1,51 @@
+/* Colors:
+
+Orange: #FA991C rgb(250, 153, 28)' 
+Cream #FBF3F2
+Light Blue: #1C768F  'rgb(28, 118, 143)
+Dark Blue : #032539 */
+
 .rider-portal-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
+  
 }
 
+h2 {
+ 
+  text-align: center;
+  border-bottom: #FA991C;
+  align-items: center;
+  border-width: 1rem;
+}
+
+.div-h2 {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  position:relative;
+  
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 20%;
+  left: 0;
+
+}
+
+.new-ride-button {
+  float: right;
+  margin-top: 1rem;
+}
+
+
+.rider-portal-button {
+  float: right;
+  margin-top: 1rem;
+}
 
 
 

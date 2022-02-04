@@ -58,8 +58,10 @@ export const RiderPortal = () => {
   return (
     !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
-
-      <GiHamburgerMenu onClick={handleShow} />
+      <div className="div-h2">
+      <GiHamburgerMenu size={25} className='hamburger-menu' onClick={handleShow} />
+      <h2>Rider Portal</h2>
+      </div>
 
       <Offcanvas show={show} onHide={handleClose}>
         <RiderMenu />
@@ -78,7 +80,7 @@ export const RiderPortal = () => {
       </div>
 
       <Link to="/riderSearch">
-        <Button variant="primary" onClick={handleClick}>New Ride</Button>
+        <Button className="rider-portal-button" variant="primary" onClick={handleClick}>New Ride</Button>
       </Link>
     </div>
   );

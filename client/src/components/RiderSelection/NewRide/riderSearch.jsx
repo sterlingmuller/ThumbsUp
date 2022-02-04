@@ -39,7 +39,7 @@ export const RiderSearch = () => {
   return (
 
     <div className="rider-search-container">
-      <div className='siteNavigatorSquare' >
+    
         <h2>New Ride</h2>
         <form>
           <label>
@@ -67,10 +67,10 @@ export const RiderSearch = () => {
           </label>
         </form>
 
-        <Button varient="primary" onClick={handleClick}>Submit</Button>
+        <Button varient="primary" className="new-ride-button" onClick={handleClick}>Submit</Button>
 
 
-      </div>
+      
       <div>
         <h2>Available Rides</h2>
         {
