@@ -24,8 +24,8 @@ export const RiderUpcomingTrips = () => {
 
   return (
     <Card>
-      <Card.Body>
       <IoMdArrowRoundBack className='backArrow' onClick={() => navigate('/riderPortal')}/>
+      <Card.Body>
         <Card.Title>
           <div className='cardTitle'>Upcoming Trips</div>
         </Card.Title>

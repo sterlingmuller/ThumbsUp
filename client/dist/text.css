@@ -1,5 +1,5 @@
 /* Global Text Style */
-html{ font-size: 150%; font-family: 'Dongle', sans-serif; }
+html{ font-size: 100%; font-family: 'Dongle', sans-serif; }
 body, h1, h2, h3, h4, h5, h6, p, a, input, span, label, select, ::placeholder, textarea {
     font-weight: 300;
     line-height: 1.5em;
