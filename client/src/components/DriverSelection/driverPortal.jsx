@@ -49,7 +49,7 @@ export const DriverPortal = () => {
               <IoMdArrowRoundBack className="backArrowCard" style={{fontSize: '1.5em'}} onClick={() => {
               navigate('/riderOrDriver');
             }} />
-                <h1>Upcomint Trips</h1>
+                <h1>Upcoming Trips</h1>
               </Card.Title>
               <ListGroup>
                 {upcomingRides.map((ride) => {

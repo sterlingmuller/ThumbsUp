@@ -20,16 +20,6 @@ input, label {
     margin-bottom: 1rem;
 }
 
-
-
-
-
-
-
-
-
-
-
 .save-me-a-seat-container {
   display: flex;
   align-content: space-around;
@@ -38,8 +28,7 @@ input, label {
   align-items: center;
 }
 
-
-.saveButton {
-  padding: .3em;
-  
+.saveSeat {
+  text-align: center;
+  margin-top: 2%;
 }

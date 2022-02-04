@@ -11,10 +11,10 @@ export const DriverAddTrip = () => {
 
   return (
     <div style={{justifyContent:'center'}}>
-      <IoMdArrowRoundBack onClick={()=>navigate("/driverPortal")} size={30}/>
+      <IoMdArrowRoundBack className="backArrow" onClick={()=>navigate("/driverPortal")}/>
       {/* <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div> */}
       <div className='siteNavigatorSquare' >
-        <h5 className='d-flex justify-content-center'>Find Directions</h5>
+        <h1 className='d-flex justify-content-center'>Find Directions</h1>
         <DriverTripMap />
       </div>
     </div>
