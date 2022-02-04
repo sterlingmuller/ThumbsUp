@@ -68,9 +68,9 @@ const App = () => {
         {/* {siteMap[currentPage]} */}
         <RouteComponent />
       </MainContext.Provider>
-      <div class="wrapperSlide">
-      <div class="sliding-background"></div>
-    </div>
+      {/* <div className="wrapperSlide">
+      <div className="sliding-background"></div> */}
+    {/* </div> */}
     </div>
   );
 
