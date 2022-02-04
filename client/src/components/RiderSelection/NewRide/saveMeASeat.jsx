@@ -4,10 +4,6 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
-<<<<<<< HEAD
-=======
-
->>>>>>> 9796d6d2813812b440fa3a754fd2965615b94990
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const navigate = useNavigate();
