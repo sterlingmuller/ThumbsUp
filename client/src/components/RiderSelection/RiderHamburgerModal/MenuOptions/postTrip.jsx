@@ -54,20 +54,20 @@ export const PostTrip = () => {
       <Card.Header as='h3'>
         {driver.start_address} - {driver.end_address} | {moment(driver.start_time).format('LLLL')}
       </Card.Header>
+      <IoMdArrowRoundBack className='backArrow' onClick={() => navigate('/tripHistory')}/>
       <Card.Body>
-        <IoMdArrowRoundBack onClick={() => navigate('/tripHistory')}/>
         <Card.Title>Driver: {driver.username}</Card.Title>
         {rated
         ? <StarRatings
         rating={rating}
-        starRatedColor='blue'
+        starRatedColor='#032539'
         />
         : <div>
             <StarRatings
               rating={rating}
               changeRating={changeRating}
-              starHoverColor='blue'
-              starRatedColor='blue'
+              starHoverColor='#032539'
+              starRatedColor='#032539'
               />
             <Button variant='primary' onClick={handleSubmit}>Rate Me!</Button>
           </div>

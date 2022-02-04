@@ -9,7 +9,7 @@ const pool = new Pool ({
   password: process.env.PASSWORD
 });
 
-
+//repo stuff here for heroku
 pool.connect(err => {
   if (err) {
     console.error('connection error', err.stack)

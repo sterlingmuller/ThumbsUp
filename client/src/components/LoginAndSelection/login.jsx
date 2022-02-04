@@ -32,7 +32,6 @@ export const Login = () => {
       .then((data) => {
         if (data.status === 200) {
           setCurrentUser(data.data);
-          alert('Successfully Logged In');
           navigate('/riderOrDriver');
         }
         else {
@@ -45,6 +44,7 @@ export const Login = () => {
   function loginForm() {
     return (
       <div className="Login">
+        <h1>Thumbs Up</h1>
         <Form action="/login" onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>
@@ -83,7 +83,6 @@ export const Login = () => {
 
   return (
     <div className="LoginAndSelection">
-      <h1>Thumbs Up</h1>
       {loginForm()}
     </div>
   );

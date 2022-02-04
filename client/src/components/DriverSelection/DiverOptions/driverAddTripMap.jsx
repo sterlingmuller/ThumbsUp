@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox } from '@react-google-maps/api';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
+import {Button} from 'react-bootstrap';
 
 const librariesArray = ['places'];
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  height: '45vh'
 };
 
 const center = {
@@ -62,7 +62,6 @@ function DriverTripMap(props) {
       user_id: currentUser.userId
     })
       .then((response) => {
-        console.log('AddTrip: ');
         alert('Trip Added!');
       })
       .catch((error) => {
@@ -71,14 +70,12 @@ function DriverTripMap(props) {
   }
 
   const addStartTime = (event) => {
-    console.log('Start Time Selection: ', event.target.value);
     setStartTime(event.target.value);
   }
 
   return (
     !isLoaded ? <div>Loading</div> :
       <div>
-        {console.log('Loading load script')}
         <GoogleMap
           id='map'
           mapContainerStyle={containerStyle}
@@ -87,11 +84,12 @@ function DriverTripMap(props) {
         >
           { /* Child components, such as markers, info windows, etc. */}
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
-          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult} onLoad={directionsRenderer => {
-            console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsResult)
-          }} />}
+          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
           <></>
-          <StandaloneSearchBox
+
+
+        </GoogleMap>
+        <StandaloneSearchBox
             onLoad={onStartLoad}
             onPlacesChanged={onStartChanged}
           >
@@ -109,12 +107,11 @@ function DriverTripMap(props) {
                 fontSize: `14px`,
                 outline: `none`,
                 textOverflow: `ellipses`,
-                position: "absolute",
                 bottom: "9%"
               }}
             />
           </StandaloneSearchBox>
-          <StandaloneSearchBox
+        <StandaloneSearchBox
             onLoad={onEndLoad}
             onPlacesChanged={onEndChanged}
           >
@@ -132,20 +129,18 @@ function DriverTripMap(props) {
                 fontSize: `14px`,
                 outline: `none`,
                 textOverflow: `ellipses`,
-                position: "absolute",
                 bottom: '0'
               }}
             />
           </StandaloneSearchBox>
-        </GoogleMap>
-        <button onClick={renderDirections}>Get Directions</button>
-        <button onClick={addTrip}>Add Trip</button>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"
           min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
+        <br/>
+        <Button variant='primary' onClick={renderDirections}>Get Directions</Button>
         {!directionsResult ? null :
-          <div>
+          <p>
             From: {' ' + directionsResult.request.origin.query}
             <br />
             To: {' ' + directionsResult.request.destination.query}
@@ -153,8 +148,9 @@ function DriverTripMap(props) {
             length:{' ' + directionsResult.routes[0].legs[0].distance.text}
             <br />
             duration:{' ' + directionsResult.routes[0].legs[0].duration.text}
-          </div>
+          </p>
         }
+        <Button variant='primary' onClick={addTrip}>Add Trip</Button>
       </div>
   )
 }
