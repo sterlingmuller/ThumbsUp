@@ -19,3 +19,27 @@ input, label {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+.save-me-a-seat-container {
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.saveButton {
+  padding: .3em;
+  
+}

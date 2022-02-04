@@ -17,11 +17,13 @@ export const TripHistoryDetails = ({ trip }) => {
         setSelectedTrip(driver_trip_id);
         navigate('/postTrip');
       }}>
-        <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+        <div>{start_address} - {end_address}</div>
+        <div>{moment(start_time).format('LLLL')}</div>
       </ListGroup.Item>
 
     : <ListGroup.Item>
-        <span>{start_address} - {end_address} | {moment(start_time).format('LLLL')}</span>
+        <div>{start_address} - {end_address}</div>
+        <div>{moment(start_time).format('LLLL')}</div>
       </ListGroup.Item>
     }
     </>
