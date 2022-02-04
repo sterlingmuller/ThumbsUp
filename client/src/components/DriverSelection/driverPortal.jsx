@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../contexts/MainContext.js';
+import { MainContext } from '../../contexts/MainContext.js';
 import axios from 'axios';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from "react-router-dom";
-import {FaExclamationCircle} from 'react-icons/fa'
+import { useNavigate } from "react-router-dom";
 import moment from 'moment';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -12,81 +11,67 @@ export const DriverPortal = () => {
   const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
   const navigate = useNavigate();
 
- const [upcomingRides, setUpcomingRides] = useState([]);
+  const [upcomingRides, setUpcomingRides] = useState([]);
 
- const getUpcomingRides = () => {
-  axios.get(`/drivers?user_id=${currentUser.userId}`)
-  .then ( ({data}) => {
-    setUpcomingRides(data);
-  })
- }
+  const getUpcomingRides = () => {
+    axios.get(`/drivers?user_id=${currentUser.userId}`)
+      .then(({ data }) => {
+        setUpcomingRides(data);
+      })
+  }
 
- useEffect (() => {
-   getUpcomingRides()
- }, [])
+  useEffect(() => {
+    getUpcomingRides()
+  }, [])
 
-function TripDetailsClick (id) {
-  console.log("Ive been clicked!");
-  setSelectedTrip(id);
-  navigate("/driverTripSelection");
-}
+  function TripDetailsClick(id) {
+    console.log("Ive been clicked!");
+    setSelectedTrip(id);
+    navigate("/driverTripSelection");
+  }
 
-const RideCompleteClick = (id) => {
-  axios.put(`drivers?trip_id=${id}`)
-  .then(getUpcomingRides());
-}
+  const RideCompleteClick = (id) => {
+    axios.put(`drivers?trip_id=${id}`)
+      .then(getUpcomingRides());
+  }
 
-function CancelRideClick (id) {
-  axios.delete(`drivers?trip_id=${id}`)
-  .then(getUpcomingRides());
-}
+  function CancelRideClick(id) {
+    axios.delete(`drivers?trip_id=${id}`)
+      .then(getUpcomingRides());
+  }
 
 
   return (
     <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='driverPortal' >
-        <h1>Driver Portal</h1>
-        <IoMdArrowRoundBack onClick = {() => {
-            navigate('/riderOrDriver');
-        }}/>
-        <div className="upcomingTrips">
-          <h2>Upcoming Trips</h2>
+          <Card>
+            {/* <IoMdArrowRoundBack className="backArrow" onClick={() => {
+              navigate('/riderOrDriver');
+            }} /> */}
+            <Card.Body>
+              <Card.Title className="driverPortalCard">
+              <IoMdArrowRoundBack className="backArrowCard" onClick={() => {
+              navigate('/riderOrDriver');
+            }} />
+                Upcoming Trips
+              </Card.Title>
+              <ListGroup>
+                {upcomingRides.map((ride) => {
+                  return (
+                    <ListGroup.Item key={ride.trip_id} onClick={() => TripDetailsClick(ride.trip_id)}>
+                          <div>{ride.start_address} - {ride.end_address}</div>
+                          <div>{moment(ride.start_time).format('LLLL')}</div>
+                        <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </Button> {' '}
+                        <Button className="btn-secondary-driver col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
+                    </ListGroup.Item>
+                  )
+                })}
+              </ListGroup>
 
-          <Card style={{alignItems: 'center'}}>
-            {upcomingRides.map((ride) => {
-              return (
+        <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button> {' '}
+        <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
 
-              <div key={ride.trip_id}>
-                <Card style={{alignItems: 'center'}}>
-
-                  {/* <img className="card-img-top" src={'New.png'} alt="No new messages"></img> */}
-                  {/* <Link to="/driverTripSelection"> */}
-                  <div className="card-body" onClick={() => TripDetailsClick(ride.trip_id)}>
-                    <div className="card-title">{ride.start_address} to {ride.end_address}</div>
-                    <div className="card-text">Departing at: {moment(ride.start_time).format('LLLL')}</div>
-                   {/* {ride.unreadMessage &&
-                    <FaExclamationCircle/>
-                   } */}
-                   <FaExclamationCircle/>
-                  </div>
-                  {/* </Link> */}
-                  <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </span>
-                <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </span>
-                </Card>
-              </div>
-
-              )})}
+            </Card.Body>
           </Card>
-
-        </div>
-          <Link to="/driverAddTrip">
-            <Button  className="col-sm" > Add Trip </Button>
-          </Link>
-          <Link to="/tripHistory">
-            <Button className="col-sm" > Trip History </Button>
-          </Link>
-      </div>
     </div>
   );
 

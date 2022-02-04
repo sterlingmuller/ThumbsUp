@@ -23,6 +23,7 @@ body {
   display:grid;
   justify-items: center;
   align-items: center;
+  text-shadow:.06em .07em .01em black;
 
     /* background-color:#1c768F; */
 
@@ -42,9 +43,9 @@ background-size: 100px 50px;
   overflow: hidden;
   height: 330px;
   width: 560px;
-  border: 3px solid #032539;
+  border: 2px solid #FBF3F2;
   margin-top: 10%;
-
+  filter:drop-shadow(.08em .08em .05em black);
 }
 
 .wrapper {
@@ -86,14 +87,27 @@ background-size: 100px 50px;
   align-items: center;
 }
 
+.driverPortalCard {
+  font-size: 2em !important;
+}
+
 .btn-primary {
   color: #FBF3F2!important;
   background-color: #FA991C !important;
-  border-color: #FA991C!important;
+  border-color: #ffffff!important;
+  filter:drop-shadow(.04em .05em .02em black);
 }
 
 .btn-secondary {
   color: #FBF3F2!important;
   background-color: #032539 !important;
-  border-color: #032539 !important;
+  border-color: #ffffff !important;
+  filter:drop-shadow(.04em .05em .02em black);
+}
+
+.btn-secondary-driver {
+  color: #FBF3F2!important;
+  background-color: #5b717e !important;
+  border-color: #ffffff !important;
+  filter:drop-shadow(.04em .05em .02em black);
 }

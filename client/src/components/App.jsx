@@ -15,7 +15,6 @@ import { TripHistory } from './tripHistory.jsx';
 import { RiderUpcomingTrips } from './RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './RiderSelection/riderPortal.jsx';
-import { DriverTripHistory } from './DriverSelection/DiverOptions/driverTripHistory.jsx';
 import { TripHistoryDetails } from './tripHistoryDetails.jsx';
 import { PostTrip } from './RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 

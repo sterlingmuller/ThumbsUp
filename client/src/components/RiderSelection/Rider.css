@@ -45,8 +45,17 @@
 
 .backArrow {
   color: #FA991C;
-  font-size: 4em;
-  text-align: left;
+  font-size: 3em;
+  filter:drop-shadow(.02em .03em .02em black);
+}
+
+.backArrowCard {
+    color: #FA991C;
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter:drop-shadow(.02em .03em .02em black);
 }
 
 .list-group-item {
@@ -55,4 +64,5 @@
   background-color: #032539;
   margin-bottom: 1em;
   font-size: 2em;
+  filter:drop-shadow(.04em .05em .02em black);
 }
