@@ -52,7 +52,8 @@ export const PostTrip = () => {
   return (
     <Card>
       <Card.Header as='h3'>
-        {driver.start_address} - {driver.end_address} | {moment(driver.start_time).format('LLLL')}
+        <div>{driver.start_address} - {driver.end_address}</div>
+        <div>{moment(driver.start_time).format('LLLL')}</div>
       </Card.Header>
       <IoMdArrowRoundBack className='backArrow' onClick={() => navigate('/tripHistory')}/>
       <Card.Body>
