@@ -3,12 +3,14 @@ import {MainContext} from '../../contexts/MainContext.js';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
-// import newMessage from '../../../dist/New.png';
+import { Link, useNavigate } from "react-router-dom";
 import {FaExclamationCircle} from 'react-icons/fa'
+import moment from 'moment';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const DriverPortal = () => {
   const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
+  const navigate = useNavigate();
 
  const [upcomingRides, setUpcomingRides] = useState([]);
 
@@ -26,9 +28,7 @@ export const DriverPortal = () => {
 function TripDetailsClick (id) {
   console.log("Ive been clicked!");
   setSelectedTrip(id);
-
-  // axios.put(`drivers/newMessage?trip_id=${id}`)
-  // .then(setSelectedTrip(id));
+  navigate("/driverTripSelection");
 }
 
 const RideCompleteClick = (id) => {
@@ -47,6 +47,9 @@ function CancelRideClick (id) {
       <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
       <div className='driverPortal' >
         <h1>Driver Portal</h1>
+        <IoMdArrowRoundBack onClick = {() => {
+            navigate('/riderOrDriver');
+        }}/>
         <div className="upcomingTrips">
           <h2>Upcoming Trips</h2>
 
@@ -58,16 +61,16 @@ function CancelRideClick (id) {
                 <Card style={{alignItems: 'center'}}>
 
                   {/* <img className="card-img-top" src={'New.png'} alt="No new messages"></img> */}
-                  <Link to="/driverTripSelection">
+                  {/* <Link to="/driverTripSelection"> */}
                   <div className="card-body" onClick={() => TripDetailsClick(ride.trip_id)}>
                     <div className="card-title">{ride.start_address} to {ride.end_address}</div>
-                    <div className="card-text">Departing at: {ride.start_time}</div>
+                    <div className="card-text">Departing at: {moment(ride.start_time).format('LLLL')}</div>
                    {/* {ride.unreadMessage &&
                     <FaExclamationCircle/>
                    } */}
                    <FaExclamationCircle/>
                   </div>
-                  </Link>
+                  {/* </Link> */}
                   <span type="button" className="btn-primary btn-sm col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </span>
                 <span className="btn-primary btn-sm col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </span>
                 </Card>

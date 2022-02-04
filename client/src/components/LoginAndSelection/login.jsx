@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {MainContext} from '../../contexts/MainContext.js'
+import { MainContext } from '../../contexts/MainContext.js'
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -53,7 +53,7 @@ export const Login = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required = {true}
+              required={true}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">
@@ -66,14 +66,17 @@ export const Login = () => {
             />
           </Form.Group>
           <>
-          <Button variant="primary" type="submit" disabled={!validateForm()}>
-            Login
-          </Button>{' '}
-          <Button variant="secondary" type="button" onClick={() => { navigate('/newUser') }} >
-            Create Account
-          </Button>{' '}
+            <Button variant="primary" type="submit" disabled={!validateForm()}>
+              Login
+            </Button>{' '}
+            <Button variant="secondary" type="button" onClick={() => { navigate('/newUser') }} >
+              Create Account
+            </Button>{' '}
           </>
         </Form>
+        <div className="wrapperSlide">
+          <div className="sliding-background"></div>
+        </div>
       </div>
     );
   }

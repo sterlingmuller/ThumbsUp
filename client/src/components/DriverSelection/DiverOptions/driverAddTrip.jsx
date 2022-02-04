@@ -9,11 +9,11 @@ export const DriverAddTrip = () => {
   const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
 
   return (
-    <div>
+    <div style={{justifyContent:'center'}}>
       <Link to="/driverPortal"><div>Go To Driver Portal</div></Link>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
+      {/* <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div> */}
       <div className='siteNavigatorSquare' >
-        This is {currentPage} make it more awesomer!!!
+        <h2>Find Directions</h2>
         <DriverTripMap />
       </div>
     </div>
