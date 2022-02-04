@@ -50,11 +50,6 @@ export const RiderPortal = () => {
 
   }
 
-  // const handelHamburgerClick = () => {
-  //   setCurrentPage("riderMenu");
-  // }
-
-
   return (
     !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
