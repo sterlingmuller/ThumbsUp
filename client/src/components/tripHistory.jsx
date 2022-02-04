@@ -24,10 +24,10 @@ export const TripHistory = () => {
 
   return (
     <Card>
-      <Card.Body>
       <IoMdArrowRoundBack className='backArrow' onClick={() => {
         currentUser.usertype === 'rider' ? navigate('/riderPortal') : navigate('/driverPortal')
       }}/>
+      <Card.Body>
         <Card.Title>
           <div className='cardTitle'>Trip History</div>
         </Card.Title>

@@ -35,17 +35,18 @@
 
 .card {
   background-color: #1c768F;
+  text-align: center;
 }
 
 .card-title {
   font-size: 4em;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
 .backArrow {
   color: #FA991C;
   font-size: 4em;
+  text-align: left;
 }
 
 .list-group-item {
