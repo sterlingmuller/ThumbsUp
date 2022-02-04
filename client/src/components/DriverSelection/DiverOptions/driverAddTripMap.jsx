@@ -6,8 +6,7 @@ import {Button} from 'react-bootstrap';
 
 const librariesArray = ['places'];
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  height: '45vh'
 };
 
 const center = {
@@ -87,7 +86,10 @@ function DriverTripMap(props) {
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
           {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
           <></>
-          <StandaloneSearchBox
+
+
+        </GoogleMap>
+        <StandaloneSearchBox
             onLoad={onStartLoad}
             onPlacesChanged={onStartChanged}
           >
@@ -105,12 +107,11 @@ function DriverTripMap(props) {
                 fontSize: `14px`,
                 outline: `none`,
                 textOverflow: `ellipses`,
-                position: "absolute",
                 bottom: "9%"
               }}
             />
           </StandaloneSearchBox>
-          <StandaloneSearchBox
+        <StandaloneSearchBox
             onLoad={onEndLoad}
             onPlacesChanged={onEndChanged}
           >
@@ -128,12 +129,10 @@ function DriverTripMap(props) {
                 fontSize: `14px`,
                 outline: `none`,
                 textOverflow: `ellipses`,
-                position: "absolute",
                 bottom: '0'
               }}
             />
           </StandaloneSearchBox>
-        </GoogleMap>
         <label htmlFor="start-time">Departure Date and Time:</label>
         <input type="datetime-local" id="start-time"
           name="start-time" value="2022-02-01T00:00"
