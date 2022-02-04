@@ -5,3 +5,27 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+.save-me-a-seat-container {
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.saveButton {
+  padding: .3em;
+  
+}
