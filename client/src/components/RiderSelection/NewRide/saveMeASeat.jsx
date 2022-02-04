@@ -13,19 +13,20 @@ export const SaveMeASeat = () => {
   useEffect(()=>{
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
     .then((data)=>{
-      
+
       setTrip(data)
     })
     .catch((err)=>console.log(err))
   },[currentUser])
-  return ( 
+  return (
     <div >
       <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
             navigate('/riderSearch');
         }}/>
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
-      <span className = 'SaveButton'> Ride look good? Tell the driver to </span>
-      <Button variant='primary' onClick = {() => {
+      <div className="saveSeat">
+      <span> Ride look good? Tell the driver to </span>
+      <Button className="btn-primary" onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)
                 .then(({ data }) => {
                   console.log(data);
@@ -39,6 +40,7 @@ export const SaveMeASeat = () => {
                   }).then(() => navigate('/riderPortal'))
                 })
       }}> Save me a seat</Button>
+      </div>
     </div>
   );
 }

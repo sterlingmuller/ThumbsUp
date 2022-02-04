@@ -1,8 +1,8 @@
 .chatBubble {
-   max-width: 30em; 
-   border-radius: .7rem; 
-   padding: .2em; 
-   margin-top: .7em; 
+   max-width: 30em;
+   border-radius: .7rem;
+   padding: .2em;
+   margin-top: .7em;
    margin:.2em;
    max-width: 70%;
    word-break: break-all;
@@ -10,17 +10,17 @@
 }
 .oneChat{
 
-   height: 3.7rem; 
+   height: 3.7rem;
 }
 
 .chatBox {
-   /* border: grey solid 3px; 
+   /* border: grey solid 3px;
    border-radius: 2rem;  */
    width: 82%;
    margin-left: 10%;
    background-color: #1c768F;
-   height: 25rem; 
-   overflow: auto; 
+   height: 25rem;
+   overflow: auto;
    padding: .5em;
    display:flex;
    flex-direction: column;
@@ -32,8 +32,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
-  
-} 
+
+}
 .text-input{
   margin-top: .3em;
 display:flex;
@@ -76,8 +76,6 @@ font-size: 1.5em;
 width:110%;
 }
 .driveInfo{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
   padding: .5em;
 }

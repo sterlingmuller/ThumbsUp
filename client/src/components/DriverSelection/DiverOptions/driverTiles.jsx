@@ -84,7 +84,8 @@ export const DriverTiles = () => {
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
             <div className = 'driveInfo'>
-            <h2>{driveInfo.start_address} - {driveInfo.end_address} </h2><h3> {moment(driveInfo.start_time).format('LLLL')}</h3>
+            <h2>{driveInfo.start_address} - {driveInfo.end_address} </h2>
+            <h3> {moment(driveInfo.start_time).format('LLLL')}</h3>
             </div>
             <ListGroup action>
               {chatPartnerNameArr.map((oneTile) => {

@@ -20,6 +20,8 @@ function DriverTripMap(props) {
   let [startPoint, setStartPoint] = useState('');
   let [endPoint, setEndPoint] = useState('');
   let { currentUser } = useContext(MainContext);
+  let [startInput, setStartInput] = useState('');
+  let [endInput, setEndInput] = useState('');
   let [directionsRequest, setRequest] = useState({
     origin: 'New York, NY, USA',
     destination: 'New York, NY, USA',
@@ -46,13 +48,13 @@ function DriverTripMap(props) {
     setDirections(undefined);
   }
 
-  const onStartLoad = (ref) => setStartPoint(ref);
+  const onStartLoad = (ref) => setStartInput(ref);
 
-  const onEndLoad = (ref) => setEndPoint(ref);
+  const onEndLoad = (ref) => setEndInput(ref);
 
-  const onStartChanged = () => setStartPoint(startPoint.getPlaces());
+  const onStartChanged = () => setStartPoint(startInput.getPlaces());
 
-  const onEndChanged = () => setEndPoint(endPoint.getPlaces());
+  const onEndChanged = () => setEndPoint(endInput.getPlaces());
 
   const addTrip = () => {
     axios.post('/AddDriverTrip', {
@@ -138,7 +140,7 @@ function DriverTripMap(props) {
           </StandaloneSearchBox>
           <label htmlFor="start-time">Departure Date and Time:</label>
           <input type="datetime-local" className='w-60' id="start-time"
-            name="start-time" value="2022-02-01T00:00"
+            name="start-time" value={startTime}
             min="2022-02-01T00:00" max="2022-06-14T00:00" onChange={addStartTime} />
           <br />
           <Button variant='primary' onClick={renderDirections}>Get Directions</Button>

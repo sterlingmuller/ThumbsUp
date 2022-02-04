@@ -40,7 +40,7 @@ export const RiderSearch = () => {
 
     <div className="rider-search-container">
 
-      <h2>New Ride</h2>
+      <h1>New Ride</h1>
       <Form>
         <Form.Group size="lg">
           <div className="form-input">
