@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../contexts/MainContext.js';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, useJsApiLoader } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import './Rider.css';
@@ -19,6 +19,11 @@ export const RiderPortal = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const librariesArray = ['places'];
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: process.env.MAPS_API_KEY,
+    libraries: librariesArray
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -51,6 +56,7 @@ export const RiderPortal = () => {
 
 
   return (
+    !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
 
       <GiHamburgerMenu onClick={handleShow} />
@@ -59,9 +65,7 @@ export const RiderPortal = () => {
         <RiderMenu />
       </Offcanvas>
 
-      <LoadScript
-        googleMapsApiKey={process.env.MAPS_API_KEY}
-      >
+      <div>
         <GoogleMap className="rider-map"
           mapContainerStyle={containerStyle}
           center={center}
@@ -71,7 +75,7 @@ export const RiderPortal = () => {
           { /* Child components, such as markers, info windows, etc. */}
           <></>
         </GoogleMap>
-      </LoadScript>
+      </div>
 
       <Link to="/riderSearch">
         <Button variant="primary" onClick={handleClick}>New Ride</Button>
