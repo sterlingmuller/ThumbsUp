@@ -1,6 +1,6 @@
 .chatBubble {
    max-width: 30em; 
-   border-radius: 1rem; 
+   border-radius: .7rem; 
    padding: .2em; 
    margin-top: .7em; 
    margin:.2em;
@@ -17,7 +17,7 @@
    /* border: grey solid 3px; 
    border-radius: 2rem;  */
    width: 82%;
-   margin-left: 12%;
+   margin-left: 10%;
    background-color: #1c768F;
    height: 25rem; 
    overflow: auto; 
@@ -46,7 +46,8 @@ min-width: 78%;
   /* display:flex;
   flex-wrap: wrap;
   align-content: space-around; */
-  border-color: #FBF3F2
+  border-color: #FBF3F2;
+  min-width: 90%;
 }
 
 .list-group {
@@ -55,6 +56,10 @@ min-width: 78%;
   align-content: space-around;
 }
 
+
+.list-group-item {
+width: 100%;
+}
 .backArrow{
   font-size: 2.5em;
 }
@@ -68,4 +73,11 @@ min-width: 78%;
 
 .driverTile {
 font-size: 1.5em;
+width:110%;
+}
+.driveInfo{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: .5em;
 }

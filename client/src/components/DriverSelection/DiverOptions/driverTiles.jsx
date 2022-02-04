@@ -79,14 +79,13 @@ export const DriverTiles = () => {
 
   return (
     <div>
-      <IoMdArrowRoundBack className='backArrow' onClick={() => {
-        navigate('/driverPortal');
-      }} />
+
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>
-
-            <h1>{driveInfo.start_address} - {driveInfo.end_address} | {moment(driveInfo.start_time).format('LLLL')}</h1>
+            <div className = 'driveInfo'>
+            <h2>{driveInfo.start_address} - {driveInfo.end_address} </h2><h3> {moment(driveInfo.start_time).format('LLLL')}</h3>
+            </div>
             <ListGroup action>
               {chatPartnerNameArr.map((oneTile) => {
                 if (oneTile.user_id == currentUser.userId) {

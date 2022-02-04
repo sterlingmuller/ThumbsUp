@@ -4,8 +4,8 @@ import { MainContext } from '../../../contexts/MainContext.js'
 
 const librariesArray = ['places'];
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+ 
+  height: '45vh'
 };
 
 const center = {

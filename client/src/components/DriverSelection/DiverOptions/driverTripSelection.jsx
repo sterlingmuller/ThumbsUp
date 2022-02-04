@@ -4,12 +4,16 @@ import { ChatRoom } from './chatRoom.jsx';
 import { DriverTiles } from './driverTiles.jsx';
 import axios from 'axios';
 import TripMap from './tripMap.jsx'
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
 
 export const DriverTripSelection = () => {
-  const { currentPage, setCurrentPage, setUserId, userId, currentUser, selectedTrip } = useContext(MainContext);
+  const {currentUser, selectedTrip,setCurrentChat } = useContext(MainContext);
   const [messages, setMessages] = useState(null);
   const [typedMessage, setTypedMessage] = useState('');
   const [trip, setTrip] = useState(undefined);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
@@ -22,7 +26,14 @@ export const DriverTripSelection = () => {
 
   return (
     <div>
-
+          {currentUser.usertype === 'driver' ?<IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
+            setCurrentChat(null)
+            navigate('/driverPortal');
+        }}/> :
+        <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
+          setCurrentChat(null)
+          navigate('/riderUpcomingTrips');
+      }}/>}
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
       <div >
         { currentUser.usertype === 'driver'  ? <DriverTiles /> : <ChatRoom />}
