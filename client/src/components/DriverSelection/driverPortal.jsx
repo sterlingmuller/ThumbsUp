@@ -44,15 +44,12 @@ export const DriverPortal = () => {
   return (
     <div>
           <Card>
-            {/* <IoMdArrowRoundBack className="backArrow" onClick={() => {
-              navigate('/riderOrDriver');
-            }} /> */}
             <Card.Body>
               <Card.Title className="driverPortalCard">
-              <IoMdArrowRoundBack className="backArrowCard" onClick={() => {
+              <IoMdArrowRoundBack className="backArrowCard" style={{fontSize: '1.5em'}} onClick={() => {
               navigate('/riderOrDriver');
             }} />
-                Upcoming Trips
+                <h1>Upcomint Trips</h1>
               </Card.Title>
               <ListGroup>
                 {upcomingRides.map((ride) => {

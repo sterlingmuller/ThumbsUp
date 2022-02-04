@@ -23,19 +23,19 @@ body {
   display:grid;
   justify-items: center;
   align-items: center;
-  text-shadow:.06em .07em .01em black;
+  /* text-shadow:.06em .07em .01em black; */
 
-    /* background-color:#1c768F; */
+    /* background-color:#1C768F; */
 
     /* background-image: url('./stacked-peaks-haikei.png');
     background-size: cover; */
 
 background-image:
-radial-gradient(circle at 100% 150%, #1c768F 24%, #032539 24%, #032539 28%, #1c768F 28%, #1c768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
-radial-gradient(circle at 0    150%, #1c768F 24%, #032539 24%, #032539 28%, #1c768F 28%, #1c768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
-radial-gradient(circle at 50%  100%, #032539 10%, #1c768F 10%, #1c768F 23%, #032539 23%, #032539 30%, #1c768F 30%, #1c768F 43%, #032539 43%, #032539 50%, #1c768F 50%, #1c768F 63%, #032539 63%, #032539 71%, transparent 71%, transparent),
-radial-gradient(circle at 100% 50%, #032539 5%, #1c768F 5%, #1c768F 15%, #032539 15%, #032539 20%, #1c768F 20%, #1c768F 29%, #032539 29%, #032539 34%, #1c768F 34%, #1c768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent),
-radial-gradient(circle at 0    50%, #032539 5%, #1c768F 5%, #1c768F 15%, #032539 15%, #032539 20%, #1c768F 20%, #1c768F 29%, #032539 29%, #032539 34%, #1c768F 34%, #1c768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent);
+radial-gradient(circle at 100% 150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, #032539 10%, #1C768F 10%, #1C768F 23%, #032539 23%, #032539 30%, #1C768F 30%, #1C768F 43%, #032539 43%, #032539 50%, #1C768F 50%, #1C768F 63%, #032539 63%, #032539 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, #032539 5%, #1C768F 5%, #1C768F 15%, #032539 15%, #032539 20%, #1C768F 20%, #1C768F 29%, #032539 29%, #032539 34%, #1C768F 34%, #1C768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, #032539 5%, #1C768F 5%, #1C768F 15%, #032539 15%, #032539 20%, #1C768F 20%, #1C768F 29%, #032539 29%, #032539 34%, #1C768F 34%, #1C768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent);
 background-size: 100px 50px;
 }
 
@@ -55,8 +55,6 @@ background-size: 100px 50px;
   margin: auto;
   width: 85%;
   height: 100%;
-  background-color: #1c768F;
-  color: #FBF3F2;
 }
 
 .sliding-background {
@@ -82,7 +80,7 @@ background-size: 100px 50px;
   margin: auto;
   width: 100%;
   height: 100%;
-  background-color: #1c768F;
+  background-color: #1C768F;
   color: #FBF3F2;
   align-items: center;
 }

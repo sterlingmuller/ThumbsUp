@@ -59,7 +59,7 @@ export const RiderPortal = () => {
     !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
 
-      <GiHamburgerMenu onClick={handleShow} />
+      <GiHamburgerMenu className="hamburgerIcon" onClick={handleShow} />
 
       <Offcanvas show={show} onHide={handleClose}>
         <RiderMenu />

@@ -11,7 +11,7 @@
 
 /* Mitchell */
 .offcanvas {
-  background-color: #1c768F;
+  background-color: #1C768F;
   color: #FBF3F2;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .card {
-  background-color: #1c768F;
+  background-color: #1C768F;
   text-align: center;
 }
 
@@ -47,15 +47,17 @@
   color: #FA991C;
   font-size: 3em;
   filter:drop-shadow(.02em .03em .02em black);
+  cursor: pointer;
 }
 
 .backArrowCard {
     color: #FA991C;
-    font-size: 2em;
+    font-size: 3em;
     position: absolute;
     top: 0;
     left: 0;
     filter:drop-shadow(.02em .03em .02em black);
+    cursor: pointer;
 }
 
 .list-group-item {
@@ -65,4 +67,8 @@
   margin-bottom: 1em;
   font-size: 2em;
   filter:drop-shadow(.04em .05em .02em black);
+}
+
+.hamburgerIcon {
+  color: #FA991C;
 }

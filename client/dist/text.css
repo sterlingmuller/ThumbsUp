@@ -6,7 +6,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, input, span, label, select, ::placeholder, t
 }
 
 /* Styles By Tag */
-h1 { font-size: 1.6rem; }
+h1 { font-size: 1.6rem;
+     text-shadow:.02em .02em .01em black;}
 h2 { font-size: 1.5rem; }
 h3 { font-size: 1.4rem; }
 h4 { font-size: 1.3rem; }
@@ -33,5 +34,5 @@ i { font-style: italic; }
 }
 @media screen and (min-width: 4500px) {
     html { font-size: 350%; } /*20px*/
-    
+
 }
