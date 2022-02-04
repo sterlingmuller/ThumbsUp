@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
+import './saveMeASeat.jsx'
 export const SaveMeASeat = () => {
   const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const navigate = useNavigate();
@@ -16,16 +17,7 @@ export const SaveMeASeat = () => {
     .catch((err)=>console.log(err))
   },[currentUser])
   return (
-    <div>
-      <div className='siteNavigatorSquare' onClick={() => { setCurrentPage('siteNavigator') }}> TO NAVIGATOR PAGE</div>
-      <div className='siteNavigatorSquare' >
-        This is {currentPage} make it more awesomer!!!
-        {/*
-          render map
-          render custom message
-          render button Save me a seat - sends either custom message or "Save me a seat to the driver"
-        */}
-      </div>
+    <div className = "save-me-a-seat-container">
       {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
       <Button variant='primary' onClick = {() => {
               axios.get(`/trips/driver?trip_id=${selectedTrip}`)

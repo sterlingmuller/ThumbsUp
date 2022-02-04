@@ -114,10 +114,10 @@ export const ChatRoom = (props) => {
         <div className='chatBox'>
           {messages.map((oneMessage) => {
             let sideOfChat = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'right' : 'left';
-            let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.4)' : 'rgb(28, 118, 143,.4)';
+            let colorBubble = Number(currentUser.userId) === Number(oneMessage.message_sender) ? 'rgb(250, 153, 28,.7)' : 'rgb(251, 243, 242,.7)';
             return (
               <div className = 'oneChat' >
-                <p className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat }}> {oneMessage.message_body}</p>
+                <p className = 'chatBubble' style={{ border: `${colorBubble} solid 2px`,backgroundColor: `${colorBubble}`,float: sideOfChat, color: 'black' }}> {oneMessage.message_body}</p>
               </div>
             );
           })}

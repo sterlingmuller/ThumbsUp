@@ -1,24 +1,31 @@
 .chatBubble {
    max-width: 30em; 
    border-radius: 1rem; 
-   padding: .3em; 
+   padding: .2em; 
    margin-top: .7em; 
    margin:.2em;
-   max-width: 80%;
+   max-width: 70%;
    word-break: break-all;
   white-space: normal;
 }
 .oneChat{
 
-   height: 3rem; 
+   height: 3.7rem; 
 }
 
 .chatBox {
    /* border: grey solid 3px; 
    border-radius: 2rem;  */
+   width: 82%;
+   margin-left: 12%;
+   background-color: #1c768F;
    height: 25rem; 
    overflow: auto; 
    padding: .5em;
+   display:flex;
+   flex-direction: column;
+   align-content: space-around;
+   overflow: auto;
 }
 .bigDiv {
   display:flex;
@@ -32,14 +39,14 @@
 display:flex;
 flex-direction: row;
 justify-content: flex-end;
-min-width: 70%;
+min-width: 78%;
 }
 
 .chatListItem {
   /* display:flex;
   flex-wrap: wrap;
   align-content: space-around; */
-  border-color: rgb(28, 118, 143,.4);
+  border-color: #FBF3F2
 }
 
 .list-group {
