@@ -16,9 +16,7 @@ Dark Blue : #032539 */
 h2 {
  
   text-align: center;
-  border-bottom: #FA991C;
   align-items: center;
-  border-width: 1rem;
 }
 
 .div-h2 {
@@ -26,6 +24,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   position:relative;
+  margin-bottom: 1rem
   
 }
 
@@ -38,7 +37,7 @@ h2 {
 
 .new-ride-button {
   float: right;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 

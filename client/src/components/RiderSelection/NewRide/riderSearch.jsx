@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from "moment";
 import "./Ride.css";
-import {Button} from 'react-bootstrap';
+import {Button, Card, Form} from 'react-bootstrap';
 
 
 
@@ -16,7 +16,7 @@ export const RiderSearch = () => {
     time: ""
   });
   const [allMatchingTrips, setAllMatchingTrips] = useState({});
-
+  const navigate = useNavigate();
 
   const handleClick = () => {
     searchUpcomingTrips();
@@ -41,31 +41,39 @@ export const RiderSearch = () => {
     <div className="rider-search-container">
     
         <h2>New Ride</h2>
-        <form>
-          <label>
+        <Form>
+          <Form.Group size="lg">
+          <div className="form-input">
+          <Form.Label>
             Starting Location
-            <input
+            <Form.Control
               name="startingLocation"
               type="text"
               onChange={handleChange} />
-          </label>
-          <br />
-          <label>
+          </Form.Label>
+          </div>
+          
+          <div className="form-input">
+          <Form.Label>
             Destination
-            <input
+            <Form.Control
               name="destination"
               type="text"
               onChange={handleChange} />
-          </label>
-          <br />
-          <label>
+          </Form.Label>
+          </div>
+          
+          <div className="form-input">
+          <Form.Label>
             Time
-            <input
+            <Form.Control
               name="time"
               type="text"
               onChange={handleChange} />
-          </label>
-        </form>
+          </Form.Label>
+          </div>
+          </Form.Group>
+        </Form>
 
         <Button varient="primary" className="new-ride-button" onClick={handleClick}>Submit</Button>
 
@@ -78,19 +86,20 @@ export const RiderSearch = () => {
 
             allMatchingTrips.map((trip) => {
               return (
-                <div>
-                  <Link to="/saveMeASeat">
+                <Card>
+                
 
-                    <div className="card-body" onClick={() => {
+                    <Card.Body className="card-body" onClick={() => {
                       setSelectedTrip(trip.id);
+                      navigate('/saveMeASeat');
                       console.log("New selected trip id: ", trip.id);
                     }} key={trip.id}>{`From ${trip.start_address}\n 
                                         To ${trip.end_address}\n 
                                         At ${moment(trip.start_time).format("LLLL")}`}
-                    </div>
+                    </Card.Body>
 
-                  </Link>
-                </div>
+                
+                </Card>
               )
             })
 
