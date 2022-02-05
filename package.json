@@ -8,7 +8,7 @@
     "start": "node backend/server/index.js",
     "start-dev": "nodemon backend/server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w",
-    "build": "webpack --config ./webpack.config.js --mode production"
+    "postinstall": "webpack --config ./webpack.config.js --mode production"
   },
   "repository": {
     "type": "git",
