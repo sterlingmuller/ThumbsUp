@@ -59,7 +59,7 @@ background-size: 100px 50px;
 }
 
 .sliding-background {
-  background: url() repeat-x;
+  background: url("./city.png") repeat-x;
   background-size: contain;
   height: 100%;
   width: 1000%;
