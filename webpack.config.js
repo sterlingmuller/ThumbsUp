@@ -10,7 +10,7 @@ module.exports = {
     path: DIST_DIR,
   },
   plugins: [
-    new Dotenv()
+    new Dotenv({ systemvars: true }),
   ],
   resolve: {
     extensions: [".js", ".jsx", ".json"],
