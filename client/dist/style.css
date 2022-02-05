@@ -42,7 +42,7 @@ background-size: 100px 50px;
 }
 
 .sliding-background {
-  background: url("http://freehtmldesigns.com/wp-content/uploads/2017/09/CSS-Background-Pattern-No-Img.png") repeat-x;
+  background: url("./city.png") repeat-x;
   background-size: contain;
   height: 100%;
   width: 990%;

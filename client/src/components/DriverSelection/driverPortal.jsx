@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { MainContext } from '../../contexts/MainContext.js';
 import axios from 'axios';
 import { Button, Card, ListGroup } from 'react-bootstrap';
@@ -46,20 +46,22 @@ export const DriverPortal = () => {
             <IoMdArrowRoundBack className="backArrowCard" style={{ fontSize: '1.5em' }} onClick={() => {
               navigate('/riderOrDriver');
             }} />
-            <h1>Upcoming Trips</h1>
-          </Card.Title>
-          <ListGroup>
-            {upcomingRides.map((ride) => {
-              return (
-                <ListGroup.Item key={ride.trip_id} onClick={() => TripDetailsClick(ride.trip_id)}>
-                  <div>{ride.start_address} - {ride.end_address}</div>
-                  <div>{moment(ride.start_time).format('LLLL')}</div>
-                  <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </Button> {' '}
-                  <Button className="btn-secondary-driver col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
-                </ListGroup.Item>
-              )
-            })}
-          </ListGroup>
+                <h1>Upcoming Trips</h1>
+              </Card.Title>
+              <ListGroup>
+                {upcomingRides.map((ride) => {
+                  return (
+                
+                    <ListGroup.Item key={ride.trip_id} >
+                          <div onClick={() => TripDetailsClick(ride.trip_id)}>{ride.start_address} - {ride.end_address}</div>
+                          <div onClick={() => TripDetailsClick(ride.trip_id)}>{moment(ride.start_time).format('LLLL')}</div>  
+                    
+                       <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </Button> {' '}
+                       <Button className="btn-secondary-driver col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
+                       </ListGroup.Item>
+                  )
+                })}
+              </ListGroup>
 
           <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button> {' '}
           <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>

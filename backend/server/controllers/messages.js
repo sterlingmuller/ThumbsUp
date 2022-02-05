@@ -73,7 +73,7 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.acceptRider(callback, req.query);
+    messages.acceptRider(callback,req.body);
   },
 
   /**
