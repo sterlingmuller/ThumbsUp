@@ -2,8 +2,8 @@ let messages = require('./controllers/messages.js');
 let router = require('express').Router();
 
 //Connect methods to their routes
-// Matt
-  //messages
+
+//messages
 router.get('/messages', messages.get);
 router.delete('/messagesReject', messages.rejectRider);
 router.post('/messagesAccept', messages.acceptRider);
@@ -11,19 +11,20 @@ router.get('/messagesChatRooms', messages.getRooms);
 router.post('/messages', messages.post);
 router.get('/messagesDriveInfo', messages.getDriveInfo);
 
-  //users
+//users
 router.get('/messagesUsers', messages.getUser);
 
-// Prith
+// login
 const users = require('./controllers/users.js');
 const passport = require('passport');
 const local = require('./strategies/local.js');
 router.post('/usersCreate', users.createUser)
 router.post('/login', passport.authenticate('local', { failureMessage: true}), (users.checkLogin));
-// Neil
+// rider search
 const searchTrips = require('./controllers/searchTrip.js');
 router.get('/searchTrip', searchTrips.getRiderTrips);
-// Sterling
+
+// drivers
 const drivers = require('./controllers/drivers.js')
 const newMessage = require('./controllers/newMessage.js')
 router.get('/drivers', drivers.getUpcomingTrips);
@@ -31,12 +32,12 @@ router.put('/drivers', drivers.markCompleted);
 router.delete('/drivers', drivers.cancelTrip);
 router.get('/read', newMessage.checkStatus);
 
-// Ezra
+// add trips
 const addTrip = require('./controllers/addTrip.js');
 router.post('/AddDriverTrip', addTrip.trip);
 router.get('/specificTrip', addTrip.specificTrip);
 
-// Mitchell
+// ratings and trips
 const trips = require('./controllers/trips.js')
 router.get('/trips/upcoming', trips.getUpcoming)
 router.get('/trips/previous', trips.getPrevious)

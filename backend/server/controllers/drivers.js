@@ -32,6 +32,4 @@ module.exports = {
       .then(res.status(201).send("Trip canceled"))
       .catch(err => console.log(err));
   }
-
-
 };

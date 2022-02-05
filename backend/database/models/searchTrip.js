@@ -6,9 +6,9 @@ module.exports = {
    * @param {Function} callback
    * @param {Object} chatObject
    */
+
   getRiderTrips: function (callback, req) {
     let { startingLocation } = req.query;
-    console.log("start address ::  ", req.query);
     let search = 'SELECT id, start_address, end_address, start_time FROM driver_trips WHERE completed=false AND start_address % $1;';
     let todos = [
       startingLocation

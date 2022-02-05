@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { MainContext } from '../../contexts/MainContext.js';
-import { GoogleMap, LoadScript, useJsApiLoader } from '@react-google-maps/api';
+import React, { useState, useEffect } from 'react';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link, useNavigate } from "react-router-dom";
-import './Rider.css';
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Offcanvas } from 'react-bootstrap';
 import { RiderMenu } from './RiderHamburgerModal/riderMenu.jsx';
+import './Rider.css';
 
 
 
 export const RiderPortal = () => {
-  const { currentPage, setCurrentPage, selectedTrip, setSelectedTrip } = useContext(MainContext);
+  
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -45,10 +43,6 @@ export const RiderPortal = () => {
     lng: +long
   };
 
-  const handleClick = (e) => {
-    setCurrentPage('riderSearch');
-
-  }
 
   return (
     !isLoaded ? <div>Loading</div> :
@@ -75,7 +69,7 @@ export const RiderPortal = () => {
       </div>
 
       <Link to="/riderSearch">
-        <Button className="rider-portal-button" variant="primary" onClick={handleClick}>New Ride</Button>
+        <Button className="rider-portal-button" variant="primary">New Ride</Button>
       </Link>
     </div>
   );

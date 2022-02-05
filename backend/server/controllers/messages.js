@@ -17,9 +17,9 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.getMessages(callback,req.query);
-  }, 
-  
+    messages.getMessages(callback, req.query);
+  },
+
   getDriveInfo: function (req, res) {
 
     var callback = (err, result) => {
@@ -29,8 +29,8 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.getDriveInfo(callback,req.query);
-  }, 
+    messages.getDriveInfo(callback, req.query);
+  },
 
   /**
    * This function gets 2 usernames based on 2 user ids
@@ -45,8 +45,8 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.getUser(callback,req.query);
-  }, 
+    messages.getUser(callback, req.query);
+  },
 
   /**
    * this function gets all chatrooms that driver is a part of 
@@ -62,8 +62,8 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.getRooms(callback,req.query);
-  }, 
+    messages.getRooms(callback, req.query);
+  },
 
   acceptRider: function (req, res) {
     var callback = (err, result) => {
@@ -76,11 +76,11 @@ module.exports = {
     messages.acceptRider(callback,req.body);
   },
 
-/**
- * This function adds 1 message to 1 chatroom
- * @param {*} req 
- * @param {*} res 
- */
+  /**
+   * This function adds 1 message to 1 chatroom
+   * @param {*} req 
+   * @param {*} res 
+   */
   post: function (req, res) {
     messages.createMessage(req.body);
     res.send('you posted');
@@ -94,6 +94,6 @@ module.exports = {
         res.send(result.rows);
       }
     };
-    messages.rejectRider(callback,req.query);
+    messages.rejectRider(callback, req.query);
   },
 };

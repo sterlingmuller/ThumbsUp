@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js';
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from 'react-bootstrap';
-// import '../Rider.css';
 
 
 export const RiderMenu = () => {

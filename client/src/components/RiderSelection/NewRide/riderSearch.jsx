@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from "moment";
 import "./Ride.css";
-import { Button, Card, Form, ListGroup } from 'react-bootstrap';
+import { Button, Form, ListGroup } from 'react-bootstrap';
 
 
 
 export const RiderSearch = () => {
-  const { currentPage, setCurrentPage, slectedTrip, setSelectedTrip } = useContext(MainContext);
+  const { setSelectedTrip } = useContext(MainContext);
   const [riderSearchDetails, setRiderSearchDetails] = useState({
     startingLocation: "",
     destination: "",
@@ -25,14 +25,12 @@ export const RiderSearch = () => {
   const handleChange = (e) => {
     const selected = e.target.name;
     setRiderSearchDetails({ ...riderSearchDetails, [selected]: e.target.value })
-
   }
 
   const searchUpcomingTrips = () => {
     axios.get(`/searchTrip`, { params: riderSearchDetails })
       .then(({ data }) => {
         setAllMatchingTrips(data);
-        console.log('data:::', data)
       })
   }
 
