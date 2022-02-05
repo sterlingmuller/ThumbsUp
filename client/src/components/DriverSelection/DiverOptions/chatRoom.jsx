@@ -26,7 +26,7 @@ export const ChatRoom = (props) => {
 
   const getMessages = () => {
     var passObj
-    if (currentUser.usertype === 'driver') {  
+    if (currentUser.usertype === 'driver') {
       passObj = {
         tripId: selectedTrip || 1,
         sender_id: currentChat
@@ -40,7 +40,7 @@ export const ChatRoom = (props) => {
     };
 
     axios
-      .get(`http://localhost:3000/messages`, {
+      .get(`/messages`, {
         params: passObj
       }
       ).then((results) => {
@@ -50,7 +50,7 @@ export const ChatRoom = (props) => {
 
   const handleSend = () => {
     axios
-      .post(`http://localhost:3000/messages`, {
+      .post(`/messages`, {
         tripId: selectedTrip || 1,
         message_sender: Number(currentUser.userId),
         message_recepient: messages[0].message_recepient == Number(currentUser.userId) ? messages[0].message_sender : messages[0].message_recepient,
@@ -76,14 +76,14 @@ export const ChatRoom = (props) => {
         }
       }).then(() => {
         axios
-          .post(`http://localhost:3000/messages`, {
+          .post(`/messages`, {
             tripId: selectedTrip || 1,
             message_sender: Number(currentUser.userId),
             message_recepient: messages[0].message_recepient == Number(currentUser.userId) ? messages[0].message_sender : messages[0].message_recepient,
             message_body: 'Seat Saved!',
             message_time: new Date(),
           }).then(() => {
-            
+
             setTypedMessage('');
             getMessages();
           });

@@ -31,7 +31,7 @@ export const SaveMeASeat = () => {
                 .then(({ data }) => {
                   console.log(data);
                   axios
-                  .post(`http://localhost:3000/messages`, {
+                  .post(`/messages`, {
                    tripId:  selectedTrip || 1,
                    message_sender: Number(currentUser.userId),
                    message_recepient:  data.user_id,
