@@ -24,14 +24,19 @@ body {
   display:grid;
   justify-items: center;
   align-items: center;
+  /* text-shadow:.06em .07em .01em black; */
 
-    background-color:#1c768F;
+    /* background-color:#1C768F; */
+
+    /* background-image: url('./stacked-peaks-haikei.png');
+    background-size: cover; */
+
 background-image:
-radial-gradient(circle at 100% 150%, #1c768F 24%, #F5F5DC 24%, #F5F5DC 28%, #1c768F 28%, #1c768F 36%, #F5F5DC 36%, #F5F5DC 40%, transparent 40%, transparent),
-radial-gradient(circle at 0    150%, #1c768F 24%, #F5F5DC 24%, #F5F5DC 28%, #1c768F 28%, #1c768F 36%, #F5F5DC 36%, #F5F5DC 40%, transparent 40%, transparent),
-radial-gradient(circle at 50%  100%, #F5F5DC 10%, #1c768F 10%, #1c768F 23%, #F5F5DC 23%, #F5F5DC 30%, #1c768F 30%, #1c768F 43%, #F5F5DC 43%, #F5F5DC 50%, #1c768F 50%, #1c768F 63%, #F5F5DC 63%, #F5F5DC 71%, transparent 71%, transparent),
-radial-gradient(circle at 100% 50%, #F5F5DC 5%, #1c768F 5%, #1c768F 15%, #F5F5DC 15%, #F5F5DC 20%, #1c768F 20%, #1c768F 29%, #F5F5DC 29%, #F5F5DC 34%, #1c768F 34%, #1c768F 44%, #F5F5DC 44%, #F5F5DC 49%, transparent 49%, transparent),
-radial-gradient(circle at 0    50%, #F5F5DC 5%, #1c768F 5%, #1c768F 15%, #F5F5DC 15%, #F5F5DC 20%, #1c768F 20%, #1c768F 29%, #F5F5DC 29%, #F5F5DC 34%, #1c768F 34%, #1c768F 44%, #F5F5DC 44%, #F5F5DC 49%, transparent 49%, transparent);
+radial-gradient(circle at 100% 150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, #032539 10%, #1C768F 10%, #1C768F 23%, #032539 23%, #032539 30%, #1C768F 30%, #1C768F 43%, #032539 43%, #032539 50%, #1C768F 50%, #1C768F 63%, #032539 63%, #032539 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, #032539 5%, #1C768F 5%, #1C768F 15%, #032539 15%, #032539 20%, #1C768F 20%, #1C768F 29%, #032539 29%, #032539 34%, #1C768F 34%, #1C768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, #032539 5%, #1C768F 5%, #1C768F 15%, #032539 15%, #032539 20%, #1C768F 20%, #1C768F 29%, #032539 29%, #032539 34%, #1C768F 34%, #1C768F 44%, #032539 44%, #032539 49%, transparent 49%, transparent);
 background-size: 100px 50px;
 }
 
@@ -39,8 +44,9 @@ background-size: 100px 50px;
   overflow: hidden;
   height: 330px;
   width: 560px;
-  border: 3px solid #F5F5DC;
-  margin-top: 10%;
+  border: 2px solid #FBF3F2;
+  margin-top: 5%;
+  filter:drop-shadow(.08em .08em .05em black);
 }
 
 .wrapper {
@@ -48,10 +54,8 @@ background-size: 100px 50px;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  width: 80%;
+  width: 85%;
   height: 100%;
-  background-color: #1c768F;
-  color: #FBF3F2;
 }
 
 .sliding-background {
@@ -60,7 +64,6 @@ background-size: 100px 50px;
   height: 100%;
   width: 1000%;
   animation: slide 30s linear infinite;
-
 }
 
 @keyframes slide {
@@ -76,20 +79,33 @@ background-size: 100px 50px;
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 80%;
-  height: 95%;
-  background-color: #1c768F;
+  width: 100%;
+  height: 100%;
+  background-color: #1C768F;
   color: #FBF3F2;
+}
+
+.driverPortalCard {
+  font-size: 2em !important;
 }
 
 .btn-primary {
   color: #FBF3F2!important;
   background-color: #FA991C !important;
-  border-color: #FA991C!important;
+  border-color: #ffffff!important;
+  filter:drop-shadow(.04em .05em .02em black);
 }
 
 .btn-secondary {
   color: #FBF3F2!important;
   background-color: #032539 !important;
-  border-color: #032539 !important;
+  border-color: #ffffff !important;
+  filter:drop-shadow(.04em .05em .02em black);
+}
+
+.btn-secondary-driver {
+  color: #FBF3F2!important;
+  background-color: #5b717e !important;
+  border-color: #ffffff !important;
+  filter:drop-shadow(.04em .05em .02em black);
 }

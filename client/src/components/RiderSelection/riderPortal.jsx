@@ -50,17 +50,12 @@ export const RiderPortal = () => {
 
   }
 
-  // const handelHamburgerClick = () => {
-  //   setCurrentPage("riderMenu");
-  // }
-
-
   return (
     !isLoaded ? <div>Loading</div> :
     <div className="rider-portal-container">
       <div className="div-h2">
-      <GiHamburgerMenu size={40} className='hamburger-menu' onClick={handleShow} />
-      <h2>Rider Portal</h2>
+      <GiHamburgerMenu size={40} className='hamburger-menu hamburgerIcon' onClick={handleShow} />
+      <h1>Rider Portal</h1>
       </div>
 
       <Offcanvas show={show} onHide={handleClose}>

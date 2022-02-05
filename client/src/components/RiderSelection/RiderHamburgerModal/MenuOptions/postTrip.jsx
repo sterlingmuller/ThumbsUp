@@ -51,13 +51,13 @@ export const PostTrip = () => {
 
   return (
     <Card>
-      <Card.Header as='h3'>
+      <Card.Header as='h1'>
         <div>{driver.start_address} - {driver.end_address}</div>
         <div>{moment(driver.start_time).format('LLLL')}</div>
       </Card.Header>
-      <IoMdArrowRoundBack className='backArrow' onClick={() => navigate('/tripHistory')}/>
+      <IoMdArrowRoundBack className='backArrowCard' onClick={() => navigate('/tripHistory')}/>
       <Card.Body>
-        <Card.Title>Driver: {driver.username}</Card.Title>
+        <Card.Title as='h1'>Driver: {driver.username}</Card.Title>
         {rated
         ? <StarRatings
         rating={rating}

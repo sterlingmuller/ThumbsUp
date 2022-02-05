@@ -14,7 +14,6 @@ import { TripHistory } from './components/tripHistory.jsx';
 import { RiderUpcomingTrips } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/riderUpcomingTrips.jsx';
 import { RiderMenu } from './components/RiderSelection/RiderHamburgerModal/riderMenu.jsx';
 import { RiderPortal } from './components/RiderSelection/riderPortal.jsx';
-import { DriverTripHistory } from './components/DriverSelection/DiverOptions/driverTripHistory.jsx';
 import { TripHistoryDetails } from './components/tripHistoryDetails.jsx';
 import { PostTrip } from './components/RiderSelection/RiderHamburgerModal/MenuOptions/postTrip.jsx';
 import { ChatRoom } from './components/DriverSelection/DiverOptions/chatRoom.jsx';
@@ -28,7 +27,6 @@ return (
     <Route path="newUser" element={<NewUser />} />
     <Route path="riderOrDriver" element={<RiderOrDriverSelection />} />
     <Route path="driverAddTrip" element={<DriverAddTrip />} />
-    <Route path="driverTripHistory" element={<DriverTripHistory />} />
     <Route path="driverTripSelection" element={<DriverTripSelection />} />
     <Route path="chatRoom" element={<ChatRoom />} />
     <Route path="driverPortal" element={<DriverPortal />} />

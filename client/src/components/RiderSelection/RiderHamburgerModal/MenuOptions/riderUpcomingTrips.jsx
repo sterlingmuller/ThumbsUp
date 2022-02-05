@@ -24,10 +24,10 @@ export const RiderUpcomingTrips = () => {
 
   return (
     <Card>
-      <IoMdArrowRoundBack className='backArrow' onClick={() => navigate('/riderPortal')}/>
+      <IoMdArrowRoundBack className='backArrowCard' onClick={() => navigate('/riderPortal')}/>
       <Card.Body>
         <Card.Title>
-          <div className='cardTitle'>Upcoming Trips</div>
+          <h1>Upcoming Trips</h1>
         </Card.Title>
         <ListGroup>
           {upcomingTrips.map(trip => {return <RiderUpcomingTripDetails key={trip.rider_trip_id} trip={trip}/>})}
