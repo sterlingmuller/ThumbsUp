@@ -4,7 +4,6 @@ const {pool} = require('../../database/index.js')
 module.exports = {
   checkLogin: function (req, res) {
     const { username, password } = req.body;
-    console.log("Login attempt");
     const validateLogin = (err, result) => {
       if (err) {
         console.log(err);
@@ -21,10 +20,8 @@ module.exports = {
         username !== result.rows[0].row[1] ||
         password !== result.rows[0].row[2]
       ) {
-        console.log("Invalid Login");
         res.send(false);
       } else {
-        console.log("Valid Login");
         var payload = {
           userId: result.rows[0].row[0],
           username: result.rows[0].row[1],
@@ -52,7 +49,6 @@ module.exports = {
       res.send('Username and Password must be at least 3 characters long');
       return;
     }
-    console.log("User Creation attempt");
     pool.query(`SELECT * from users where username = ($1)`, [username], (err, data) => {
       if (err) {
         console.log(err)

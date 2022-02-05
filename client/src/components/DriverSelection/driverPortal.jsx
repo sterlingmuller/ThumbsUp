@@ -8,11 +8,9 @@ import moment from 'moment';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const DriverPortal = () => {
-  const { setSelectedTrip, setCurrentPage, currentUser } = useContext(MainContext);
+  const { setSelectedTrip, currentUser } = useContext(MainContext);
   const navigate = useNavigate();
-
   const [upcomingRides, setUpcomingRides] = useState([]);
-
   const getUpcomingRides = () => {
     axios.get(`/drivers?user_id=${currentUser.userId}`)
       .then(({ data }) => {
@@ -25,7 +23,6 @@ export const DriverPortal = () => {
   }, [])
 
   function TripDetailsClick(id) {
-    console.log("Ive been clicked!");
     setSelectedTrip(id);
     navigate("/driverTripSelection");
   }
@@ -43,10 +40,10 @@ export const DriverPortal = () => {
 
   return (
     <div>
-          <Card>
-            <Card.Body>
-              <Card.Title className="driverPortalCard">
-              <IoMdArrowRoundBack className="backArrowCard" style={{fontSize: '1.5em'}} onClick={() => {
+      <Card>
+        <Card.Body>
+          <Card.Title className="driverPortalCard">
+            <IoMdArrowRoundBack className="backArrowCard" style={{ fontSize: '1.5em' }} onClick={() => {
               navigate('/riderOrDriver');
             }} />
                 <h1>Upcoming Trips</h1>
@@ -66,11 +63,11 @@ export const DriverPortal = () => {
                 })}
               </ListGroup>
 
-        <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button> {' '}
-        <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
+          <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button> {' '}
+          <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
 
-            </Card.Body>
-          </Card>
+        </Card.Body>
+      </Card>
     </div>
   );
 

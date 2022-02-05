@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
-import { MainContext } from '../../../contexts/MainContext.js'
 
 const librariesArray = ['places'];
 const containerStyle = {
-
   height: '45vh'
 };
 
@@ -15,7 +13,7 @@ const center = {
 
 // Renders a google map with a passed prop. Pass a prop into this component
 // called trip ie: trip={trip}
-// Trip prop must be an object that lookes like the example bellow.
+// Trip prop must be an object that lookes like the example below.
 //   {
 //     origin: 'New York, NY, USA',
 //     destination: 'Buffalo, NY, USA',
@@ -24,12 +22,11 @@ const center = {
 
 function TripMap(props) {
   let [directionsResult, setDirections] = useState(undefined);
-  let { currentUser } = useContext(MainContext);
   let [directionsRequest, setRequest] = useState({
-         origin: props.trip.data.start_address,
-         destination: props.trip.data.end_address,
-         travelMode: 'DRIVING'
-       });
+    origin: props.trip.data.start_address,
+    destination: props.trip.data.end_address,
+    travelMode: 'DRIVING'
+  });
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.MAPS_API_KEY,
@@ -53,7 +50,7 @@ function TripMap(props) {
         >
           { /* Child components, such as markers, info windows, etc. */}
           {!directionsResult ? <DirectionsService callback={directionsCallback} options={directionsRequest} /> : null}
-          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult}/>}
+          {!directionsResult ? null : <DirectionsRenderer directions={directionsResult} />}
           <></>
         </GoogleMap>
       </div>

@@ -9,34 +9,32 @@ import { useNavigate } from "react-router-dom";
 
 
 export const DriverTripSelection = () => {
-  const {currentUser, selectedTrip,setCurrentChat } = useContext(MainContext);
-  const [messages, setMessages] = useState(null);
-  const [typedMessage, setTypedMessage] = useState('');
+  const { currentUser, selectedTrip, setCurrentChat } = useContext(MainContext);
   const [trip, setTrip] = useState(undefined);
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
-    .then((data)=>{
-      setTrip(data)
-    })
-    .catch((err)=>console.log(err))
-  },[currentUser])
+      .then((data) => {
+        setTrip(data)
+      })
+      .catch((err) => console.log(err))
+  }, [currentUser])
 
 
   return (
     <div>
-          {currentUser.usertype === 'driver' ?<IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
-            setCurrentChat(null)
-            navigate('/driverPortal');
-        }}/> :
-        <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {
+      {currentUser.usertype === 'driver' ? <IoMdArrowRoundBack className='backArrow' onClick={() => {
+        setCurrentChat(null)
+        navigate('/driverPortal');
+      }} /> :
+        <IoMdArrowRoundBack className='backArrow' onClick={() => {
           setCurrentChat(null)
           navigate('/riderUpcomingTrips');
-      }}/>}
-      {!trip?<div>loading</div>:<div><TripMap trip={trip}/></div>}
+        }} />}
+      {!trip ? <div>loading</div> : <div><TripMap trip={trip} /></div>}
       <div >
-        { currentUser.usertype === 'driver'  ? <DriverTiles /> : <ChatRoom />}
+        {currentUser.usertype === 'driver' ? <DriverTiles /> : <ChatRoom />}
 
       </div>
     </div>

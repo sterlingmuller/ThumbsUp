@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { MainContext } from "../../contexts/MainContext.js";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 export const NewUser = () => {
-  const { currentPage, setCurrentPage, setUserId } = useContext(MainContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
