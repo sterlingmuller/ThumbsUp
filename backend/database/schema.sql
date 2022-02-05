@@ -1,6 +1,10 @@
+-- for dev purposes only **********
+
 -- DROP DATABASE IF EXISTS blueocean;
 -- CREATE DATABASE blueocean;
 -- \c blueocean;
+
+--*********************************
 
 -- User table
 CREATE TABLE users (
@@ -206,6 +210,9 @@ VALUES (8, 3, 2, 'Have you ever been to the city before?', '2017-05-28T08:30');
 INSERT INTO messages (id_driver_trips, message_sender, message_recepient, message_body, message_time)
 VALUES (7, 2, 3, 'Save me a seat!', '2017-05-28T08:30');
 
--- end
+-- allows fuzzy search with psql ex. denvir -> denver
+CREATE EXTENSION pg_trgm;
+
+
+--to run the file all at once
 -- psql -d blueocean -f ./backend/database/schema.sql
--- CREATE EXTENSION pg_trgm;

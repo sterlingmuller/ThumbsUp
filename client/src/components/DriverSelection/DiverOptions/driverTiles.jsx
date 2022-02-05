@@ -5,7 +5,6 @@ import axios from 'axios';
 import moment from 'moment';
 import { ListGroup } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
-import { IoMdArrowRoundBack } from "react-icons/io";
 
 
 export const DriverTiles = () => {
@@ -14,9 +13,6 @@ export const DriverTiles = () => {
   const [chatPartnerNameArr, setChatPartnerNameArr] = useState([]);
   const [driveInfo, setDriveInfo] = useState(null);
   const navigate = useNavigate();
-
-
-
 
   useEffect(() => {
     getDriverTiles();
@@ -43,7 +39,6 @@ export const DriverTiles = () => {
       }).then((results) => {
         setDriveInfo(results.data[0]);
       })
-
   };
 
   const getDriverTiles = () => {
@@ -75,11 +70,8 @@ export const DriverTiles = () => {
       });
   }
 
-
-
   return (
     <div>
-
       {currentChat ? <ChatRoom currentChatRoom={currentChat} /> :
         !driverTiles || chatPartnerNameArr.length === driverTiles.length + 1 || !driveInfo ? <div> loading...</div> :
           <div>

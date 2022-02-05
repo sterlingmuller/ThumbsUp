@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer, StandaloneSearchBox } from '@react-google-maps/api';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
@@ -63,7 +63,7 @@ function DriverTripMap(props) {
       start_time: startTime,
       user_id: currentUser.userId
     })
-      .then((response) => {
+      .then(() => {
         alert('Trip Added!');
       })
       .catch((error) => {

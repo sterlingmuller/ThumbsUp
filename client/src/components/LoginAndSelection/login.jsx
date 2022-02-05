@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../contexts/MainContext.js'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
@@ -10,10 +10,10 @@ import "./Login.css";
 
 
 export const Login = () => {
-  const { currentPage, setCurrentPage, setUserId, setCurrentUser } = useContext(MainContext);
+  const { setCurrentUser } = useContext(MainContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -35,7 +35,6 @@ export const Login = () => {
           navigate('/riderOrDriver');
         }
         else {
-          console.log('failed')
           alert('Invalid username/password combination');
         }
       })

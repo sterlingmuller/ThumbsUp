@@ -4,33 +4,16 @@ Orange: #FA991C rgb(250, 153, 28)'
 Cream #FBF3F2
 Light Blue: #1C768F  'rgb(28, 118, 143)
 Dark Blue : #032539
-Wrapper:
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
 */
 
 
-
-html, body {
-  min-height: 100vh;
+html {
   background-color: #1c768F;
 }
 
 body {
   height: 100vh;
-  display:grid;
-  justify-items: center;
-  align-items: center;
-  /* text-shadow:.06em .07em .01em black; */
-
-    /* background-color:#1C768F; */
-
-    /* background-image: url('./stacked-peaks-haikei.png');
-    background-size: cover; */
-
+  
 background-image:
 radial-gradient(circle at 100% 150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
 radial-gradient(circle at 0    150%, #1C768F 24%, #032539 24%, #032539 28%, #1C768F 28%, #1C768F 36%, #032539 36%, #032539 40%, transparent 40%, transparent),
@@ -42,15 +25,15 @@ background-size: 100px 50px;
 
 .wrapperSlide {
   overflow: hidden;
-  height: 330px;
-  width: 560px;
+  height: 14em;
+  width: 23em;
   border: 2px solid #FBF3F2;
   margin-top: 5%;
   filter:drop-shadow(.08em .08em .05em black);
 }
 
 .wrapper {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
@@ -62,7 +45,7 @@ background-size: 100px 50px;
   background: url("http://freehtmldesigns.com/wp-content/uploads/2017/09/CSS-Background-Pattern-No-Img.png") repeat-x;
   background-size: contain;
   height: 100%;
-  width: 1000%;
+  width: 990%;
   animation: slide 30s linear infinite;
 }
 
@@ -76,9 +59,7 @@ background-size: 100px 50px;
 }
 
 #app {
-  display: flex;
   flex-direction: column;
-  margin: auto;
   width: 100%;
   height: 100%;
   background-color: #1C768F;
@@ -90,21 +71,18 @@ background-size: 100px 50px;
 }
 
 .btn-primary {
-  color: #FBF3F2!important;
   background-color: #FA991C !important;
   border-color: #ffffff!important;
   filter:drop-shadow(.04em .05em .02em black);
 }
 
 .btn-secondary {
-  color: #FBF3F2!important;
   background-color: #032539 !important;
   border-color: #ffffff !important;
   filter:drop-shadow(.04em .05em .02em black);
 }
 
 .btn-secondary-driver {
-  color: #FBF3F2!important;
   background-color: #5b717e !important;
   border-color: #ffffff !important;
   filter:drop-shadow(.04em .05em .02em black);

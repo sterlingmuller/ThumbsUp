@@ -1,23 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {MainContext} from '../../../contexts/MainContext.js'
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TripMap from '../../DriverSelection/DiverOptions/tripMap.jsx'
 import {Button} from 'react-bootstrap';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const SaveMeASeat = () => {
-  const { selectedTrip, currentUser, currentPage, setCurrentPage, setUserId } = useContext(MainContext);
+  const { selectedTrip, currentUser } = useContext(MainContext);
   const navigate = useNavigate();
   const [trip, setTrip] = useState(undefined);
+
   useEffect(()=>{
     axios.get(`/specificTrip?trip_id=${selectedTrip}`)
     .then((data)=>{
-
       setTrip(data)
     })
     .catch((err)=>console.log(err))
   },[currentUser])
+  
   return (
     <div >
       <IoMdArrowRoundBack className = 'backArrow' onClick = {() => {

@@ -10,6 +10,7 @@ module.exports = {
     })
     .catch((err) => console.log('AddTrip error: ', err));
   },
+  
   specificTrip(req,res){
     const {trip_id} = req.query;
     pool.query('SELECT start_address, end_address FROM driver_trips WHERE id=$1',[trip_id])

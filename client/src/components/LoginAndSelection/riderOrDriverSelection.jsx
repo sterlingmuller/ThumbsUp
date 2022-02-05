@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import {MainContext} from '../../contexts/MainContext.js'
 import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import axios from 'axios';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./Login.css";
 
-
 export const RiderOrDriverSelection = () => {
-  const { currentPage, setCurrentPage, setUserId, currentUser, setCurrentUser } = useContext(MainContext);
+  const { currentUser, setCurrentUser } = useContext(MainContext);
 
   const navigate = useNavigate()
 
@@ -44,9 +40,3 @@ export const RiderOrDriverSelection = () => {
   );
 
 }
-
-
-
-
-{/* <img className="driver" name="driver" onClick={becomeDriver} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/steering-wheel-92-1091349.png"></img> */}
-
