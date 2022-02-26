@@ -2,24 +2,12 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 //set up pool connection
-const localConnection = {
+const pool = new Pool ({
   user: process.env.USER,
   host: process.env.HOST,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE
-};
-
-const herokuConnection = {
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-};
-
-const pool = new Pool(
-  process.env.DATABASE_URL
-  ? herokuConnection
-  : localConnection
-);
-
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD
+});
 
 //repo stuff here for heroku
 pool.connect(err => {

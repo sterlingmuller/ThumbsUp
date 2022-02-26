@@ -13,7 +13,9 @@ module.exports = {
   },
 
   newUserCreation: function(callback, username, password, profile_picture) {
+    // const userExist = `SELECT (username) FROM users where username = ($1)`
     const addUser = `INSERT INTO users (username, password, profile_picture) VALUES ($1, $2, $3)`
+    // pool.query(userExist, [username], callback);
     pool.query(addUser, [username, password, profile_picture], callback);
   }
 };
