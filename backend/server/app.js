@@ -6,7 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local')
 const local = require('./strategies/local.js');
 const session = require('express-session');
-const PORT = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -30,4 +30,4 @@ app.use(router);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.listen(PORT, () => {console.log(`I'm listening on PORT: ${PORT}`)});
+app.listen(port, () => {console.log(`I'm listening on PORT: ${port}`)});
