@@ -10,8 +10,6 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'PATCH, DELETE, POST, GET, OPTIONS';
-
 // Router
 const router = require('./routes.js');
 
@@ -22,7 +20,7 @@ app.use(session({
   secret: process.env.secret || 'secret',
   cookie: {maxAge: 8640000},
   saveUninitialized: false,
-  resave: false,
+  resave: false
 }));
 // Set up routes
 app.use(router);
