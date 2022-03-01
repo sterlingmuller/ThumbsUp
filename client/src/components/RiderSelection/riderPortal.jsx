@@ -10,7 +10,7 @@ import './Rider.css';
 
 
 export const RiderPortal = () => {
-  
+
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ export const RiderPortal = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const librariesArray = ['places'];
-  const { isLoaded, loadError } = useJsApiLoader({
+  const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.MAPS_API_KEY,
     libraries: librariesArray
   });
