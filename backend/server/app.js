@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
 app.use(session({
-  secret: process.env.secret,
+  secret: process.env.secret || 'secret',
   cookie: {maxAge: 8640000},
   saveUninitialized: false,
   resave: false,
