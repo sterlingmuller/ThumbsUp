@@ -29,7 +29,7 @@ function TripMap(props) {
   });
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.MAPS_API_KEY,
+    googleMapsApiKey: process.env.KEY,
     libraries: librariesArray
   });
 

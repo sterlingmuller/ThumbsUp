@@ -19,7 +19,7 @@ export const RiderPortal = () => {
   const handleShow = () => setShow(true);
   const librariesArray = ['places'];
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.MAPS_API_KEY,
+    googleMapsApiKey: process.env.KEY,
     libraries: librariesArray
   });
 
