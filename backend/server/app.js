@@ -1,13 +1,20 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() };
 const express = require('express');
+const axios = require('axios');
 const path = require('path');
 const passport = require('passport');
+const LocalStrategy = require('passport-local')
+const local = require('./strategies/local.js');
 const session = require('express-session');
 const port = process.env.PORT || 3000;
+
 const app = express();
+
+axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'PATCH, DELETE, POST, GET, OPTIONS';
 
 // Router
 const router = require('./routes.js');
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));

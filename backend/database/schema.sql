@@ -5,7 +5,6 @@
 -- \c blueocean;
 
 --*********************************
-CREATE DATABASE thumbsup;
 
 -- User table
 CREATE TABLE users (
