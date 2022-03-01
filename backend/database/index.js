@@ -19,7 +19,7 @@ const pool = new Pool (
   ? herokuConnection: localConnection
 );
 
-//repo stuff here for heroku
+//repo stuff for heroku
 pool.connect(err => {
   if (err) {
     console.error('connection error', err.stack)
