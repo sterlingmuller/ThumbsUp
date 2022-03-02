@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { MainContext } from '../../contexts/MainContext.js'
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -7,13 +7,10 @@ import axios from 'axios';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./Login.css";
 
-
-
 export const Login = () => {
   const { setCurrentUser } = useContext(MainContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
 
   const navigate = useNavigate();
 
@@ -85,5 +82,4 @@ export const Login = () => {
       {loginForm()}
     </div>
   );
-
 }

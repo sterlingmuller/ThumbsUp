@@ -10,7 +10,6 @@ const App = () => {
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
 
-
   return (
     <div className="mainContainer">
       <MainContext.Provider value={{
@@ -20,15 +19,11 @@ const App = () => {
         selectedTrip, setSelectedTrip,
         currentChat, setCurrentChat
       }}>
-
         <RouteComponent />
       </MainContext.Provider>
     </div>
   );
-
-
 }
-
 export default App;
 
 

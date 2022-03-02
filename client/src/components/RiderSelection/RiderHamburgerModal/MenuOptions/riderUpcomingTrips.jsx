@@ -6,7 +6,6 @@ import { Card, ListGroup } from 'react-bootstrap';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
-
 export const RiderUpcomingTrips = () => {
   const { currentUser } = useContext(MainContext);
   const[upcomingTrips, setUpcomingTrips] = useState([]);
@@ -35,5 +34,4 @@ export const RiderUpcomingTrips = () => {
       </Card.Body>
     </Card>
   );
-
 }

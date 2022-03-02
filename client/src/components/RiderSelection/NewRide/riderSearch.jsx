@@ -6,8 +6,6 @@ import moment from "moment";
 import "./Ride.css";
 import { Button, Form, ListGroup } from 'react-bootstrap';
 
-
-
 export const RiderSearch = () => {
   const { setSelectedTrip } = useContext(MainContext);
   const [riderSearchDetails, setRiderSearchDetails] = useState({
@@ -35,9 +33,7 @@ export const RiderSearch = () => {
   }
 
   return (
-
     <div className="rider-search-container">
-
       <h1>New Ride</h1>
       <Form>
         <Form.Group size="lg">
@@ -75,18 +71,13 @@ export const RiderSearch = () => {
 
       <Button varient="primary" className="new-ride-button" onClick={handleClick}>Submit</Button>
 
-
-
       <div>
         <h2>Available Rides</h2>
         <ListGroup>
           {
-
             Object.keys(allMatchingTrips).length !== 0 ?
-
               allMatchingTrips.map((trip) => {
                 return (
-
                   <ListGroup.Item
                     className="card-body" onClick={() => {
                       setSelectedTrip(trip.id);
@@ -95,22 +86,13 @@ export const RiderSearch = () => {
 
                     <div>{trip.start_address} - {trip.end_address}</div>
                     <div>{moment(trip.start_time).format('LLLL')}</div>
-
-
                   </ListGroup.Item>
-
                 )
               })
-
-
-
-
               : "Search For a Ride!"
           }
         </ListGroup>
-
       </div>
     </div>
   );
-
 }

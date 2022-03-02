@@ -3,7 +3,6 @@ import DriverTripMap from './driverAddTripMap.jsx'
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-
 export const DriverAddTrip = () => {
   const navigate = useNavigate();
 
@@ -16,5 +15,4 @@ export const DriverAddTrip = () => {
       </div>
     </div>
   );
-
 }

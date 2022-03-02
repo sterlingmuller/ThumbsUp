@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../../../contexts/MainContext.js'
 import axios from 'axios';
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Button } from 'react-bootstrap';
 import './chatRoom.css';
@@ -11,7 +11,6 @@ export const ChatRoom = (props) => {
   const [messages, setMessages] = useState(null);
   const [typedMessage, setTypedMessage] = useState('');
   const navigate = useNavigate();
-
 
   useEffect(() => {
     getMessages();
@@ -35,7 +34,6 @@ export const ChatRoom = (props) => {
       passObj = {
         tripId: selectedTrip || 1,
         sender_id: currentUser.userId
-
       }
     };
 
@@ -81,12 +79,10 @@ export const ChatRoom = (props) => {
             message_body: 'Seat Saved!',
             message_time: new Date(),
           }).then(() => {
-
             setTypedMessage('');
             getMessages();
           });
-      }
-      )
+      })
   }
 
   const handleReject = (senderId) => {
@@ -100,7 +96,6 @@ export const ChatRoom = (props) => {
         alert('Ride rejected!');
         navigate('/driverTripSelection')
       })
-
   }
 
   return (
@@ -134,5 +129,4 @@ export const ChatRoom = (props) => {
             <Button varient='primary' onClick={() => { handleSend() }}>Send</Button></div>}
       </div>
   );
-
 }

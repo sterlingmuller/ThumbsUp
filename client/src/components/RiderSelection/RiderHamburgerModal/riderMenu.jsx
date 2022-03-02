@@ -3,7 +3,6 @@ import { MainContext } from '../../../contexts/MainContext.js';
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from 'react-bootstrap';
 
-
 export const RiderMenu = () => {
   const { currentUser } = useContext(MainContext);
   const navigate = useNavigate();
@@ -18,5 +17,4 @@ export const RiderMenu = () => {
       </Offcanvas.Body>
     </>
   );
-
 }

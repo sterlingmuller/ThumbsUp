@@ -14,7 +14,7 @@ const center = {
   lng: -87.72995
 };
 
-function DriverTripMap(props) {
+function DriverTripMap() {
   let [directionsResult, setDirections] = useState(undefined);
   let [startTime, setStartTime] = useState('');
   let [startPoint, setStartPoint] = useState('');
@@ -32,7 +32,7 @@ function DriverTripMap(props) {
 
   }, [directionsRequest])
 
-  const { isLoaded, loadError } = useJsApiLoader({
+  const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.KEY,
     libraries: librariesArray
   });
@@ -49,11 +49,8 @@ function DriverTripMap(props) {
   }
 
   const onStartLoad = (ref) => setStartInput(ref);
-
   const onEndLoad = (ref) => setEndInput(ref);
-
   const onStartChanged = () => setStartPoint(startInput.getPlaces());
-
   const onEndChanged = () => setEndPoint(endInput.getPlaces());
 
   const addTrip = () => {
@@ -160,5 +157,4 @@ function DriverTripMap(props) {
       </div>
   )
 }
-
 export default React.memo(DriverTripMap)

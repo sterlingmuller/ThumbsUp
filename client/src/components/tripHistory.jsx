@@ -37,5 +37,4 @@ export const TripHistory = () => {
       </Card.Body>
     </Card>
   );
-
 }

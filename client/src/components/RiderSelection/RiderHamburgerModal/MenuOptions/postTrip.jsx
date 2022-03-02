@@ -77,5 +77,4 @@ export const PostTrip = () => {
       </Card.Body>
     </Card>
   );
-
 }

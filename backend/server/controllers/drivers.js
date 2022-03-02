@@ -1,8 +1,6 @@
 const {pool} = require('../../database/index.js');
 
-
 module.exports = {
-
   getUpcomingTrips (req, res) {
     let {user_id} = req.query;
     let sql = 'SELECT u.username, dt.id as trip_id, u.user_id as user_id, dt.start_address, dt.end_address, dt.start_time, dt.completed FROM driver_trips dt, users u WHERE u.user_id=$1 AND dt.user_id=$1 AND dt.completed=false';
@@ -26,7 +24,6 @@ module.exports = {
   cancelTrip (req, res) {
     let {trip_id} = req.query;
     let sql = 'DELETE FROM driver_trips WHERE id=$1';
-
 
     pool.query(sql, [trip_id])
       .then(res.status(201).send("Trip canceled"))

@@ -1,12 +1,10 @@
 var messages = require('../../database/models/messages.js');
 
-
 module.exports = {
-
   /**
    * This function gets all messages for 1 chatroom
-   * @param {*} req 
-   * @param {*} res 
+   * @param {*} req
+   * @param {*} res
    */
   get: function (req, res) {
 
@@ -34,8 +32,8 @@ module.exports = {
 
   /**
    * This function gets 2 usernames based on 2 user ids
-   * @param {*} req 
-   * @param {*} res 
+   * @param {*} req
+   * @param {*} res
    */
   getUser: function (req, res) {
     var callback = (err, result) => {
@@ -49,9 +47,9 @@ module.exports = {
   },
 
   /**
-   * this function gets all chatrooms that driver is a part of 
-   * @param {*} req 
-   * @param {*} res 
+   * this function gets all chatrooms that driver is a part of
+   * @param {*} req
+   * @param {*} res
    */
   getRooms: function (req, res) {
 
@@ -78,8 +76,8 @@ module.exports = {
 
   /**
    * This function adds 1 message to 1 chatroom
-   * @param {*} req 
-   * @param {*} res 
+   * @param {*} req
+   * @param {*} res
    */
   post: function (req, res) {
     messages.createMessage(req.body);

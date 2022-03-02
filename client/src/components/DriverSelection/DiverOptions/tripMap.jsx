@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 const librariesArray = ['places'];
@@ -28,7 +28,7 @@ function TripMap(props) {
     travelMode: 'DRIVING'
   });
 
-  const { isLoaded, loadError } = useJsApiLoader({
+  const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.KEY,
     libraries: librariesArray
   });
@@ -56,5 +56,4 @@ function TripMap(props) {
       </div>
   )
 }
-
 export default React.memo(TripMap)

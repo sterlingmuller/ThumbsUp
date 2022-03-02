@@ -1,6 +1,5 @@
 const {pool} = require('../../database/index.js');
 
-
 module.exports = {
   checkStatus (req, res) {
     let {driver_trips} = req.body;

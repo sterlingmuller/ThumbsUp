@@ -96,6 +96,7 @@ h2 {
   background-color: #1c768f;
   margin-bottom: 1em;
   font-size: 2em;
+  cursor: pointer;
   filter:drop-shadow(.04em .05em .02em black);
 }
 

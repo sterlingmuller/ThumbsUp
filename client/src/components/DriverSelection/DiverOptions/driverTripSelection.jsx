@@ -35,9 +35,7 @@ export const DriverTripSelection = () => {
       {!trip ? <div>loading</div> : <div><TripMap trip={trip} /></div>}
       <div >
         {currentUser.usertype === 'driver' ? <DriverTiles /> : <ChatRoom />}
-
       </div>
     </div>
   );
-
 }

@@ -7,8 +7,6 @@ import { Offcanvas } from 'react-bootstrap';
 import { RiderMenu } from './RiderHamburgerModal/riderMenu.jsx';
 import './Rider.css';
 
-
-
 export const RiderPortal = () => {
 
   const [lat, setLat] = useState("");
@@ -32,7 +30,6 @@ export const RiderPortal = () => {
     })
   }, [])
 
-
   const containerStyle = {
     width: '70vw',
     height: '65vh'
@@ -42,7 +39,6 @@ export const RiderPortal = () => {
     lat: +lat,
     lng: +long
   };
-
 
   return (
     !isLoaded ? <div>Loading</div> :
@@ -73,6 +69,5 @@ export const RiderPortal = () => {
       </Link>
     </div>
   );
-
 }
 
