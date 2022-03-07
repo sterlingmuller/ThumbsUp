@@ -32,3 +32,13 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
 <p align="center">
 <img src="readme_assets/riderRating.gif">
 </p>
+
+---
+
+##Performance
+<p align="center">
+<img src="readme_assets/lighthouseScore.png">
+</p>
+
+## Authors
+Thumbs Up was written by [Sterling Muller](https://github.com/sterlingmuller), [Mitchell Gardner](https://github.com/Mitch311G), [Prith Jaganathan](https://github.com/prith98), [Matt Dziedzic](https://github.com/MrFripple), [Neil Mosser](https://github.com/NeilMosser), and [Ezra Pullido](https://github.com/ezra-pullido).
