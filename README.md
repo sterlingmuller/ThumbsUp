@@ -35,7 +35,7 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
 
 ---
 
-##Performance
+## Performance
 <p align="center">
 <img src="readme_assets/lighthouseScore.png">
 </p>
