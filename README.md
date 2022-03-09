@@ -6,6 +6,8 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
 ---
 
 ## Usage
+This application has been deployed on heroku: https://thumbsup-sterling.herokuapp.com/
+
 - **Sample Driver:**
     - Username: MrFripple
     - Password: 123
