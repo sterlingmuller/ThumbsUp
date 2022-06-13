@@ -29,7 +29,7 @@ background-size: 100px 50px;
   width: 23em;
   border: 2px solid #FBF3F2;
   margin-top: 5%;
-  filter:drop-shadow(.08em .08em .05em black);
+  /* filter:drop-shadow(.08em .08em .05em black); */
 }
 
 .wrapper {
@@ -63,7 +63,7 @@ background-size: 100px 50px;
   width: 100%;
   height: 100%;
   background-color: #9AD0EC;
-  color: #FBF3F2;
+  color: #002b3f;
 }
 
 .driverPortalCard {
@@ -74,6 +74,7 @@ background-size: 100px 50px;
   margin: 4px;
   background-color: #FA991C !important;
   border-color: #ffffff!important;
+  color: #002b3f !important;
   filter:drop-shadow(.04em .05em .02em black);
 }
 
@@ -81,11 +82,13 @@ background-size: 100px 50px;
   margin: 4px;
   background-color: #adddbf !important;
   border-color: #ffffff !important;
+  color: #002b3f !important;
   filter:drop-shadow(.04em .05em .02em black);
 }
 
 .btn-secondary-driver {
   background-color: #adddbf !important;
   border-color: #ffffff !important;
+  color: #002b3f !important;
   filter:drop-shadow(.04em .05em .02em black);
 }

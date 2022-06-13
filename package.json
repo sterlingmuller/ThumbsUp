@@ -1,10 +1,7 @@
 {
   "name": "blueocean",
-  "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server/app.js",
     "start-dev": "nodemon backend/server/app.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w",
@@ -14,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/Team-Tyrrhenian/BlueOcean.git"
   },
-  "author": "Mitchell Gardner, Matt Dziedzic, Ezra Pullido, Sterling Muller, Prith Jaganathan, Neil Mosser",
+  "author": "Sterling Muller, Mitchell Gardner, Matt Dziedzic, Ezra Pullido, Prith Jaganathan, Neil Mosser",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Team-Tyrrhenian/BlueOcean/issues"
