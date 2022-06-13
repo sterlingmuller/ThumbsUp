@@ -21,7 +21,7 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
 6. Run `npm run start-dev` to start development server at `localhost:3000`.
 
 ### Requirements
-1. Install the following on your system (if not done already):
+1. The following must be installed on your system:
     - [Node.js and npm](https://nodejs.org/en/download/)
     - [PostgreSQL](https://www.postgresql.org/download/)
 2. Obtain a [Google Maps API key](https://developers.google.com/maps)
