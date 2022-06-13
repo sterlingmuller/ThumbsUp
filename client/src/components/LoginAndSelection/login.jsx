@@ -59,6 +59,7 @@ export const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required={true}
+              autoComplete='on'
             />
           </Form.Group>
           <>
