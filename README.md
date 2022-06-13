@@ -19,7 +19,6 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
     - Run `psql -d blueocean -f ./backend/database/schema.sql` in the root directory of the project to create the project's database and load test data.
 5. Run `npm run build-dev` to build `dist/bundle.js`.
 6. Run `npm run start-dev` to start development server at `localhost:3000`.
-7. Start developing!
 
 ### Requirements
 1. Install the following on your system (if not done already):
