@@ -1,8 +1,7 @@
 /* Colors:
-
-Orange: #FA991C rgb(250, 153, 28)'
+Orange: #FA991C
 Cream #FBF3F2
-Light Blue: #9AD0EC  'rgb(28, 118, 143)
+Light Blue: #9AD0EC
 Dark Blue : #F6F6F6
 */
 
@@ -29,7 +28,6 @@ background-size: 100px 50px;
   width: 23em;
   border: 2px solid #FBF3F2;
   margin-top: 5%;
-  /* filter:drop-shadow(.08em .08em .05em black); */
 }
 
 .wrapper {
