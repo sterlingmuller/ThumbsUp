@@ -3,6 +3,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server/app.js",
+    "start-dev": "nodemon backend/server/app.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production"
   },

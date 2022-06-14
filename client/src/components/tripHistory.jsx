@@ -24,7 +24,7 @@ export const TripHistory = () => {
 
   return (
     <Card>
-      <IoMdArrowRoundBack className='backArrowCard' onClick={() => {
+      <IoMdArrowRoundBack className='backArrow' onClick={() => {
         currentUser.usertype === 'rider' ? navigate('/riderPortal') : navigate('/driverPortal')
       }}/>
       <Card.Body>
