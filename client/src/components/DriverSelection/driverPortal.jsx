@@ -44,7 +44,7 @@ export const DriverPortal = () => {
       <Card>
         <Card.Body>
           <Card.Title className="driverPortalCard">
-            <IoMdArrowRoundBack className="backArrowCard" style={{ fontSize: '1.5em' }} onClick={() => {
+            <IoMdArrowRoundBack className="backArrowCard" onClick={() => {
               navigate('/riderOrDriver');
             }} />
                 <h1>Upcoming Trips</h1>
@@ -62,7 +62,7 @@ export const DriverPortal = () => {
 
                        <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}>
                           Ride Complete </Button>
-                       <Button className="btn-secondary-driver col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
+                       <Button className="btn-primary btn-secondary col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
                     </ListGroup.Item>
 
                   )
@@ -70,7 +70,7 @@ export const DriverPortal = () => {
               </ListGroup>
 
           <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button>
-          <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
+          <Button className="btn-primary btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
 
         </Card.Body>
       </Card>

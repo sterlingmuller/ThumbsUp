@@ -66,7 +66,7 @@ export const Login = () => {
             <Button variant="primary" type="submit" disabled={!validateForm()}>
               Login
             </Button>{' '}
-            <Button variant="secondary" type="button" onClick={() => { navigate('/newUser') }} >
+            <Button className="btn-primary btn-secondary" type="button" onClick={() => { navigate('/newUser') }} >
               Create Account
             </Button>{' '}
           </>

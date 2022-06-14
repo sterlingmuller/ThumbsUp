@@ -77,16 +77,5 @@ background-size: 100px 50px;
 }
 
 .btn-secondary {
-  margin: 4px;
   background-color: #adddbf !important;
-  border-color: #ffffff !important;
-  color: #002b3f !important;
-  filter:drop-shadow(.04em .05em .02em black);
-}
-
-.btn-secondary-driver {
-  background-color: #adddbf !important;
-  border-color: #ffffff !important;
-  color: #002b3f !important;
-  filter:drop-shadow(.04em .05em .02em black);
 }
