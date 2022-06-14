@@ -8,9 +8,10 @@ import moment from 'moment';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const DriverPortal = () => {
-  const { setSelectedTrip, currentUser } = useContext(MainContext);
   const navigate = useNavigate();
+  const { setSelectedTrip, currentUser } = useContext(MainContext);
   const [upcomingRides, setUpcomingRides] = useState([]);
+
   const getUpcomingRides = () => {
     axios.get(`/drivers?user_id=${currentUser.userId}`)
       .then(({ data }) => {
@@ -53,17 +54,22 @@ export const DriverPortal = () => {
                   return (
 
                     <ListGroup.Item key={ride.trip_id} >
-                          <div onClick={() => TripDetailsClick(ride.trip_id)}>{ride.start_address} - {ride.end_address}</div>
-                          <div onClick={() => TripDetailsClick(ride.trip_id)}>{moment(ride.start_time).format('LLLL')}</div>
+                      <div onClick={() => TripDetailsClick(ride.trip_id)}>
+                            {ride.start_address} - {ride.end_address}
+                            <br/>
+                            {moment(ride.start_time).format('LLLL')}
+                      </div>
 
-                       <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}> Ride Complete </Button> {' '}
+                       <Button className="btn-primary col-sm" onClick={() => RideCompleteClick(ride.trip_id)}>
+                          Ride Complete </Button>
                        <Button className="btn-secondary-driver col-sm" onClick={() => CancelRideClick(ride.trip_id)}> Cancel Ride </Button>
-                       </ListGroup.Item>
+                    </ListGroup.Item>
+
                   )
                 })}
               </ListGroup>
 
-          <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button> {' '}
+          <Button className="btn-primary col-sm" onClick={() => navigate('/driverAddTrip')}> Add Trip </Button>
           <Button className="btn-secondary col-sm" onClick={() => navigate('/tripHistory')} > Trip History </Button>
 
         </Card.Body>

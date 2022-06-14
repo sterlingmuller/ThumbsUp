@@ -42,7 +42,7 @@ const RouteComponent = () => {
         <Route
           path="*"
           element={
-            <main style={{ padding: "1rem" }}>
+            <main>
               <p>There's nothing here!</p>
             </main>
           }

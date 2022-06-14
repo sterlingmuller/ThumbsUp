@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  height: 100vh;
+height: 100vh;
 
 background-image:
 radial-gradient(circle at 100% 150%, #9AD0EC 24%, #F6F6F6 24%, #F6F6F6 28%, #9AD0EC 28%, #9AD0EC 36%, #F6F6F6 36%, #F6F6F6 40%, transparent 40%, transparent),

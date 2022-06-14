@@ -9,7 +9,6 @@
  white-space: normal;
 }
 .oneChat{
-
   height: 3.7rem;
 }
 
@@ -51,10 +50,6 @@ min-width: 78%;
  align-content: space-around;
 }
 
-/* .list-group-item {
-width: 100%;
-cursor: pointer;
-} */
 .backArrow{
  font-size: 2.5em;
 }
