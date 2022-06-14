@@ -2,7 +2,7 @@
   "name": "blueocean",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon backend/server/app.js",
+    "start": "node backend/server/app.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production"
   },
