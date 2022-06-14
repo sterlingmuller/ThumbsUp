@@ -17,7 +17,7 @@ The goal of Thumbs Up is to provide rides to those without access and reduce fue
     - After your local database is available, create a `.env` file in the root directory containing your local database info.
     - Uncomment lines inside section titled **"for development purposes only"** in the `backend/database/schema.sql` file.
     - Run `psql -d blueocean -f ./backend/database/schema.sql` in the root directory of the project to create the project's database and load test data.
-5. Run `npm run build-dev` to build `dist/bundle.js`.
+5. Run `npm run react-dev` to build `dist/bundle.js`.
 6. Run `npm run start-dev` to start development server at `localhost:3000`.
 
 ### Requirements
