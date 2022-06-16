@@ -28,7 +28,6 @@ export const DriverPortal = () => {
     navigate("/driverTripSelection");
   }
 
-
   const RideCompleteClick = (id) => {
     axios.put(`drivers?trip_id=${id}`)
       .then(getUpcomingRides());
