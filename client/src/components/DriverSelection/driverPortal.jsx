@@ -23,17 +23,18 @@ export const DriverPortal = () => {
     getUpcomingRides()
   }, [])
 
-  function TripDetailsClick(id) {
+  const TripDetailsClick = (id) => {
     setSelectedTrip(id);
     navigate("/driverTripSelection");
   }
+
 
   const RideCompleteClick = (id) => {
     axios.put(`drivers?trip_id=${id}`)
       .then(getUpcomingRides());
   }
 
-  function CancelRideClick(id) {
+  const CancelRideClick = (id) => {
     axios.delete(`drivers?trip_id=${id}`)
       .then(getUpcomingRides());
   }
